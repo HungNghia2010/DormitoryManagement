@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Trang Chủ";
+}
+@model List<DormitoryManagement.Models.Building>
+
+@section scripts{
+   
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="~/Areas/Admin/Fonts/js/script2.js"></script>
+}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page House -->
+    <div class="house">
+        @foreach (var building in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body building-item" data-building-id="@building.BuildingID">
+                    <h5 class="card-title">@building.Name</h5>
+                    <p class="card-text">Tổng: 300</p>
+                    <p class="card-text">Trống: 200</p>
+                </div>
+                <div class="iconset">
+                    <div class="setting_icon">
+                        <a type="button" href="@Url.Action("EditApartment","Homes", new { id = building.BuildingID})"><i class="fas fa-pen"></i></a>
+                    </div>
+                    <div class="trash_icon">
+                        <a type="button" class="delete-btn" data-id="@building.BuildingID" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="addnew">
+            <a class="btn" href="https://localhost:44342/Admin/Homes/AddApartment" type="button"><i class="fas fa-plus"></i></a>
+        </div>
+
+    </div>
+    <!--End Page House -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa tòa này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

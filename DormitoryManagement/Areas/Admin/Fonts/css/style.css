@@ -1,0 +1,161 @@
+.house {
+    max-height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.house .card {
+    background-color: white;
+    max-width: fit-content;
+    overflow: hidden;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.house .card:hover {
+    background-color: #874AFD;
+}
+
+.house .card:hover .card-title{
+    color: white;
+}
+
+.house .card .card-title{
+    color: #874AFD;
+}
+
+.house .card .card-text{
+    color: #673EB3;
+}
+
+.house .fas{
+    color: white;
+}
+
+.house .iconset{
+    text-align: center;
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.house .setting_icon,.house .trash_icon{
+    flex-direction: column;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+}
+
+.filter-container {
+    margin: 20px;
+}
+
+.filter-dropdown {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.item {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+
+.addnew {
+   text-align: center;
+   height: 37.6px;
+   width: 54.6px;
+   background-color: #874AFD;
+   border-radius: 8px;
+   margin-top: 20px;
+}
+.addnew .fa-plus {
+    color: white;
+}
+
+.floor_header{
+    display: flex;
+}
+
+
+.floor_text h3 {
+    color: #673EB3;
+    font-size: 20px;
+}
+
+.floor {
+    color: #673EB3;
+}
+
+.add_floor{
+    color: #874AFD;
+    background-color: white;
+    border: 1px solid #874AFD;
+}
+
+.floor_text, .floor_add {
+    flex: 1;
+}
+
+.floor_add{
+    display: flex;
+    justify-content: end;
+}
+
+.floor_content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.floor_content .card .card-text {
+    margin-bottom: 3px;
+    color: black;
+    font-size: 13px;
+}
+
+.floor_content .fas {
+    color: black;
+}
+
+.floor_content .card{
+    flex-direction: row;
+    margin-left: 50px;
+}
+
+.floor_content .card-body, .floor_content .iconset {
+    flex: 1;
+}
+
+.floor_content .iconset {
+    display: flex;
+    padding: 1.25rem;
+    justify-content: center;
+}
+
+.setting_icon, .trash_icon{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.floor_content .card:hover{
+    background: linear-gradient(90deg, rgba(167,122,255,1) 19%, rgba(135,74,253,1) 51%);
+    cursor: pointer;
+}
+
+.floor_content .card:hover .card-text,.floor_content .card:hover .fas{
+    color: white;
+}
+
+.modal-header {
+    justify-content: center;
+}
+
+.modal-header .close {
+    position: absolute;
+    top: 15px;
+    right: 16px;
+}

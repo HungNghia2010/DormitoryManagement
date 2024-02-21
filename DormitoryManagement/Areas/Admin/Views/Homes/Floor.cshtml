@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Floor";
+    @model List<DormitoryManagement.Models.Room>
+}
+
+
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Quản lý phòng @ViewData["name"]</h1>
+    <button type="button" class="btn btn-primary">
+        Thêm Phòng
+    </button>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên Phòng</th>
+                            <th>Số Người</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Tên Phòng</th>
+                            <th>Số Người</th>
+                            <th>TRẠNG THÁI</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        
+                        @foreach (var room in Model)
+                        {
+                            <tr>
+                                <td>@room.Name</td>
+                                <td>5/6</td>
+                                <td>Còn trống</td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(1)">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
+
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
