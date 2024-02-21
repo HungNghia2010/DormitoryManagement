@@ -2,15 +2,18 @@
     ViewBag.Title = "Room";
 
 }
+@model List<DormitoryManagement.Models.LoaiPhong>
 
+@section scripts{
 
+    <script src="~/Areas/Admin/Fonts/js/script2.js"></script>
+}
 
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Quản Lý Loại Phòng</h1>
-    <button type="button" class="btn btn-primary">
-        Thêm loại phòng
-    </button>
+    <a class="btn btn-primary" href="https://localhost:44342/Admin/Room/AddRoomType">Thêm Loại Phòng</a>
+    
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -20,7 +23,6 @@
                     <thead>
                         <tr>
                             <th>Loại Phòng</th>
-                            <th>Mô tả</th>
                             <th>Tiền phòng</th>
                             <th>Actions</th>
                         </tr>
@@ -28,36 +30,53 @@
                     <tfoot>
                         <tr>
                             <th>Loại Phòng</th>
-                            <th>Mô tả</th>
                             <th>Tiền phòng</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
-
-                        
+                        @foreach (var type in Model)
+                        {
                             <tr>
-                                <td>Phòng có máy lạnh</td>
-                                <td>Phòng vip</td>
-                                <td>500.000</td>
+                                <td>@type.TenLoaiPhong</td>
+                                <td>@type.GiaTien</td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm">
                                         <i class="fas fa-edit"></i> Edit
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(1)">
+                                    <button type="button" class="btn btn-danger btn-sm" data-id="@type.MaLoaiPhong" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fas fa-trash-alt"></i> Delete
                                     </button>
                                 </td>
 
                             </tr>
-                        
+                        }
+
 
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa loại phòng này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteRoomType">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

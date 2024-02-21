@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="DormitoryManagementModel.Building" Width="1.5" PointX="3.375" PointY="1.25" />
         <EntityTypeShape EntityType="DormitoryManagementModel.Room" Width="1.5" PointX="5.625" PointY="1" />
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="0.875" PointY="3.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

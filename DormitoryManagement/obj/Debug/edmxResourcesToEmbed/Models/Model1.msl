@@ -27,12 +27,24 @@
     <EntitySetMapping Name="Rooms">
       <EntityTypeMapping TypeName="DormitoryManagementModel.Room">
         <MappingFragment StoreEntitySet="Rooms">
+          <ScalarProperty Name="Descript" ColumnName="Descript" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Occupancy" ColumnName="Occupancy" />
           <ScalarProperty Name="MaxCapacity" ColumnName="MaxCapacity" />
           <ScalarProperty Name="RoomType" ColumnName="RoomType" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
           <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiPhongs">
+      <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiPhong">
+        <MappingFragment StoreEntitySet="LoaiPhong">
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+          <ScalarProperty Name="TenLoaiPhong" ColumnName="TenLoaiPhong" />
+          <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

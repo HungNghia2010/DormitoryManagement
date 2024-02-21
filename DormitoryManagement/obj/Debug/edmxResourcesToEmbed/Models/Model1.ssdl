@@ -21,6 +21,14 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="LoaiPhong">
+    <Key>
+      <PropertyRef Name="MaLoaiPhong" />
+    </Key>
+    <Property Name="MaLoaiPhong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiPhong" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GiaTien" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="Rooms">
     <Key>
       <PropertyRef Name="RoomID" />
@@ -30,9 +38,12 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="RoomType" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MaxCapacity" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Occupancy" Type="int" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Descript" Type="varchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK__Rooms__BuildingI__49C3F6B7">
+  <Association Name="FK__Rooms__BuildingI__02FC7413">
     <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
     <ReferentialConstraint>
@@ -47,8 +58,9 @@
   <EntityContainer Name="DormitoryManagementModelStoreContainer">
     <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Rooms__BuildingI__49C3F6B7" Association="Self.FK__Rooms__BuildingI__49C3F6B7">
+    <AssociationSet Name="FK__Rooms__BuildingI__02FC7413" Association="Self.FK__Rooms__BuildingI__02FC7413">
       <End Role="Buildings" EntitySet="Buildings" />
       <End Role="Rooms" EntitySet="Rooms" />
     </AssociationSet>

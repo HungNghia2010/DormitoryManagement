@@ -231,8 +231,6 @@
         </div>
     </div>
 
-    @RenderSection("scripts", required: false)
-
     <!-- Bootstrap core JavaScript-->
     <script src="~/Areas/Admin/Fonts/vendor/jquery/jquery.min.js"></script>
     <script src="~/Areas/Admin/Fonts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -251,6 +249,8 @@
 
     <!-- Page level custom scripts -->
     <script src="~/Areas/Admin/Fonts/js/demo/datatables-demo.js"></script>
+
+    @RenderSection("scripts", required: false)
 
 </body>
 

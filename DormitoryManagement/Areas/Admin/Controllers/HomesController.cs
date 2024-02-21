@@ -115,11 +115,15 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         [RequireLogin]
         public ActionResult Floor()
         {
+            var Mydata = TempData["success"];
+            ViewBag.success = Mydata;
+
             var builingId = Request.QueryString["buildingId"];
             var ID = Convert.ToInt32(builingId);
             var data = _db.Rooms.Where(s => s.BuildingID == ID).ToList();
             var building = _db.Buildings.Find(ID);
             ViewData["name"] = building.Name;
+            ViewData["id"] = building.BuildingID;
             return View(data);
         }
 
@@ -162,7 +166,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
-        // GET: Admin/Homes/EditApartment
+        // Post: Admin/Homes/EditApartment
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditApartment(Building building)
@@ -188,6 +192,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View();
         }
 
+        [RequireLogin]
         public ActionResult Delete(int id)
         {
             // Lấy dữ liệu cần xóa từ cơ sở dữ liệu
@@ -205,7 +210,55 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         }
 
+        [RequireLogin]
+        public ActionResult AddRoom(int buildingId)
+        {
+            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+            var genders = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Nam", Text = "Nam" },
+                new SelectListItem { Value = "Nữ", Text = "Nữ" }
+            };
+            ViewBag.Genders = genders;
+            ViewBag.RoomTypes = roomtype;
+            ViewBag.id = buildingId;
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRoom(Room room)
+        {
+            if (ModelState.IsValid)
+            {
+                var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+                var genders = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Nam", Text = "Nam" },
+                    new SelectListItem { Value = "Nữ", Text = "Nữ" }
+                };
+                ViewBag.Genders = genders;
+                ViewBag.RoomTypes = roomtype;
+
+                var data = _db.Rooms.Where(m => m.Name.Equals(room.Name) && m.BuildingID == room.BuildingID).ToList();
+                if(data.Count > 0)
+                {
+                    ViewData["error"] = "Tên phòng bị trùng khớp";
+                    return View();
+                }
+                else
+                {
+                    room.Occupancy = 0;
+                    room.Status = "Còn trống";
+                    _db.Rooms.Add(room);
+                    _db.SaveChanges();
+                    TempData["success"] = "Thêm phòng thành công";
+                    return RedirectToAction("Floor", "Homes", new { area = "Admin", buildingId = room.BuildingID });
+                }
+            }
+            
+            return View();
+        }
 
     }
 

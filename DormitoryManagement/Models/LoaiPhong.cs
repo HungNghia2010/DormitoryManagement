@@ -12,18 +12,10 @@ namespace DormitoryManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Room
+    public partial class LoaiPhong
     {
-        public int RoomID { get; set; }
-        public Nullable<int> BuildingID { get; set; }
-        public string Name { get; set; }
-        public string RoomType { get; set; }
-        public int MaxCapacity { get; set; }
-        public Nullable<int> Occupancy { get; set; }
-        public string Status { get; set; }
-        public string Gender { get; set; }
-        public string Descript { get; set; }
-    
-        public virtual Building Building { get; set; }
+        public int MaLoaiPhong { get; set; }
+        public string TenLoaiPhong { get; set; }
+        public decimal GiaTien { get; set; }
     }
 }

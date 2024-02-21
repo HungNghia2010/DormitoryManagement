@@ -21,6 +21,7 @@
       <End Role="Building" EntitySet="Buildings" />
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
+    <EntitySet Name="LoaiPhongs" EntityType="DormitoryManagementModel.LoaiPhong" />
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -42,6 +43,9 @@
     <Property Name="MaxCapacity" Type="Int32" Nullable="false" />
     <Property Name="Occupancy" Type="Int32" />
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7" FromRole="Room" ToRole="Building" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Descript" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__Rooms__BuildingI__49C3F6B7">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -55,4 +59,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="LoaiPhong">
+    <Key>
+      <PropertyRef Name="MaLoaiPhong" />
+    </Key>
+    <Property Name="MaLoaiPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiPhong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTien" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
 </Schema>
