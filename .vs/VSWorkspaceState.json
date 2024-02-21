@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DormitoryManagement",
+    "\\DormitoryManagement\\Areas",
+    "\\DormitoryManagement\\Areas\\Admin",
+    "\\DormitoryManagement\\Areas\\Admin\\Controllers",
+    "\\DormitoryManagement\\Areas\\Admin\\Views",
+    "\\DormitoryManagement\\Areas\\Admin\\Views\\Room",
+    "\\DormitoryManagement\\Models",
+    "\\Models\\Framework"
+  ],
+  "SelectedNode": "\\DormitoryManagement\\DormitoryManagement.csproj.user",
+  "PreviewInSolutionExplorer": false
+}
