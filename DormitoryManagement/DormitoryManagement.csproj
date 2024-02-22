@@ -2075,6 +2075,7 @@
     <Content Include="Areas\Admin\Views\Room\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Room\AddRoomType.cshtml" />
     <Content Include="Areas\Admin\Views\Homes\AddRoom.cshtml" />
+    <Content Include="Areas\Admin\Views\Homes\EditRoom.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

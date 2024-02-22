@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Thêm Phòng";
-    @model DormitoryManagement.Models.Room
+    ViewBag.Title = "Thêm Phòng";
 }
+@model DormitoryManagement.Models.Room
 
 <div id="content-wrapper">
     <div class="container-fluid">
@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <label for="Description">Mô tả:</label>
-                        @Html.TextAreaFor(m => m.Descript, new { @class = "form-control", @id = "Description", @rows = "3" })
+                        @Html.TextAreaFor(m => m.Descript, new { @class = "form-control", @id = "Description", @name = "note", @rows = "3" })
                     </div>
 
                     <!-- Hiển thị thông báo lỗi nếu có -->

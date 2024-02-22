@@ -26,7 +26,7 @@
                         <a type="button" href="@Url.Action("EditApartment","Homes", new { id = building.BuildingID})"><i class="fas fa-pen"></i></a>
                     </div>
                     <div class="trash_icon">
-                        <a type="button" class="delete-btn" data-id="@building.BuildingID" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
+                        <a type="button" class="delete-btn" name="@building.Name" data-id="@building.BuildingID" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
                     </div>
                 </div>
             </div>

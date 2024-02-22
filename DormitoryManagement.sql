@@ -34,9 +34,10 @@ CREATE TABLE Rooms (
     MaxCapacity INT NOT NULL,
 	Status NVARCHAR(100) Not Null,
 	Occupancy INT DEFAULT 0, 
-    Gender Nvarchar(50) Not Null,
-	Descript Nvarchar(50),
+    Gender NVARCHAR(100) Not Null,
+	Descript NVARCHAR(100),
 );
+
 
 INSERT INTO Rooms (BuildingID, Name, MaxCapacity, RoomType, Status,Occupancy,Gender)
 VALUES

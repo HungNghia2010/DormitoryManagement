@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Sửa Phòng";
+}
+@model DormitoryManagement.Models.Room
+
+@section scripts{
+
+    <script src="~/Areas/Admin/Fonts/js/script2.js"></script>
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="text-center text-gray-800">Chỉnh Sửa Phòng</h2>
+
+                <!-- Form chỉnh sửa phòng -->
+                @using (Html.BeginForm("EditRoom", "Homes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(m => m.RoomID)
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="RoomName">Tên phòng:</label>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "RoomName", @required = "required" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="RoomType">Loại phòng:</label>
+                            @Html.DropDownListFor(m => m.RoomType, (IEnumerable<SelectListItem>)ViewBag.RoomTypes, "-- Chọn loại phòng --", new { @class = "form-control", @id = "RoomTypes", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="NumberOfBeds">Số giường:</label>
+                            @Html.TextBoxFor(m => m.MaxCapacity, new { @class = "form-control", @id = "NumberOfBeds", @type = "number", @required = "required", @min = "1" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Gender">Giới tính:</label>
+                            @Html.DropDownListFor(m => m.Gender, (IEnumerable<SelectListItem>)ViewBag.Genders, "-- Chọn giới tính --", new { @class = "form-control", @id = "Gender", @required = "required" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Description">Mô tả:</label>
+                        @Html.TextAreaFor(m => m.Descript, new { @class = "form-control", @id = "Description", @name = "note", @rows = "3" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Students">Sinh viên trong phòng:</label>
+                        <div class="student-info">
+                           
+                            <div class="row mt-3">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-primary add-student"><i class="fas fa-plus"></i> Thêm sinh viên</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hiển thị thông báo lỗi nếu có -->
+                    if (@ViewBag.Error != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-danger">@ViewBag.Error</span>
+                        </div>
+                    }
+
+                    <!-- Hiển thị thông báo thành công nếu có -->
+                    if (@ViewBag.Success != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-success">@ViewBag.Success</span>
+                        </div>
+                    }
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

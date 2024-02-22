@@ -79,34 +79,67 @@
 
     $('.delete-btn').click(function () {
         var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa "+name + " này không ?");
         $('#confirmDelete').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
     });
 
     $('#confirmDelete').click(function () {
         var id = $(this).data('id');
-        // Gửi yêu cầu xóa bản ghi có id là id thông qua Ajax hoặc form post
-        // Sau khi xóa thành công, bạn có thể thực hiện chuyển hướng hoặc làm gì đó khác
-        // ở đây là một ví dụ:
         window.location.href = '/Homes/Delete/' + id;
     });
 
     $('.btn.btn-danger.btn-sm').click(function () {
         var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa " + name + " này không ?");
         $('#confirmDeleteRoomType').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
     });
 
     $('#confirmDeleteRoomType').click(function () {
         var id = $(this).data('id');
-        console.log(id);
-        // Gửi yêu cầu xóa bản ghi có id là id thông qua Ajax hoặc form post
-        // Sau khi xóa thành công, bạn có thể thực hiện chuyển hướng hoặc làm gì đó khác
-        // ở đây là một ví dụ:
         window.location.href = '/Room/Delete/' + id;
+    });
+
+    $('.btn.btn-danger.btn-sm.btnFloor').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa phòng "+ name +" này không ?");
+        $('#confirmDeleteRoom').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+    $('#confirmDeleteRoom').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Homes/DeleteRoom/' + id;
     });
 
     $('.building-item').click(function () {
         var id = $(this).data('building-id');
         window.location.href = '/Admin/Homes/Floor?buildingId=' + id;
+    });
+
+    $(".add-student").click(function () {
+        var maxCapacity = parseInt($("#NumberOfBeds").val()); // Lấy số lượng giường tối đa của phòng
+        var currentStudents = $(".student-input").length; // Lấy số lượng sinh viên hiện tại
+
+        // Kiểm tra nếu số lượng sinh viên hiện tại nhỏ hơn số lượng giường tối đa
+        if (currentStudents < maxCapacity) {
+            var newInput = '<div class="row mt-3 student-input">' +
+                '<div class="col-md-10">' +
+                '<input type="text" class="form-control" name="studentName[]" placeholder="Tên sinh viên">' +
+                '</div>' +
+                '<div class="col-md-2">' +
+                '<button type="button" class="btn btn-danger delete-student"><i class="fas fa-times"></i></button>' +
+                '</div>' +
+                '</div>';
+            $(newInput).insertBefore($(this).closest('.row'));
+        } else {
+            alert("Số lượng sinh viên đã đạt tối đa cho phòng này!");
+        }
+    });
+
+    $(document).on("click", ".delete-student", function () {
+        $(this).closest(".student-input").remove(); // Xóa trường nhập sinh viên
     });
 
 });
