@@ -142,4 +142,20 @@
         $(this).closest(".student-input").remove(); // Xóa trường nhập sinh viên
     });
 
+
+    $("#studentName").select2({
+        placeholder: "Tìm kiếm sinh viên",
+        data: [
+            { id: 1, text: "Sinh viên 1 (Mã: SV001)" },
+            { id: 2, text: "Sinh viên 2 (Mã: SV002)" },
+            { id: 3, text: "Sinh viên 3 (Mã: SV003)" },
+            // Thêm dữ liệu cho các sinh viên khác
+        ],
+        templateResult: function (data) {
+            // Sử dụng template để hiển thị tên và mã số sinh viên
+            return $('<span>' + data.text + '</span>');
+        }
+    });
+
 });
+

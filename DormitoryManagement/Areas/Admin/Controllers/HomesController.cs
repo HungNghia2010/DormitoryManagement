@@ -285,7 +285,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         }
 
-        public ActionResult EditRoom()
+        public ActionResult EditRoom(int id)
         {
             var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
             var genders = new List<SelectListItem>
@@ -295,7 +295,10 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 };
             ViewBag.Genders = genders;
             ViewBag.RoomTypes = roomtype;
-            return View();
+
+            var data = _db.Rooms.Find(id);
+
+            return View(data);
         }
 
     }
