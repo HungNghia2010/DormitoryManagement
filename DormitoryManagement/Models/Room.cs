@@ -14,6 +14,12 @@ namespace DormitoryManagement.Models
     
     public partial class Room
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Room()
+        {
+            this.StudentAccounts = new HashSet<StudentAccount>();
+        }
+    
         public int RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public string Name { get; set; }
@@ -25,5 +31,7 @@ namespace DormitoryManagement.Models
         public string Descript { get; set; }
     
         public virtual Building Building { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentAccount> StudentAccounts { get; set; }
     }
 }

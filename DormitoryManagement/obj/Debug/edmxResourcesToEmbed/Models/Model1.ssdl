@@ -40,10 +40,39 @@
     <Property Name="MaxCapacity" Type="int" Nullable="false" />
     <Property Name="Status" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Occupancy" Type="int" />
-    <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Descript" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descript" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__Rooms__BuildingI__02FC7413">
+  <EntityType Name="StudentAccounts">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Gender" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="100" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="BuildingID" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="LoginAttempts" Type="int" />
+    <Property Name="IsLocked" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Rooms__BuildingI__2C3393D0">
     <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
     <ReferentialConstraint>
@@ -55,14 +84,48 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__StudentAc__Build__4AB81AF0">
+    <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
+    <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buildings">
+        <PropertyRef Name="BuildingID" />
+      </Principal>
+      <Dependent Role="StudentAccounts">
+        <PropertyRef Name="BuildingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentAc__RoomI__49C3F6B7">
+    <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
+    <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rooms">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="StudentAccounts">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DormitoryManagementModelStoreContainer">
     <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Rooms__BuildingI__02FC7413" Association="Self.FK__Rooms__BuildingI__02FC7413">
+    <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Rooms__BuildingI__2C3393D0" Association="Self.FK__Rooms__BuildingI__2C3393D0">
       <End Role="Buildings" EntitySet="Buildings" />
       <End Role="Rooms" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentAc__Build__4AB81AF0" Association="Self.FK__StudentAc__Build__4AB81AF0">
+      <End Role="Buildings" EntitySet="Buildings" />
+      <End Role="StudentAccounts" EntitySet="StudentAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentAc__RoomI__49C3F6B7" Association="Self.FK__StudentAc__RoomI__49C3F6B7">
+      <End Role="Rooms" EntitySet="Rooms" />
+      <End Role="StudentAccounts" EntitySet="StudentAccounts" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -1,5 +1,5 @@
 ﻿CREATE DATABASE DormitoryManagement
-
+use DormitoryManagement
 CREATE TABLE AdminAccounts (
     AdminID INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(50) UNIQUE NOT NULL,
@@ -57,3 +57,21 @@ VALUES
     (N'Phòng Máy Lạnh', 100.00),
     (N'Phòng Thường', 150.00),
     (N'Phòng Vip', 200.00);
+
+
+CREATE TABLE StudentAccounts (
+    StudentID INT IDENTITY(1,1) PRIMARY KEY,
+    UserName VARCHAR(50) UNIQUE NOT NULL,
+	FullName VARCHAR(100) NOT NULL,
+    Password VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL, 
+	PhoneNumber VARCHAR(100) NOT NULL, 
+	Address VARCHAR(100), 
+	Gender VARCHAR(100) NOT NULL, 
+	ImagePath VARCHAR(100),
+	RoomID INT FOREIGN KEY REFERENCES Rooms(RoomId),
+	BuildingID INT FOREIGN KEY REFERENCES Buildings(BuildingID),
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+	LoginAttempts INT DEFAULT 0,
+    IsLocked INT DEFAULT 0
+);

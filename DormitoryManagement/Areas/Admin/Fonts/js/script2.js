@@ -96,9 +96,22 @@
         $('#confirmDeleteRoomType').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
     });
 
+
     $('#confirmDeleteRoomType').click(function () {
         var id = $(this).data('id');
         window.location.href = '/Room/Delete/' + id;
+    });
+
+    $('.btn.btn-danger.btn-sm').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa " + name + " này không ?");
+        $('#confirmDeleteStudent').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+    $('#confirmDeleteStudent').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Student/Delete/' + id;
     });
 
     $('.btn.btn-danger.btn-sm.btnFloor').click(function () {
