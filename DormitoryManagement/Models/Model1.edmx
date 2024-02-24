@@ -67,17 +67,7 @@
           <Property Name="LoginAttempts" Type="int" />
           <Property Name="IsLocked" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <Association Name="FK__Rooms__BuildingI__2C3393D0">
+        <Association Name="FK__Rooms__BuildingI__4F47C5E3">
           <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -89,7 +79,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__Build__4AB81AF0">
+        <Association Name="FK__StudentAc__Build__65370702">
           <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
           <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,7 +91,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__RoomI__49C3F6B7">
+        <Association Name="FK__StudentAc__RoomI__6442E2C9">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
           <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -119,16 +109,15 @@
           <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Rooms__BuildingI__2C3393D0" Association="Self.FK__Rooms__BuildingI__2C3393D0">
+          <AssociationSet Name="FK__Rooms__BuildingI__4F47C5E3" Association="Self.FK__Rooms__BuildingI__4F47C5E3">
             <End Role="Buildings" EntitySet="Buildings" />
             <End Role="Rooms" EntitySet="Rooms" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__Build__4AB81AF0" Association="Self.FK__StudentAc__Build__4AB81AF0">
+          <AssociationSet Name="FK__StudentAc__Build__65370702" Association="Self.FK__StudentAc__Build__65370702">
             <End Role="Buildings" EntitySet="Buildings" />
             <End Role="StudentAccounts" EntitySet="StudentAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__RoomI__49C3F6B7" Association="Self.FK__StudentAc__RoomI__49C3F6B7">
+          <AssociationSet Name="FK__StudentAc__RoomI__6442E2C9" Association="Self.FK__StudentAc__RoomI__6442E2C9">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="StudentAccounts" EntitySet="StudentAccounts" />
           </AssociationSet>
@@ -159,7 +148,6 @@
             <End Role="Room" EntitySet="Rooms" />
           </AssociationSet>
           <EntitySet Name="LoaiPhongs" EntityType="DormitoryManagementModel.LoaiPhong" />
-          <EntitySet Name="sysdiagrams" EntityType="DormitoryManagementModel.sysdiagram" />
           <EntitySet Name="StudentAccounts" EntityType="DormitoryManagementModel.StudentAccount" />
           <AssociationSet Name="FK__StudentAc__Build__4AB81AF0" Association="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0">
             <End Role="Building" EntitySet="Buildings" />
@@ -215,16 +203,6 @@
           <Property Name="MaLoaiPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenLoaiPhong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GiaTien" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="StudentAccount">
           <Key>
@@ -321,17 +299,6 @@
                 <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
                 <ScalarProperty Name="TenLoaiPhong" ColumnName="TenLoaiPhong" />
                 <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

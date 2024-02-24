@@ -9,8 +9,8 @@
 
 namespace DormitoryManagement.Models
 {
-	using Microsoft.AspNetCore.Http;
-	using System;
+    using Microsoft.AspNetCore.Http;
+    using System;
     using System.Collections.Generic;
     
     public partial class StudentAccount
@@ -24,8 +24,8 @@ namespace DormitoryManagement.Models
         public string Address { get; set; }
         public string Gender { get; set; }
         public string ImagePath { get; set; }
-		public IFormFile ImageFile { get; set; }
-		public Nullable<int> RoomID { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public Nullable<int> RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<int> LoginAttempts { get; set; }

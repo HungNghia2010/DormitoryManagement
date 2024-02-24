@@ -342,3 +342,19 @@ D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Memory.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Numerics.Vectors.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Buffers.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.IO.Pipelines.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Memory.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Numerics.Vectors.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Buffers.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.IO.Pipelines.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Memory.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Numerics.Vectors.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Threading.Tasks.Extensions.xml

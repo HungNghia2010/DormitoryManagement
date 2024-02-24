@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="DormitoryManagementModel.Room" Width="1.5" PointX="5.625" PointY="1" />
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7" />
         <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="0.875" PointY="3.375" />
-        <EntityTypeShape EntityType="DormitoryManagementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6" />
         <EntityTypeShape EntityType="DormitoryManagementModel.StudentAccount" Width="1.5" PointX="7.875" PointY="0.75" />
         <AssociationConnector Association="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" />
         <AssociationConnector Association="DormitoryManagementModel.FK__StudentAc__RoomI__49C3F6B7" />

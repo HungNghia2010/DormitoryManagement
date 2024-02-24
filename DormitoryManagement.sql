@@ -75,3 +75,16 @@ CREATE TABLE StudentAccounts (
 	LoginAttempts INT DEFAULT 0,
     IsLocked INT DEFAULT 0
 );
+
+INSERT INTO StudentAccounts (UserName, FullName, Password, Email, PhoneNumber, Gender)
+VALUES 
+('user1', 'User One', 'password1', 'user1@example.com', '1234567890', 'Male'),
+('user2', 'User Two', 'password2', 'user2@example.com', '9876543210', 'Female'),
+('user3', 'User Three', 'password3', 'user3@example.com', '4561237890', 'Male'),
+('user4', 'User Four', 'password4', 'user4@example.com', '7894561230', 'Female'),
+('user5', 'User Five', 'password5', 'user5@example.com', '3216549870', 'Male'),
+('user6', 'User Six', 'password6', 'user6@example.com', '6543217890', 'Female'),
+('user7', 'User Seven', 'password7', 'user7@example.com', '9871236540', 'Male'),
+('user8', 'User Eight', 'password8', 'user8@example.com', '4567891230', 'Female'),
+('user9', 'User Nine', 'password9', 'user9@example.com', '3219876540', 'Male'),
+('user10', 'User Ten', 'password10', 'user10@example.com', '7893216540', 'Female');
