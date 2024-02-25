@@ -131,6 +131,30 @@
         window.location.href = '/Admin/Homes/Floor?buildingId=' + id;
     });
 
+    $.ajax({
+        url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
+        method: 'GET', // Phương thức GET để gửi yêu cầu
+        success: function (response) {
+
+            // Khởi tạo Select2 với dữ liệu nhận được
+            $("#studentName").select2({
+                placeholder: "Tìm kiếm sinh viên",
+                data: response, // Dữ liệu nhận được từ máy chủ
+                templateResult: function (data) {
+                    // Sử dụng template để hiển thị tên và mã số sinh viên
+                    return $('<span>' + data.id + " - " + data.text + '</span>');
+                },
+                templateSelection: function (data) {
+                    // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
+                    return $('<span>' + data.id + " - " + data.text + '</span>');
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            alert(error); // Xử lý lỗi nếu có
+        }
+    });
+
     $(".add-student").click(function () {
         var maxCapacity = parseInt($("#NumberOfBeds").val()); // Lấy số lượng giường tối đa của phòng
         var currentStudents = $(".student-input").length; // Lấy số lượng sinh viên hiện tại
@@ -139,13 +163,45 @@
         if (currentStudents < maxCapacity) {
             var newInput = '<div class="row mt-3 student-input">' +
                 '<div class="col-md-10">' +
-                '<input type="text" class="form-control" name="studentName[]" placeholder="Tên sinh viên">' +
+                '<select class="form-control student-name select2" name="studentName[]">' +
+                '</select>' +
                 '</div>' +
                 '<div class="col-md-2">' +
                 '<button type="button" class="btn btn-danger delete-student"><i class="fas fa-times"></i></button>' +
                 '</div>' +
                 '</div>';
             $(newInput).insertBefore($(this).closest('.row'));
+            // Khởi tạo Select2 cho menu dropdown 
+            $.ajax({
+                url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
+                method: 'GET', // Phương thức GET để gửi yêu cầu
+                success: function (response) {
+
+                    var $newSelect2 = $(".select2").last();
+                    // Khởi tạo Select2 với dữ liệu nhận được
+                    $newSelect2.select2({
+                        placeholder: "Tìm kiếm sinh viên",
+                        data: response, // Dữ liệu nhận được từ máy chủ
+                        templateResult: function (data) {
+                            // Sử dụng template để hiển thị tên và mã số sinh viên
+                            return $('<span>' + data.id + " - " + data.text + '</span>');
+                        },
+                        templateSelection: function (data) {
+                            // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
+                            return $('<span>' + data.id + " - " + data.text + '</span>');
+                        }
+                    });
+                    // Loop through each Select2 instance except the newly added one
+                    $(".select2").not($newSelect2).each(function () {
+                        var $otherSelect2 = $(this);
+                        // Disable selected options in other Select2 instances
+                        $otherSelect2.find("option:selected").prop("disabled", true);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    alert(error); // Xử lý lỗi nếu có
+                }
+            });
         } else {
             alert("Số lượng sinh viên đã đạt tối đa cho phòng này!");
         }
@@ -155,20 +211,7 @@
         $(this).closest(".student-input").remove(); // Xóa trường nhập sinh viên
     });
 
-
-    $("#studentName").select2({
-        placeholder: "Tìm kiếm sinh viên",
-        data: [
-            { id: 1, text: "Sinh viên 1 (Mã: SV001)" },
-            { id: 2, text: "Sinh viên 2 (Mã: SV002)" },
-            { id: 3, text: "Sinh viên 3 (Mã: SV003)" },
-            // Thêm dữ liệu cho các sinh viên khác
-        ],
-        templateResult: function (data) {
-            // Sử dụng template để hiển thị tên và mã số sinh viên
-            return $('<span>' + data.text + '</span>');
-        }
-    });
+   
 
 });
 

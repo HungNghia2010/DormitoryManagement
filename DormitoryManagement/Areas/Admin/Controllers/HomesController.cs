@@ -301,6 +301,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
+        public ActionResult GetStudents()
+        {
+            var students = _db.StudentAccounts.Select(s => new { id = s.StudentID, text = s.FullName }).ToList();
+            return Json(students, JsonRequestBehavior.AllowGet);
+        }
     }
 
 }
