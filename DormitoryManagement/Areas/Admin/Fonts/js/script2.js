@@ -131,87 +131,43 @@
         window.location.href = '/Admin/Homes/Floor?buildingId=' + id;
     });
 
-    $.ajax({
-        url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
-        method: 'GET', // Phương thức GET để gửi yêu cầu
-        success: function (response) {
 
-            // Khởi tạo Select2 với dữ liệu nhận được
-            $("#studentName").select2({
-                placeholder: "Tìm kiếm sinh viên",
-                data: response, // Dữ liệu nhận được từ máy chủ
-                templateResult: function (data) {
-                    // Sử dụng template để hiển thị tên và mã số sinh viên
-                    return $('<span>' + data.id + " - " + data.text + '</span>');
-                },
-                templateSelection: function (data) {
-                    // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
-                    return $('<span>' + data.id + " - " + data.text + '</span>');
-                }
-            });
-        },
-        error: function (xhr, status, error) {
-            alert(error); // Xử lý lỗi nếu có
-        }
-    });
+    var maxCapacity = parseInt($("#NumberOfBeds").val());
 
-    $(".add-student").click(function () {
-        var maxCapacity = parseInt($("#NumberOfBeds").val()); // Lấy số lượng giường tối đa của phòng
-        var currentStudents = $(".student-input").length; // Lấy số lượng sinh viên hiện tại
-
-        // Kiểm tra nếu số lượng sinh viên hiện tại nhỏ hơn số lượng giường tối đa
-        if (currentStudents < maxCapacity) {
-            var newInput = '<div class="row mt-3 student-input">' +
-                '<div class="col-md-10">' +
-                '<select class="form-control student-name select2" name="studentName[]">' +
-                '</select>' +
-                '</div>' +
-                '<div class="col-md-2">' +
-                '<button type="button" class="btn btn-danger delete-student"><i class="fas fa-times"></i></button>' +
-                '</div>' +
-                '</div>';
-            $(newInput).insertBefore($(this).closest('.row'));
             // Khởi tạo Select2 cho menu dropdown 
             $.ajax({
                 url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
                 method: 'GET', // Phương thức GET để gửi yêu cầu
                 success: function (response) {
 
-                    var $newSelect2 = $(".select2").last();
+                    const data = response.map(item => ({
+                        id: `${item.id}`,
+                        name: `${item.name}`,
+                        text: `${item.id}|${item.name}`
+                    }));
                     // Khởi tạo Select2 với dữ liệu nhận được
-                    $newSelect2.select2({
+                    $(".select2").select2({
                         placeholder: "Tìm kiếm sinh viên",
-                        data: response, // Dữ liệu nhận được từ máy chủ
+                        maximumSelectionLength: maxCapacity,
+                        multiple: true,
+                        data: data, // Dữ liệu nhận được từ máy chủ
                         templateResult: function (data) {
                             // Sử dụng template để hiển thị tên và mã số sinh viên
-                            return $('<span>' + data.id + " - " + data.text + '</span>');
+                            return $('<span>' + data.id + " - " + data.name + '</span>');
                         },
                         templateSelection: function (data) {
                             // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
-                            return $('<span>' + data.id + " - " + data.text + '</span>');
-                        }
+                            return $('<span>' + data.id + " - " + data.name + '</span>');
+                        },
+
                     });
-                    // Loop through each Select2 instance except the newly added one
-                    $(".select2").not($newSelect2).each(function () {
-                        var $otherSelect2 = $(this);
-                        // Disable selected options in other Select2 instances
-                        $otherSelect2.find("option:selected").prop("disabled", true);
-                    });
+
                 },
                 error: function (xhr, status, error) {
                     alert(error); // Xử lý lỗi nếu có
                 }
             });
-        } else {
-            alert("Số lượng sinh viên đã đạt tối đa cho phòng này!");
-        }
-    });
-
-    $(document).on("click", ".delete-student", function () {
-        $(this).closest(".student-input").remove(); // Xóa trường nhập sinh viên
-    });
-
-   
 
 });
+
 

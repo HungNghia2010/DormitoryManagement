@@ -303,7 +303,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         public ActionResult GetStudents()
         {
-            var students = _db.StudentAccounts.Select(s => new { id = s.StudentID, text = s.FullName }).ToList();
+            var students = _db.StudentAccounts.Select(s => new { id = s.StudentID, name = s.FullName }).ToList();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
     }
