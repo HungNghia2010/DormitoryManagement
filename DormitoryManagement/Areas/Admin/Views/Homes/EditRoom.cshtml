@@ -19,7 +19,7 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    @Html.HiddenFor(m => m.BuildingID)
+                    @Html.HiddenFor(m => m.RoomID)
 
                     <div class="form-group row">
                         <div class="col-md-6">
@@ -55,13 +55,32 @@
                         <div class="student-info">
 
                             <div class="row mt-3 student-input">
+
                                 <div class="col-md-10">
-                                    <select type="text" class="form-control select2" multiple="multiple" id="studentName" name="studentName" placeholder="Tìm kiếm sinh viên" data-placeholder="Tìm kiếm sinh viên" ></select>
+                                    <input type="text" class="form-control" id="student" name="student"></input>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger delete-student"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-10">
+                                    <select type="text" class="form-control select2" multiple="multiple" id="studentName" name="studentName" placeholder="Tìm kiếm sinh viên" data-placeholder="Tìm kiếm sinh viên"></select>
                                 </div>
                             </div>
 
                         </div>
                     </div>
+
+                    foreach (var student in Model.StudentAccounts.Where(s => s.RoomID == Model.RoomID))
+                    {
+                        <p>Student ID: @student.StudentID</p>
+                        <p>Username: @student.UserName</p>
+                        <p>Full Name: @student.FullName</p>
+                        <p>Email: @student.Email</p>
+                        <!-- Hiển thị các thông tin khác của sinh viên -->
+                    }
 
                     <!-- Hiển thị thông báo lỗi nếu có -->
                     if (@ViewBag.Error != null)

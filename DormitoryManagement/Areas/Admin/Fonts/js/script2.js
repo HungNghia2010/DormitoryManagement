@@ -168,6 +168,13 @@
                 }
             });
 
+    $('.delete-student').click(function () {
+        // Loại bỏ phần tử cha của nút xóa sinh viên (div có class là col-md-2)
+        $(this).closest('.student-input').remove();
+    });
+
+
+
 });
 
 

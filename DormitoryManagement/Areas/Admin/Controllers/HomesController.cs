@@ -301,9 +301,37 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRoom(Room room, FormCollection form)
+        {
+            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+            var genders = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "Male", Text = "Male" },
+                    new SelectListItem { Value = "Female", Text = "Female" }
+                };
+            ViewBag.Genders = genders;
+            ViewBag.RoomTypes = roomtype;
+
+            var selectedValues = form["studentName"];
+            string[] studentIdArray = selectedValues.Split(',');
+            int[] intStudentIdArray = Array.ConvertAll(studentIdArray, int.Parse);
+
+
+            int s = intStudentIdArray[0];
+
+            var data = _db.StudentAccounts.Find(s);
+            data.RoomID = room.RoomID;
+            _db.SaveChanges();
+            
+
+            return View();
+        }
+
         public ActionResult GetStudents()
         {
-            var students = _db.StudentAccounts.Select(s => new { id = s.StudentID, name = s.FullName }).ToList();
+            var students = _db.StudentAccounts.Where(s => s.RoomID == null).Select(s => new { id = s.StudentID, name = s.FullName }).ToList();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
     }
