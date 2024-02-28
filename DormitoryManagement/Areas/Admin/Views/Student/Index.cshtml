@@ -23,6 +23,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Ảnh đại diện</th>
                             <th>Mã Sinh Viên</th>
                             <th>Tài thoản</th>
                             <th>Họ tên</th>
@@ -36,6 +37,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Ảnh đại diện</th>
                             <th>Mã Sinh Viên</th>
                             <th>Tài thoản</th>
                             <th>Họ tên</th>
@@ -51,6 +53,7 @@
                         @foreach (var type in Model)
                         {
                             <tr>
+                                <td>@type.ImagePath</td>
                                 <td>@type.StudentID</td>
                                 <td>@type.UserName</td>
                                 <td>@type.FullName</td>

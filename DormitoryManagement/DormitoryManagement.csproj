@@ -51,36 +51,129 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting, Version=2.2.7.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Hosting.2.2.7\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http, Version=2.2.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Http.2.2.2\lib\netstandard2.0\Microsoft.AspNetCore.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Extensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Http.Extensions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Features, Version=5.0.17.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNetCore.Http.Features.5.0.17\lib\net461\Microsoft.AspNetCore.Http.Features.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.WebUtilities.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.1\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.EnvironmentVariables, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.EnvironmentVariables.2.2.4\lib\netstandard2.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.FileExtensions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Diagnostics.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Diagnostics.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Diagnostics.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileProviders.Physical.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileSystemGlobbing.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Hosting.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.ObjectPool.2.2.0\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.1.6.0\lib\netstandard2.0\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -161,6 +254,7 @@
     <Compile Include="Areas\Admin\RequireLoginAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicController.cs" />
+    <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +287,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StudentAccount.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1888,6 +1985,100 @@
     <Content Include="Areas\Admin\Fonts\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\Fonts\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\Fonts\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Resources\Assets\css\animate.min.css" />
+    <Content Include="Resources\Assets\css\bootstrap-grid.css" />
+    <Content Include="Resources\Assets\css\bootstrap-grid.min.css" />
+    <Content Include="Resources\Assets\css\bootstrap-reboot.css" />
+    <Content Include="Resources\Assets\css\bootstrap-reboot.min.css" />
+    <Content Include="Resources\Assets\css\bootstrap.css" />
+    <Content Include="Resources\Assets\css\bootstrap.min.css" />
+    <Content Include="Resources\Assets\css\default-skin.css" />
+    <Content Include="Resources\Assets\css\font-awesome.min.css" />
+    <Content Include="Resources\Assets\css\icomoon.css" />
+    <Content Include="Resources\Assets\css\jquery-ui.css" />
+    <Content Include="Resources\Assets\css\jquery.fancybox.min.css" />
+    <Content Include="Resources\Assets\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Resources\Assets\css\meanmenu.css" />
+    <Content Include="Resources\Assets\css\nice-select.css" />
+    <Content Include="Resources\Assets\css\normalize.css" />
+    <Content Include="Resources\Assets\css\owl.carousel.min.css" />
+    <Content Include="Resources\Assets\css\responsive.css" />
+    <Content Include="Resources\Assets\css\slick.css" />
+    <Content Include="Resources\Assets\css\style.css" />
+    <Content Include="Resources\Assets\css\style2.css" />
+    <Content Include="Resources\Assets\css\style1.css" />
+    <Content Include="Resources\Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Resources\Assets\icons\edit.png" />
+    <Content Include="Resources\Assets\icons\envelope.png" />
+    <Content Include="Resources\Assets\icons\log-out.png" />
+    <Content Include="Resources\Assets\icons\question.png" />
+    <Content Include="Resources\Assets\icons\settings.png" />
+    <Content Include="Resources\Assets\icons\user.png" />
+    <Content Include="Resources\Assets\images\about.png" />
+    <Content Include="Resources\Assets\images\avatar.png" />
+    <Content Include="Resources\Assets\images\banner1.jpg" />
+    <Content Include="Resources\Assets\images\banner2.jpg" />
+    <Content Include="Resources\Assets\images\banner3.jpg" />
+    <Content Include="Resources\Assets\images\blog1.jpg" />
+    <Content Include="Resources\Assets\images\blog2.jpg" />
+    <Content Include="Resources\Assets\images\blog3.jpg" />
+    <Content Include="Resources\Assets\images\blog_bg.jpg" />
+    <Content Include="Resources\Assets\images\date.png" />
+    <Content Include="Resources\Assets\images\gallery1.jpg" />
+    <Content Include="Resources\Assets\images\gallery2.jpg" />
+    <Content Include="Resources\Assets\images\gallery3.jpg" />
+    <Content Include="Resources\Assets\images\gallery4.jpg" />
+    <Content Include="Resources\Assets\images\gallery5.jpg" />
+    <Content Include="Resources\Assets\images\gallery6.jpg" />
+    <Content Include="Resources\Assets\images\gallery7.jpg" />
+    <Content Include="Resources\Assets\images\gallery8.jpg" />
+    <Content Include="Resources\Assets\images\loading.gif" />
+    <Content Include="Resources\Assets\images\logo.png" />
+    <Content Include="Resources\Assets\images\menu_icon.png" />
+    <Content Include="Resources\Assets\images\room1.jpg" />
+    <Content Include="Resources\Assets\images\room2.jpg" />
+    <Content Include="Resources\Assets\images\room3.jpg" />
+    <Content Include="Resources\Assets\images\room4.jpg" />
+    <Content Include="Resources\Assets\images\room5.jpg" />
+    <Content Include="Resources\Assets\images\room6.jpg" />
+    <Content Include="Resources\Assets\js\bootstrap.bundle.js" />
+    <Content Include="Resources\Assets\js\bootstrap.bundle.min.js" />
+    <Content Include="Resources\Assets\js\bootstrap.js" />
+    <Content Include="Resources\Assets\js\bootstrap.min.js" />
+    <Content Include="Resources\Assets\js\custom.js" />
+    <Content Include="Resources\Assets\js\jquery-3.0.0.min.js" />
+    <Content Include="Resources\Assets\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Resources\Assets\js\jquery.min.js" />
+    <Content Include="Resources\Assets\js\jquery.validate.js" />
+    <Content Include="Resources\Assets\js\modernizer.js" />
+    <Content Include="Resources\Assets\js\plugin.js" />
+    <Content Include="Resources\Assets\js\popper.min.js" />
+    <Content Include="Resources\Assets\js\revolution\assets\coloredbg.png" />
+    <Content Include="Resources\Assets\js\revolution\assets\gridtile.png" />
+    <Content Include="Resources\Assets\js\revolution\assets\gridtile_3x3.png" />
+    <Content Include="Resources\Assets\js\revolution\assets\gridtile_3x3_white.png" />
+    <Content Include="Resources\Assets\js\revolution\assets\gridtile_white.png" />
+    <Content Include="Resources\Assets\js\revolution\assets\loader.gif" />
+    <Content Include="Resources\Assets\js\revolution\css\closedhand.html" />
+    <Content Include="Resources\Assets\js\revolution\css\layers.css" />
+    <Content Include="Resources\Assets\js\revolution\css\navigation.css" />
+    <Content Include="Resources\Assets\js\revolution\css\openhand.html" />
+    <Content Include="Resources\Assets\js\revolution\css\settings.css" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\css\pe-icon-7-stroke.css" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokebb1d.svg" />
+    <Content Include="Resources\Assets\js\revolution\fonts\revicons\revicons90c6.svg" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.actions.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.carousel.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.kenburn.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.layeranimation.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.migration.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.navigation.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.parallax.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.slideanims.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\extensions\revolution.extension.video.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="Resources\Assets\js\revolution\js\jquery.themepunch.tools.min.js" />
+    <Content Include="Resources\Assets\js\slider-setting.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1905,6 +2096,48 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\Assets\Login\css\main.css" />
+    <Content Include="Resources\Assets\Login\css\util.css" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\OFL.txt" />
+    <Content Include="Resources\Assets\Login\images\bg-01.jpg" />
+    <Content Include="Resources\Assets\Login\images\icons\favicon.ico" />
+    <Content Include="Resources\Assets\Login\js\main.js" />
+    <Content Include="Resources\Assets\Login\vendor\animate\animate.css" />
+    <Content Include="Resources\Assets\Login\vendor\animsition\css\animsition.css" />
+    <Content Include="Resources\Assets\Login\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\animsition\js\animsition.js" />
+    <Content Include="Resources\Assets\Login\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\js\popper.js" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Resources\Assets\Login\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Resources\Assets\Login\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Resources\Assets\Login\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Resources\Assets\Login\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Resources\Assets\Login\vendor\daterangepicker\moment.js" />
+    <Content Include="Resources\Assets\Login\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Resources\Assets\Login\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Resources\Assets\Login\vendor\select2\select2.css" />
+    <Content Include="Resources\Assets\Login\vendor\select2\select2.js" />
+    <Content Include="Resources\Assets\Login\vendor\select2\select2.min.css" />
+    <Content Include="Resources\Assets\Login\vendor\select2\select2.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -2107,6 +2340,131 @@
     <Content Include="Areas\Admin\Views\Homes\EditRoom.cshtml" />
     <Content Include="Areas\Admin\Views\Student\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Student\AddStudent.cshtml" />
+    <Content Include="Resources\Assets\css\.DS_Store" />
+    <Content Include="Resources\Assets\css\bootstrap-grid.css.map" />
+    <Content Include="Resources\Assets\css\bootstrap-grid.min.css.map" />
+    <Content Include="Resources\Assets\css\bootstrap-reboot.css.map" />
+    <Content Include="Resources\Assets\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Resources\Assets\css\bootstrap.css.map" />
+    <Content Include="Resources\Assets\css\bootstrap.min.css.map" />
+    <Content Include="Resources\Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Resources\Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Resources\Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Resources\Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Resources\Assets\fonts\FontAwesome.otf" />
+    <Content Include="Resources\Assets\fonts\IcoMoon-Free.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Black.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-BlackItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Bold.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-BoldItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-ExtraBold.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-ExtraLight.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Italic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Light.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-LightItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Medium.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-MediumItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Regular.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-SemiBold.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-Thin.ttf" />
+    <Content Include="Resources\Assets\fonts\Poppins-ThinItalic.ttf" />
+    <Content Include="Resources\Assets\images\.DS_Store" />
+    <Content Include="Resources\Assets\js\.DS_Store" />
+    <Content Include="Resources\Assets\js\bootstrap.bundle.js.map" />
+    <Content Include="Resources\Assets\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Resources\Assets\js\bootstrap.js.map" />
+    <Content Include="Resources\Assets\js\bootstrap.min.js.map" />
+    <Content Include="Resources\Assets\js\revolution\.DS_Store" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokebb1d.eot" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokebb1d.ttf" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokebb1d.woff" />
+    <Content Include="Resources\Assets\js\revolution\fonts\pe-icon-7-stroke\fonts\Pe-icon-7-stroked41d.eot" />
+    <Content Include="Resources\Assets\js\revolution\fonts\revicons\revicons90c6.eot" />
+    <Content Include="Resources\Assets\js\revolution\fonts\revicons\revicons90c6.ttf" />
+    <Content Include="Resources\Assets\js\revolution\fonts\revicons\revicons90c6.woff" />
+    <Content Include="Resources\Assets\js\revolution\js\.DS_Store" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Resources\Assets\Login\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="Resources\Assets\Login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Resources\Assets\Login\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2130,11 +2488,14 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="Views\Access\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -2147,6 +2508,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
