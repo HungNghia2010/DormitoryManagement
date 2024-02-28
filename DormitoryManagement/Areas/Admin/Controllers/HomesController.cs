@@ -296,7 +296,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             ViewBag.Genders = genders;
             ViewBag.RoomTypes = roomtype;
 
+            var student = _db.StudentAccounts.Where(s => s.RoomID == id).ToList();
+            ViewBag.Students = student;
+
             var data = _db.Rooms.Find(id);
+
 
             return View(data);
         }
@@ -314,19 +318,58 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             ViewBag.Genders = genders;
             ViewBag.RoomTypes = roomtype;
 
-            var selectedValues = form["studentName"];
-            string[] studentIdArray = selectedValues.Split(',');
-            int[] intStudentIdArray = Array.ConvertAll(studentIdArray, int.Parse);
+            if (ModelState.IsValid)
+            {
+                var selectedValues = form["studentName"];
+                if (selectedValues != null)
+                {
+                    string[] studentIdArray = selectedValues.Split(',');
+                    int[] intStudentIdArray = Array.ConvertAll(studentIdArray, int.Parse);
+                    int s = intStudentIdArray[0];
 
+                    var data = _db.StudentAccounts.Find(s);
+                    data.RoomID = room.RoomID;
+                    _db.SaveChanges();
+                }
 
-            int s = intStudentIdArray[0];
+                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                ViewBag.Students = student;
 
-            var data = _db.StudentAccounts.Find(s);
-            data.RoomID = room.RoomID;
-            _db.SaveChanges();
-            
+                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID).ToList();
+                if(roomdata.Count() > 0)
+                {
+                    ViewData["error"] = "Tên tòa nhà bị trùng khớp";
+                    return View();
+                }else if (student.Count > room.MaxCapacity)
+                {
+                    ViewData["error"] = "Số giường phải lớn hơn hoặc bằng số sinh viên có trong phòng";
+                    return View();
+                }else if (selectedValues.Length > room.MaxCapacity)
+                {
+                    ViewData["error"] = "Số sinh viên không thể lớn hơn số giường";
+                    return View();
+                }
+                else
+                {
+                    var roomedit = _db.Rooms.Find(room.RoomID);
+                    roomedit.Name = room.Name;
+                    roomedit.RoomType = room.RoomType;
+                    roomedit.MaxCapacity = room.MaxCapacity;
+                    roomedit.Gender = room.Gender;
+                    room.Descript = room.Descript;
+                    room.Occupancy = selectedValues.Length;
+                    ViewData["success"] = "Cập nhật tòa nhà thành công";
+                    _db.SaveChanges();
+                    return View();
+                }
 
-            return View();
+            }
+            else
+            {
+                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                ViewBag.Students = student;
+                return View();
+            }
         }
 
         public ActionResult GetStudents()

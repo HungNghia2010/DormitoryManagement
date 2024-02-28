@@ -133,8 +133,9 @@
 
 
     var maxCapacity = parseInt($("#NumberOfBeds").val());
-
-            // Khởi tạo Select2 cho menu dropdown 
+    var length = $('.student-input').length;
+    var s = maxCapacity - length;
+    console.log(s)
             $.ajax({
                 url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
                 method: 'GET', // Phương thức GET để gửi yêu cầu
@@ -146,21 +147,26 @@
                         text: `${item.id}|${item.name}`
                     }));
                     // Khởi tạo Select2 với dữ liệu nhận được
-                    $(".select2").select2({
-                        placeholder: "Tìm kiếm sinh viên",
-                        maximumSelectionLength: maxCapacity,
-                        multiple: true,
-                        data: data, // Dữ liệu nhận được từ máy chủ
-                        templateResult: function (data) {
-                            // Sử dụng template để hiển thị tên và mã số sinh viên
-                            return $('<span>' + data.id + " - " + data.name + '</span>');
-                        },
-                        templateSelection: function (data) {
-                            // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
-                            return $('<span>' + data.id + " - " + data.name + '</span>');
-                        },
+                    if (s > 0) {
+                        $(".select2").select2({
+                            placeholder: "Tìm kiếm sinh viên",
+                            maximumSelectionLength: s,
+                            multiple: true,
+                            data: data, // Dữ liệu nhận được từ máy chủ
+                            templateResult: function (data) {
+                                // Sử dụng template để hiển thị tên và mã số sinh viên
+                                return $('<span>' + data.id + " - " + data.name + '</span>');
+                            },
+                            templateSelection: function (data) {
+                                // Sử dụng template để hiển thị tên và mã số sinh viên khi lựa chọn được chọn
+                                return $('<span>' + data.id + " - " + data.name + '</span>');
+                            },
 
-                    });
+                        });
+                    } else {
+                        $(".select2").hide();
+                        $(".select2").prop('disabled', true);
+                    }
 
                 },
                 error: function (xhr, status, error) {

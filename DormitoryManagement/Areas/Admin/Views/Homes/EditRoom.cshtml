@@ -54,15 +54,23 @@
                         <label for="Students">Sinh viên trong phòng:</label>
                         <div class="student-info">
 
-                            <div class="row mt-3 student-input">
+                            @if (ViewBag.Students != null)
+                            {
+                                foreach (var student in ViewBag.Students)
+                                {
+                                    <div class="row mt-3 student-input">
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" value="@student.StudentID - @student.FullName" id="@student.StudentID" name="@student.FullName">
+                                        </div>
 
-                                <div class="col-md-10">
-                                    <input type="text" class="form-control" id="student" name="student"></input>
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="button" class="btn btn-danger delete-student"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-danger delete-student" id="@student.StudentID"><i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+
 
                             <div class="row mt-3">
                                 <div class="col-md-10">
@@ -73,20 +81,18 @@
                         </div>
                     </div>
 
-                    foreach (var student in Model.StudentAccounts.Where(s => s.RoomID == Model.RoomID))
-                    {
-                        <p>Student ID: @student.StudentID</p>
-                        <p>Username: @student.UserName</p>
-                        <p>Full Name: @student.FullName</p>
-                        <p>Email: @student.Email</p>
-                        <!-- Hiển thị các thông tin khác của sinh viên -->
-                    }
+
 
                     <!-- Hiển thị thông báo lỗi nếu có -->
                     if (@ViewBag.Error != null)
                     {
                         <div class="form-group text-center">
-                            <span class="alert alert-danger">@ViewBag.Error</span>
+                            <span class="alert alert-danger" id="errorAlert">
+                                @ViewBag.Error
+                                <button type="button" class="close" onclick="closeErrorAlert()" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </span>
                         </div>
                     }
 
@@ -98,7 +104,7 @@
                         </div>
                     }
 
-                    <div class="text-center">
+                    <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                 }
