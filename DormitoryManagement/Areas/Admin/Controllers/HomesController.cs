@@ -344,7 +344,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 {
                     ViewData["error"] = "Số giường phải lớn hơn hoặc bằng số sinh viên có trong phòng";
                     return View();
-                }else if (selectedValues.Length > room.MaxCapacity)
+                }else if (selectedValues != null && selectedValues.Length > room.MaxCapacity)
                 {
                     ViewData["error"] = "Số sinh viên không thể lớn hơn số giường";
                     return View();
@@ -357,7 +357,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     roomedit.MaxCapacity = room.MaxCapacity;
                     roomedit.Gender = room.Gender;
                     room.Descript = room.Descript;
-                    room.Occupancy = selectedValues.Length;
+                    if(selectedValues != null)
+                    {
+                        room.Occupancy = selectedValues.Length;
+                    }
+                    
                     ViewData["success"] = "Cập nhật tòa nhà thành công";
                     _db.SaveChanges();
                     return View();
