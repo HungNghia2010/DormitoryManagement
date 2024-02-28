@@ -5,13 +5,18 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.AspNetCore.Hosting;
 namespace DormitoryManagement.Areas.Admin.Controllers
 {
 	public class StudentController : Controller
 	{
 
 		private DormitoryManagementEntities _db = new DormitoryManagementEntities();
+
+
+		
+		
+
 		// GET: Admin/Student
 		[RequireLogin]
 		public ActionResult Index()
@@ -34,6 +39,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				
 				var data = _db.StudentAccounts.Where(s => s.UserName.Equals(student.UserName)).ToList();
 				var data2 = _db.StudentAccounts.Where(s => s.Email.Equals(student.Email)).ToList();
 				if (data.Count > 0)
@@ -48,22 +54,6 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 				}
 				else
 				{
-					// Check if an image file was uploaded
-					if (student.ImageFile != null && student.ImageFile.Length > 0)
-					{
-						// Generate a unique filename for the image
-						string fileName = Guid.NewGuid().ToString() + Path.GetExtension(student.ImageFile.FileName);
-
-						// Set the imagePath property to the filename
-						student.ImagePath = fileName;
-
-						// Save the image file to a designated folder
-						string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", fileName);
-						using (var stream = new FileStream(filePath, FileMode.Create))
-						{
-							student.ImageFile.CopyTo(stream);
-						}
-					}
 
 					_db.StudentAccounts.Add(student);
 					_db.SaveChanges();
@@ -94,6 +84,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 			}
 
 		}
+
+		
 
 	}
 }

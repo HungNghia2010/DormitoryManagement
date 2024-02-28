@@ -30,5 +30,6 @@ namespace DormitoryManagement.Models
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<LoaiPhong> LoaiPhongs { get; set; }
         public virtual DbSet<StudentAccount> StudentAccounts { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

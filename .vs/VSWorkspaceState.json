@@ -7,9 +7,8 @@
     "\\DormitoryManagement\\Areas\\Admin\\Controllers",
     "\\DormitoryManagement\\Areas\\Admin\\Views",
     "\\DormitoryManagement\\Areas\\Admin\\Views\\Room",
-    "\\DormitoryManagement\\Models",
-    "\\Models\\Framework"
+    "\\DormitoryManagement\\Models"
   ],
-  "SelectedNode": "\\DormitoryManagement\\DormitoryManagement.csproj.user",
+  "SelectedNode": "\\DormitoryManagement\\DormitoryManagement.csproj",
   "PreviewInSolutionExplorer": false
 }
