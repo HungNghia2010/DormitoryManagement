@@ -480,3 +480,42 @@ C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagemen
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Reflection.Metadata.xml
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Text.Encodings.Web.xml
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.ValueTuple.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Azure.Core.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Graph.Core.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Abstractions.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Logging.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Tokens.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Abstractions.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Authentication.Azure.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Http.HttpClientLibrary.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Form.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Json.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Multipart.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Text.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Std.UriTemplate.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Azure.Core.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Graph.Core.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Abstractions.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Logging.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Tokens.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Abstractions.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Authentication.Azure.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Http.HttpClientLibrary.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Form.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Json.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Multipart.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Text.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.xml

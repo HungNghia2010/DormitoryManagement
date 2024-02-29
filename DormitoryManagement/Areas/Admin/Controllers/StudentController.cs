@@ -13,10 +13,6 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
 		private DormitoryManagementEntities _db = new DormitoryManagementEntities();
 
-
-		
-		
-
 		// GET: Admin/Student
 		[RequireLogin]
 		public ActionResult Index()
@@ -52,8 +48,16 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 					ViewData["error"] = "Email bị trùng khớp";
 					return View();
 				}
+				
 				else
 				{
+
+					string fileName = Path.GetFileNameWithoutExtension(student.ImageFile.FileName);
+					string extension = Path.GetExtension(student.ImageFile.FileName);
+					fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+					student.ImagePath = "/Resources/Images/" + fileName;
+					fileName = Path.Combine(Server.MapPath("/Resources/Images/"), fileName);
+					student.ImageFile.SaveAs(fileName);
 
 					_db.StudentAccounts.Add(student);
 					_db.SaveChanges();
