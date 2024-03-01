@@ -13,7 +13,15 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Quản Lý Loại Phòng</h1>
     <a class="btn btn-primary" href="https://localhost:44342/Admin/Room/AddRoomType">Thêm Loại Phòng</a>
-    
+    @if (@ViewBag.error != null)
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>@ViewBag.error</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

@@ -14,6 +14,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         [RequireLogin]
         public ActionResult Index()
         {
+            var Mydata = TempData["error"];
+            if (Mydata != null)
+            {
+                ViewBag.success = Mydata;
+            }
+
             var data = _db.LoaiPhongs.ToList();
             return View(data);
         }
@@ -60,9 +66,19 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             }
             else
             {
-                _db.LoaiPhongs.Remove(data);
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Room", new { area = "Admin" });
+                var check = _db.Rooms.Where(m => m.RoomType.Equals(data.TenLoaiPhong)).ToList();
+                if(check != null)
+                {
+                    TempData["error"] = "Không thể xóa loại phòng này";
+                    return RedirectToAction("Index", "Room", new { area = "Admin" });
+                }
+                else
+                {
+                    _db.LoaiPhongs.Remove(data);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index", "Room", new { area = "Admin" });
+                }
+                
             }
 
         }
