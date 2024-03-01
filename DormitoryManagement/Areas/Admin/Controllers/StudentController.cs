@@ -6,6 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using System.Text.RegularExpressions;
+using System.Security.Cryptography;
+using System.Text;
+using System.Web.Services.Description;
 namespace DormitoryManagement.Areas.Admin.Controllers
 {
 	public class StudentController : Controller
@@ -48,10 +52,17 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 					ViewData["error"] = "Email bị trùng khớp";
 					return View();
 				}
+				if (!IsValidEmail(student.Email))
+				{
+					ViewData["error"] = "Email không hợp lệ";
+					return View();
+				}
 				
+
 				else
 				{
-
+					// Hash the password using MD5
+					student.Password = GetMD5(student.Password);
 					string fileName = Path.GetFileNameWithoutExtension(student.ImageFile.FileName);
 					string extension = Path.GetExtension(student.ImageFile.FileName);
 					fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -66,6 +77,14 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 				}
 			}
 			return View();
+		}
+
+		private bool IsValidEmail(string email)
+		{
+			// Regex pattern for email validation
+			string pattern = @"^[\w\.-]+@[\w\.-]+\.\w+$";
+			Regex regex = new Regex(pattern);
+			return regex.IsMatch(email);
 		}
 
 		[RequireLogin]
@@ -89,7 +108,104 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
 		}
 
-		
+		public static string GetMD5(string str)
+		{
+			MD5 md5 = new MD5CryptoServiceProvider();
+			byte[] fromData = Encoding.UTF8.GetBytes(str);
+			byte[] targetData = md5.ComputeHash(fromData);
+			string byte2String = null;
+
+			for (int i = 0; i < targetData.Length; i++)
+			{
+				byte2String += targetData[i].ToString("x2");
+
+			}
+			return byte2String;
+		}
+
+		// GET: Admin/Student/Update/id
+		[RequireLogin]
+		public ActionResult UpdateStudent(int id)
+		{
+			var student = _db.StudentAccounts.Find(id);
+			if (student == null)
+			{
+				return HttpNotFound();
+			}
+			return View(student);
+		}
+
+
+		// POST: Admin/Student/Update/4
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult UpdateStudent(StudentAccount updatedStudent, HttpPostedFileBase imageFile)
+		{
+			if (ModelState.IsValid)
+			{
+
+				var usernameExists = _db.StudentAccounts.Any(s => s.UserName == updatedStudent.UserName && s.StudentID != updatedStudent.StudentID);
+				if (usernameExists)
+				{
+					ViewData["error"] = "Tên tài khoản bị trùng khớp";
+					return View();
+				}
+				else if (!IsValidEmail(updatedStudent.Email))
+				{
+					ViewData["error"] = "Email không hợp lệ";
+					return View();
+				}
+				else
+				{
+					var existingStudent = _db.StudentAccounts.Find(updatedStudent.StudentID);
+					// Hash the password using MD5
+					
+					// Update the properties of the existing student with the values from the updated student
+					existingStudent.UserName = updatedStudent.UserName;
+					existingStudent.FullName = updatedStudent.FullName;
+					existingStudent.Email = updatedStudent.Email;
+					existingStudent.PhoneNumber = updatedStudent.PhoneNumber;
+					existingStudent.Gender = updatedStudent.Gender;
+					existingStudent.RoomID = updatedStudent.RoomID;
+					existingStudent.BuildingID = updatedStudent.BuildingID;
+
+					// Check if a new image file was uploaded
+					if (imageFile != null && imageFile.ContentLength > 0)
+					{
+						// Delete the existing image file, if any
+						if (!string.IsNullOrEmpty(existingStudent.ImagePath))
+						{
+							var path = Server.MapPath(existingStudent.ImagePath);
+							if (System.IO.File.Exists(path))
+							{
+								System.IO.File.Delete(path);
+							}
+						}
+
+						// Save the new image file
+						var imageName = Path.GetFileNameWithoutExtension(imageFile.FileName);
+						var extension = Path.GetExtension(imageFile.FileName);
+						var newImageName = imageName + "_" + Guid.NewGuid().ToString("N") + extension;
+						var imagePath = "/Resources/Images/" + newImageName;
+						var imageServerPath = Server.MapPath(imagePath);
+						imageFile.SaveAs(imageServerPath);
+
+						// Update the student's image path
+						existingStudent.ImagePath = imagePath;
+					}
+
+					// Save the changes to the database
+					_db.SaveChanges();
+
+					ViewData["success"] = "Cập nhật sinh viên thành công";
+					return View(existingStudent);
+				}
+				
+			}
+
+			return View(updatedStudent);
+		}
+
 
 	}
 }

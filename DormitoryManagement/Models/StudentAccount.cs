@@ -15,9 +15,9 @@ namespace DormitoryManagement.Models
 	using System.Web;
 
 	public partial class StudentAccount
-    {
-        public int StudentID { get; set; }
-        public string UserName { get; set; }
+	{
+		public int StudentID { get; set; }
+		public string UserName { get; set; }
         public string FullName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -26,9 +26,12 @@ namespace DormitoryManagement.Models
         public string Gender { get; set; }
         public string ImagePath { get; set; }
 
-        [NotMapped]
-        public HttpPostedFileBase ImageFile { get; set; }
-        public Nullable<int> RoomID { get; set; }
+		[NotMapped]
+		public HttpPostedFileBase ImageFile { get; set; }
+
+
+
+		public Nullable<int> RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<int> LoginAttempts { get; set; }
