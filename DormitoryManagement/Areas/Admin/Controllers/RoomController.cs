@@ -67,5 +67,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         }
 
+        // GET: Admin/Room/Add
+        [RequireLogin]
+        public ActionResult EditRoomType(int id)
+        {
+            var data = _db.LoaiPhongs.Find(id);
+            return View(data);
+        }
+
     }
 }

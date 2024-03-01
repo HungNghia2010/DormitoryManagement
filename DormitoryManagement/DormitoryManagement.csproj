@@ -2530,6 +2530,7 @@
     <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\Room\EditRoomType.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

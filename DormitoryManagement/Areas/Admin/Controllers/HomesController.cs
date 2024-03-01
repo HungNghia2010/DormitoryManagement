@@ -327,10 +327,24 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             {
                 var selectedValues = form["studentName"];
                 string[] studentIdArray = { };
+                var roomedit = _db.Rooms.Find(room.RoomID);
+
+                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                ViewBag.Students = student;
+
                 if (selectedValues != null)
                 {
                     studentIdArray = selectedValues.Split(',');
                     int[] intStudentIdArray = Array.ConvertAll(studentIdArray, int.Parse);
+                    for(int j=0; j<intStudentIdArray.Length; j++)
+                    {
+                        var datacheck = _db.StudentAccounts.Find(intStudentIdArray[j]);
+                        if(datacheck.Gender != room.Gender)
+                        {
+                            ViewData["error"] = "Sinh viên được thêm vô không có cùng giới tính với số phòng";
+                            return View();
+                        }
+                    }
 
                     for(int i=0; i<intStudentIdArray.Length; i++)
                     {
@@ -342,10 +356,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     
                 }
 
-                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
-                ViewBag.Students = student;
-
-                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID).ToList();
+                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID != room.BuildingID).ToList();
                 if(roomdata.Count() > 0)
                 {
                     ViewData["error"] = "Tên tòa nhà bị trùng khớp";
@@ -361,16 +372,23 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 }
                 else
                 {
-                    var roomedit = _db.Rooms.Find(room.RoomID);
-                    roomedit.Name = room.Name;
-                    roomedit.RoomType = room.RoomType;
-                    roomedit.MaxCapacity = room.MaxCapacity;
-                    roomedit.Gender = room.Gender;
-                    room.Descript = room.Descript;
-                    if(selectedValues != null)
+                    if(roomedit.Gender != room.Gender && roomedit.Occupancy > 0)
                     {
-                        roomedit.Occupancy = roomedit.Occupancy + studentIdArray.Length;
+                        ViewData["error"] = "Không thể thay đổi giới tính khi còn sinh viên trong phòng";
+                        return View();
+                    } else
+                    {                       
+                        roomedit.Name = room.Name;
+                        roomedit.RoomType = room.RoomType;
+                        roomedit.MaxCapacity = room.MaxCapacity;
+                        roomedit.Gender = room.Gender;
+                        room.Descript = room.Descript;
+                        if (selectedValues != null)
+                        {
+                            roomedit.Occupancy = roomedit.Occupancy + studentIdArray.Length;
+                        }
                     }
+                    
                     
                     ViewData["success"] = "Cập nhật tòa nhà thành công";
                     _db.SaveChanges();

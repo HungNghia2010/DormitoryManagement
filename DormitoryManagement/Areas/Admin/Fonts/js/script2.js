@@ -193,7 +193,8 @@
         $('.modal-body').text("Select Logout below if you are ready to end your current session.");
     });
 
-
 });
+
+
 
 
