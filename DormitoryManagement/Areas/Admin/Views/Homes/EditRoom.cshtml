@@ -64,7 +64,7 @@
                                         </div>
 
                                         <div class="col-md-2">
-                                            <button type="button" class="btn btn-danger delete-student" id="@student.StudentID"><i class="fas fa-times"></i></button>
+                                            <button type="button" class="btn btn-danger delete-student" name="@student.FullName" data-id="@student.StudentID" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
                                 }
@@ -89,9 +89,6 @@
                         <div class="form-group text-center">
                             <span class="alert alert-danger" id="errorAlert">
                                 @ViewBag.Error
-                                <button type="button" class="close" onclick="closeErrorAlert()" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
                             </span>
                         </div>
                     }
@@ -108,6 +105,25 @@
                         <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                 }
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa tòa này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteRoomStudent">Xóa</button>
+                </div>
             </div>
         </div>
     </div>

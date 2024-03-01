@@ -176,9 +176,22 @@
 
     $('.delete-student').click(function () {
         // Loại bỏ phần tử cha của nút xóa sinh viên (div có class là col-md-2)
-        $(this).closest('.student-input').remove();
+        var id = $(this).data('id');
+        var name = $(this).attr('name');
+        var room = $("#RoomName").val();
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa sinh viên " + name + " ra khỏi phòng " + room + " này không ?");
+        $('#confirmDeleteRoomStudent').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
     });
 
+    $('#confirmDeleteRoomStudent').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Homes/DeleteRoomStudent/' + id;
+    });
+
+    $('.logout').click(function () {
+        // Loại bỏ phần tử cha của nút xóa sinh viên (div có class là col-md-2)
+        $('.modal-body').text("Select Logout below if you are ready to end your current session.");
+    });
 
 
 });

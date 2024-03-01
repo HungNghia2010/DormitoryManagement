@@ -519,3 +519,42 @@ D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.IdentityModel.
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Azure.Core.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Graph.Core.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Abstractions.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Authentication.Azure.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Http.HttpClientLibrary.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Form.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Json.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Multipart.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Text.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Std.UriTemplate.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Azure.Core.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Graph.Core.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Abstractions.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Authentication.Azure.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Http.HttpClientLibrary.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Form.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Json.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Multipart.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Kiota.Serialization.Text.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.xml

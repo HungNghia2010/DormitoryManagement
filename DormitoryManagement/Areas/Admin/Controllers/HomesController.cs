@@ -301,6 +301,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
             var data = _db.Rooms.Find(id);
 
+            var Mydata = TempData["success"];
+            if(Mydata != null)
+            {
+                ViewBag.success = Mydata;
+            }
 
             return View(data);
         }
@@ -321,15 +326,20 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var selectedValues = form["studentName"];
+                string[] studentIdArray = { };
                 if (selectedValues != null)
                 {
-                    string[] studentIdArray = selectedValues.Split(',');
+                    studentIdArray = selectedValues.Split(',');
                     int[] intStudentIdArray = Array.ConvertAll(studentIdArray, int.Parse);
-                    int s = intStudentIdArray[0];
 
-                    var data = _db.StudentAccounts.Find(s);
-                    data.RoomID = room.RoomID;
-                    _db.SaveChanges();
+                    for(int i=0; i<intStudentIdArray.Length; i++)
+                    {
+
+                        var data = _db.StudentAccounts.Find(intStudentIdArray[i]);
+                        data.RoomID = room.RoomID;
+                        _db.SaveChanges();
+                    }
+                    
                 }
 
                 var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
@@ -344,7 +354,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 {
                     ViewData["error"] = "Số giường phải lớn hơn hoặc bằng số sinh viên có trong phòng";
                     return View();
-                }else if (selectedValues != null && selectedValues.Length > room.MaxCapacity)
+                }else if (selectedValues != null && studentIdArray.Length > room.MaxCapacity)
                 {
                     ViewData["error"] = "Số sinh viên không thể lớn hơn số giường";
                     return View();
@@ -359,7 +369,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     room.Descript = room.Descript;
                     if(selectedValues != null)
                     {
-                        room.Occupancy = selectedValues.Length;
+                        roomedit.Occupancy = roomedit.Occupancy + studentIdArray.Length;
                     }
                     
                     ViewData["success"] = "Cập nhật tòa nhà thành công";
@@ -381,6 +391,30 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             var students = _db.StudentAccounts.Where(s => s.RoomID == null).Select(s => new { id = s.StudentID, name = s.FullName }).ToList();
             return Json(students, JsonRequestBehavior.AllowGet);
         }
+
+        [RequireLogin]
+        public ActionResult DeleteRoomStudent(int id)
+        {
+            // Lấy dữ liệu cần xóa từ cơ sở dữ liệu
+            var data = _db.StudentAccounts.Find(id);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var idroom = data.RoomID;
+                var m = _db.Rooms.Find(data.RoomID);
+                m.Occupancy = m.Occupancy - 1;
+                data.RoomID = null;
+                _db.SaveChanges();
+                TempData["success"] = "Xóa sinh viên " + data.FullName + " khỏi phòng "+ m.Name +" thành công";
+                return RedirectToAction("EditRoom/" + idroom , "Homes", new { area = "Admin"});
+            }
+
+        }
+
+
     }
 
 }
