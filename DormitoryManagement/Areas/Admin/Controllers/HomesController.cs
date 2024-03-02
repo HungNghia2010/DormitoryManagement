@@ -343,8 +343,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                         var datacheck = _db.StudentAccounts.Find(intStudentIdArray[j]);
                         if(datacheck.Gender != room.Gender)
                         {
-
-                            ViewData["error"] = "Sinh viên được thêm vô không có cùng giới tính với số phòng";
+							
+							ViewData["error"] = "Sinh viên được thêm vô không có cùng giới tính với số phòng";
                             return View();
                         }
                     }
@@ -358,8 +358,10 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     }
                     
                 }
+				var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+				ViewBag.Students = student;
 
-                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID == room.BuildingID).ToList();
+				var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID == roomedit.BuildingID).ToList();
                 if(roomdata.Count() > 0)
                 {
                     ViewData["error"] = "Tên tòa nhà bị trùng khớp";
@@ -391,10 +393,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                             roomedit.Occupancy = roomedit.Occupancy + studentIdArray.Length;
                         }
                     }
-
-                    var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
-                    ViewBag.Students = student;
-                    ViewData["success"] = "Cập nhật tòa nhà thành công";
+                    
+                    ViewData["success"] = "Cập nhật phòng thành công";
                     _db.SaveChanges();
                     return View();
                 }
