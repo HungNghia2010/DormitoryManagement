@@ -23,14 +23,15 @@ namespace DormitoryManagement.Models
         public int RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public string Name { get; set; }
-        public string RoomType { get; set; }
+        public Nullable<int> MaLoaiPhong { get; set; }
         public int MaxCapacity { get; set; }
-        public Nullable<int> Occupancy { get; set; }
         public string Status { get; set; }
+        public Nullable<int> Occupancy { get; set; }
         public string Gender { get; set; }
         public string Descript { get; set; }
     
         public virtual Building Building { get; set; }
+        public virtual LoaiPhong LoaiPhong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAccount> StudentAccounts { get; set; }
     }

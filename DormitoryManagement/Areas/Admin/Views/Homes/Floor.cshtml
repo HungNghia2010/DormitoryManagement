@@ -1,5 +1,11 @@
 ﻿@{
     ViewBag.Title = "Floor";
+    Dictionary<int, string> loaiPhongMap = new Dictionary<int, string>();
+    foreach (var loaiPhong in ViewBag.LoaiPhong)
+    {
+        loaiPhongMap.Add(loaiPhong.MaLoaiPhong, loaiPhong.TenLoaiPhong);
+    }
+
     @model List<DormitoryManagement.Models.Room>
 }
 
@@ -52,9 +58,12 @@
 
                         @foreach (var room in Model)
                         {
+                            string loaiPhongText = loaiPhongMap.ContainsKey(room.MaLoaiPhong.GetValueOrDefault()) ? loaiPhongMap[room.MaLoaiPhong.GetValueOrDefault()] : "Unknown";
+
+
                             <tr>
                                 <td>@room.Name</td>
-                                <td>@room.RoomType</td>
+                                <td>@loaiPhongText</td>
                                 <td>@room.Occupancy/@room.MaxCapacity</td>
                                 <td>@room.Gender</td>
                                 <td>@room.Status</td>

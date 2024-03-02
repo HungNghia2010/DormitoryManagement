@@ -66,7 +66,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             }
             else
             {
-                var check = _db.Rooms.Where(m => m.RoomType.Equals(data.TenLoaiPhong)).ToList();
+                var check = _db.Rooms.Where(m => m.MaLoaiPhong.Equals(data.MaLoaiPhong)).ToList();
                 if(check != null)
                 {
                     TempData["error"] = "Không thể xóa loại phòng này";

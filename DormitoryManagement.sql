@@ -30,7 +30,7 @@ CREATE TABLE Rooms (
     RoomID INT PRIMARY KEY IDENTITY,
     BuildingID INT FOREIGN KEY REFERENCES Buildings(BuildingID),
     Name NVARCHAR(100) NOT NULL,
-    RoomType NVARCHAR(100) NOT NULL, 
+    MaLoaiPhong INT FOREIGN KEY REFERENCES LoaiPhong(MaLoaiPhong), 
     MaxCapacity INT NOT NULL,
 	Status NVARCHAR(100) Not Null,
 	Occupancy INT DEFAULT 0, 
@@ -39,12 +39,12 @@ CREATE TABLE Rooms (
 );
 
 
-INSERT INTO Rooms (BuildingID, Name, MaxCapacity, RoomType, Status,Occupancy,Gender)
+INSERT INTO Rooms (BuildingID, Name, MaxCapacity, MaLoaiPhong, Status,Occupancy,Gender)
 VALUES
-    (1, '101', 2, 'Standard',N'Còn trống' ,0,N'Nam'), -- Phòng 101 trong tòa nhà có ID là 1, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
-    (1, '102', 3, 'Deluxe', N'Còn trống' ,1,N'Nữ'),   -- Phòng 102 trong tòa nhà có ID là 1, có sức chứa 3 người, loại phòng Deluxe, hiện có 1 người ở
-    (2, '201', 2, 'Standard',N'Còn trống' ,0,N'Nam'), -- Phòng 201 trong tòa nhà có ID là 2, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
-    (2, '202', 4, 'Suite', N'Còn trống',2,N'Nữ');  
+    (1, '101', 2, '1',N'Còn trống' ,0,N'Nam'), -- Phòng 101 trong tòa nhà có ID là 1, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
+    (1, '102', 3, '2', N'Còn trống' ,1,N'Nữ'),   -- Phòng 102 trong tòa nhà có ID là 1, có sức chứa 3 người, loại phòng Deluxe, hiện có 1 người ở
+    (2, '201', 2, '1',N'Còn trống' ,0,N'Nam'), -- Phòng 201 trong tòa nhà có ID là 2, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
+    (2, '202', 4, '2', N'Còn trống',2,N'Nữ');  
 
 CREATE TABLE LoaiPhong (
     MaLoaiPhong INT PRIMARY KEY IDENTITY,

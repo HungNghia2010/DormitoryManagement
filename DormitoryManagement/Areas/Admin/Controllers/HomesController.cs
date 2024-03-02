@@ -127,6 +127,9 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             ViewData["name"] = building.Name;
             ViewData["id"] = building.BuildingID;
 
+            var LoaiPhong = _db.LoaiPhongs.ToList();
+            ViewBag.LoaiPhong = LoaiPhong;
+
             return View(data);
         }
 
@@ -216,7 +219,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         [RequireLogin]
         public ActionResult AddRoom(int buildingId)
         {
-            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.MaLoaiPhong.ToString(), Text = x.TenLoaiPhong });
             var genders = new List<SelectListItem>
             {
                 new SelectListItem { Value = "Male", Text = "Male" },
@@ -234,7 +237,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+                var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.MaLoaiPhong.ToString(), Text = x.TenLoaiPhong });
                 var genders = new List<SelectListItem>
                 {
                     new SelectListItem { Value = "Male", Text = "Male" },
@@ -287,7 +290,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         public ActionResult EditRoom(int id)
         {
-            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.MaLoaiPhong.ToString(), Text = x.TenLoaiPhong });
             var genders = new List<SelectListItem>
                 {
                     new SelectListItem { Value = "Male", Text = "Male" },
@@ -314,7 +317,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditRoom(Room room, FormCollection form)
         {
-            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.TenLoaiPhong, Text = x.TenLoaiPhong });
+            var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.MaLoaiPhong.ToString(), Text = x.TenLoaiPhong });
             var genders = new List<SelectListItem>
                 {
                     new SelectListItem { Value = "Male", Text = "Male" },
@@ -329,8 +332,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 string[] studentIdArray = { };
                 var roomedit = _db.Rooms.Find(room.RoomID);
 
-                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
-                ViewBag.Students = student;
+                var studentcheck = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
 
                 if (selectedValues != null)
                 {
@@ -341,6 +343,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                         var datacheck = _db.StudentAccounts.Find(intStudentIdArray[j]);
                         if(datacheck.Gender != room.Gender)
                         {
+
                             ViewData["error"] = "Sinh viên được thêm vô không có cùng giới tính với số phòng";
                             return View();
                         }
@@ -356,12 +359,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     
                 }
 
-                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID != room.BuildingID).ToList();
+                var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID == room.BuildingID).ToList();
                 if(roomdata.Count() > 0)
                 {
                     ViewData["error"] = "Tên tòa nhà bị trùng khớp";
                     return View();
-                }else if (student.Count > room.MaxCapacity)
+                }else if (studentcheck.Count > room.MaxCapacity)
                 {
                     ViewData["error"] = "Số giường phải lớn hơn hoặc bằng số sinh viên có trong phòng";
                     return View();
@@ -379,7 +382,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     } else
                     {                       
                         roomedit.Name = room.Name;
-                        roomedit.RoomType = room.RoomType;
+                        roomedit.MaLoaiPhong = room.MaLoaiPhong;
                         roomedit.MaxCapacity = room.MaxCapacity;
                         roomedit.Gender = room.Gender;
                         room.Descript = room.Descript;
@@ -388,8 +391,9 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                             roomedit.Occupancy = roomedit.Occupancy + studentIdArray.Length;
                         }
                     }
-                    
-                    
+
+                    var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                    ViewBag.Students = student;
                     ViewData["success"] = "Cập nhật tòa nhà thành công";
                     _db.SaveChanges();
                     return View();

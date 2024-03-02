@@ -29,7 +29,7 @@
 
                         <div class="col-md-6">
                             <label for="RoomType">Loại phòng:</label>
-                            @Html.DropDownListFor(m => m.RoomType, (IEnumerable<SelectListItem>)ViewBag.RoomTypes, "-- Chọn loại phòng --", new { @class = "form-control", @id = "RoomTypes", @required = "required" })
+                            @Html.DropDownListFor(m => m.MaLoaiPhong, (IEnumerable<SelectListItem>)ViewBag.RoomTypes, "-- Chọn loại phòng --", new { @class = "form-control", @id = "RoomTypes", @required = "required" })
                         </div>
                     </div>
 

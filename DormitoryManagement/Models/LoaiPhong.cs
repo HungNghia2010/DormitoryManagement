@@ -14,8 +14,17 @@ namespace DormitoryManagement.Models
     
     public partial class LoaiPhong
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LoaiPhong()
+        {
+            this.Rooms = new HashSet<Room>();
+        }
+    
         public int MaLoaiPhong { get; set; }
         public string TenLoaiPhong { get; set; }
         public decimal GiaTien { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

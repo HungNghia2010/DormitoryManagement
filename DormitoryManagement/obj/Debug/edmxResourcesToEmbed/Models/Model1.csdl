@@ -16,22 +16,25 @@
   <EntityContainer Name="DormitoryManagementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccount" />
     <EntitySet Name="Buildings" EntityType="DormitoryManagementModel.Building" />
-    <EntitySet Name="Rooms" EntityType="DormitoryManagementModel.Room" />
-    <AssociationSet Name="FK__Rooms__BuildingI__49C3F6B7" Association="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7">
-      <End Role="Building" EntitySet="Buildings" />
-      <End Role="Room" EntitySet="Rooms" />
-    </AssociationSet>
     <EntitySet Name="LoaiPhongs" EntityType="DormitoryManagementModel.LoaiPhong" />
     <EntitySet Name="StudentAccounts" EntityType="DormitoryManagementModel.StudentAccount" />
     <AssociationSet Name="FK__StudentAc__Build__4AB81AF0" Association="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0">
       <End Role="Building" EntitySet="Buildings" />
       <End Role="StudentAccount" EntitySet="StudentAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__StudentAc__RoomI__49C3F6B7" Association="DormitoryManagementModel.FK__StudentAc__RoomI__49C3F6B7">
+    <EntitySet Name="Rooms" EntityType="DormitoryManagementModel.Room" />
+    <AssociationSet Name="FK__Rooms__BuildingI__1B9317B3" Association="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rooms__MaLoaiPho__1C873BEC" Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC">
+      <End Role="LoaiPhong" EntitySet="LoaiPhongs" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentAc__RoomI__22401542" Association="DormitoryManagementModel.FK__StudentAc__RoomI__22401542">
       <End Role="Room" EntitySet="Rooms" />
       <End Role="StudentAccount" EntitySet="StudentAccounts" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="DormitoryManagementModel.sysdiagram" />
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -40,37 +43,9 @@
     <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Descrip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7" FromRole="Building" ToRole="Room" />
     <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="Building" ToRole="StudentAccount" />
+    <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" FromRole="Building" ToRole="Room" />
   </EntityType>
-  <EntityType Name="Room">
-    <Key>
-      <PropertyRef Name="RoomID" />
-    </Key>
-    <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BuildingID" Type="Int32" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="RoomType" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="MaxCapacity" Type="Int32" Nullable="false" />
-    <Property Name="Occupancy" Type="Int32" />
-    <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__49C3F6B7" FromRole="Room" ToRole="Building" />
-    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Gender" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Descript" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__49C3F6B7" FromRole="Room" ToRole="StudentAccount" />
-  </EntityType>
-  <Association Name="FK__Rooms__BuildingI__49C3F6B7">
-    <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
-    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Building">
-        <PropertyRef Name="BuildingID" />
-      </Principal>
-      <Dependent Role="Room">
-        <PropertyRef Name="BuildingID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="LoaiPhong">
     <Key>
       <PropertyRef Name="MaLoaiPhong" />
@@ -78,6 +53,7 @@
     <Property Name="MaLoaiPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoaiPhong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="GiaTien" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" FromRole="LoaiPhong" ToRole="Room" />
   </EntityType>
   <EntityType Name="StudentAccount">
     <Key>
@@ -98,7 +74,7 @@
     <Property Name="LoginAttempts" Type="Int32" />
     <Property Name="IsLocked" Type="Int32" />
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="StudentAccount" ToRole="Building" />
-    <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__49C3F6B7" FromRole="StudentAccount" ToRole="Room" />
+    <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="StudentAccount" ToRole="Room" />
   </EntityType>
   <Association Name="FK__StudentAc__Build__4AB81AF0">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -112,7 +88,48 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StudentAc__RoomI__49C3F6B7">
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BuildingID" Type="Int32" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiPhong" Type="Int32" />
+    <Property Name="MaxCapacity" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Occupancy" Type="Int32" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Descript" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" FromRole="Room" ToRole="Building" />
+    <NavigationProperty Name="LoaiPhong" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" FromRole="Room" ToRole="LoaiPhong" />
+    <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="Room" ToRole="StudentAccount" />
+  </EntityType>
+  <Association Name="FK__Rooms__BuildingI__1B9317B3">
+    <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
+    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="BuildingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rooms__MaLoaiPho__1C873BEC">
+    <End Type="DormitoryManagementModel.LoaiPhong" Role="LoaiPhong" Multiplicity="0..1" />
+    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhong">
+        <PropertyRef Name="MaLoaiPhong" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="MaLoaiPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentAc__RoomI__22401542">
     <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="0..1" />
     <End Type="DormitoryManagementModel.StudentAccount" Role="StudentAccount" Multiplicity="*" />
     <ReferentialConstraint>
@@ -124,14 +141,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>
