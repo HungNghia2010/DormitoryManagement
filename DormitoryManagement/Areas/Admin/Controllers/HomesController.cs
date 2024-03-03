@@ -334,6 +334,9 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
                 var studentcheck = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
 
+                var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                ViewBag.Students = student;
+
                 if (selectedValues != null)
                 {
                     studentIdArray = selectedValues.Split(',');
@@ -355,11 +358,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                         var data = _db.StudentAccounts.Find(intStudentIdArray[i]);
                         data.RoomID = room.RoomID;
                         _db.SaveChanges();
+
+                        var studentnew = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
+                        ViewBag.Students = studentnew;
                     }
-                    
+
                 }
-				var student = _db.StudentAccounts.Where(s => s.RoomID == room.RoomID).ToList();
-				ViewBag.Students = student;
 
 				var roomdata = _db.Rooms.Where(s => s.Name == room.Name && s.RoomID != room.RoomID && s.BuildingID == roomedit.BuildingID).ToList();
                 if(roomdata.Count() > 0)

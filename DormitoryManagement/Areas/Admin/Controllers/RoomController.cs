@@ -66,8 +66,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             }
             else
             {
-                var check = _db.Rooms.Where(m => m.MaLoaiPhong.Equals(data.MaLoaiPhong)).ToList();
-                if(check != null)
+                var check = _db.Rooms.Where(s => s.MaLoaiPhong == data.MaLoaiPhong).ToList();
+                if(check.Count > 0)
                 {
                     TempData["error"] = "Không thể xóa loại phòng này";
                     return RedirectToAction("Index", "Room", new { area = "Admin" });

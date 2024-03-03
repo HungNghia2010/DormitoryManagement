@@ -9,7 +9,7 @@
         function formatCurrency(number) {
             // Kiểm tra xem giá trị có phải là một số không
             if (isNaN(number)) {
-                return "0 ₫";
+                return "0";
             }
 
             // Chuyển số thành chuỗi và chia thành phần nguyên và phần thập phân
@@ -64,7 +64,6 @@
                    {
                        @class = "form-control",
                        @id = "Price",
-                       @type = "text",
                        @required = "required",
                        @oninput = "handleChange(this)"
                    })

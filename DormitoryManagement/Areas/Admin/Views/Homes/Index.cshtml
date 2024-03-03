@@ -15,11 +15,15 @@
     <div class="house">
         @foreach (var building in Model)
         {
+            int totalOccupancy = building.Rooms.Sum(room => room.Occupancy ?? 0);
+
+            int totalMaxCapacity = building.Rooms.Sum(room => room.MaxCapacity);
+
             <div class="card" style="width: 18rem;">
                 <div class="card-body building-item" data-building-id="@building.BuildingID">
                     <h5 class="card-title">@building.Name</h5>
-                    <p class="card-text">Tổng: 300</p>
-                    <p class="card-text">Trống: 200</p>
+                    <p class="card-text">Tổng: @totalMaxCapacity</p>
+                    <p class="card-text">Đang ở: @totalOccupancy</p>
                 </div>
                 <div class="iconset">
                     <div class="setting_icon">
