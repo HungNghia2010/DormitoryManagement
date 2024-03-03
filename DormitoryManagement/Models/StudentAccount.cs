@@ -11,13 +11,13 @@ namespace DormitoryManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Web;
 
-    public partial class StudentAccount
-    {
-        public int StudentID { get; set; }
-        public string UserName { get; set; }
+	public partial class StudentAccount
+	{
+		public int StudentID { get; set; }
+		public string UserName { get; set; }
         public string FullName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -25,9 +25,12 @@ namespace DormitoryManagement.Models
         public string Address { get; set; }
         public string Gender { get; set; }
         public string ImagePath { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageFile { get; set; }
-        public Nullable<int> RoomID { get; set; }
+		[NotMapped]
+		public HttpPostedFileBase ImageFile { get; set; }
+
+
+
+		public Nullable<int> RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<int> LoginAttempts { get; set; }

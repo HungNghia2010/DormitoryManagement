@@ -96,10 +96,16 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 			{
 				return HttpNotFound();
 			}
+			else if (data.IsLocked == 1)
+			{
+				TempData["error"] = "Cannot delete a locked account.";
+				return Redirect("https://localhost:44342/Admin/Student");
+			}
 			else
 			{
 				var s = data.StudentID;
 				var m = data.UserName;
+				data.IsLocked = 0;
 				_db.StudentAccounts.Remove(data);
 				_db.SaveChanges();
 				TempData["success"] = "Xóa sinh viên " + m + " thành công";
@@ -131,6 +137,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 			if (student == null)
 			{
 				return HttpNotFound();
+			}
+			else if (student.IsLocked == 1)
+			{
+				TempData["error"] = "Cannot update a locked account.";
+				return RedirectToAction("Index");
 			}
 			return View(student);
 		}
@@ -206,6 +217,26 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 			return View(updatedStudent);
 		}
 
+		[RequireLogin]
+		public ActionResult UnlockAccount(int id)
+		{
+			var student = _db.StudentAccounts.Find(id);
+			if (student == null)
+			{
+				return HttpNotFound();
+			}
+			else if (student.IsLocked == 0)
+			{
+				TempData["error"] = "The account is already unlocked.";
+				return RedirectToAction("Index");
+			}
+
+			student.IsLocked = 0;
+			_db.SaveChanges();
+
+			TempData["success"] = "Unlocked the account successfully.";
+			return RedirectToAction("Index");
+		}
 
 	}
 }

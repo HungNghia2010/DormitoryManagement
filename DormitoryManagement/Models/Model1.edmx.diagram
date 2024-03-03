@@ -14,6 +14,7 @@
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" />
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" />
         <AssociationConnector Association="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

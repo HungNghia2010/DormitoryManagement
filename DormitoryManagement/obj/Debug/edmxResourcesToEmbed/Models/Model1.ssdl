@@ -62,7 +62,17 @@
     <Property Name="LoginAttempts" Type="int" />
     <Property Name="IsLocked" Type="int" />
   </EntityType>
-  <Association Name="FK__Rooms__BuildingI__1B9317B3">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Rooms__BuildingI__6A30C649">
     <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
     <ReferentialConstraint>
@@ -74,7 +84,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Rooms__MaLoaiPho__1C873BEC">
+  <Association Name="FK__Rooms__MaLoaiPho__6B24EA82">
     <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="0..1" />
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +96,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StudentAc__Build__2334397B">
+  <Association Name="FK__StudentAc__Build__0E6E26BF">
     <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
     <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -98,7 +108,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StudentAc__RoomI__22401542">
+  <Association Name="FK__StudentAc__RoomI__0D7A0286">
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
     <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -116,19 +126,20 @@
     <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Rooms__BuildingI__1B9317B3" Association="Self.FK__Rooms__BuildingI__1B9317B3">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Rooms__BuildingI__6A30C649" Association="Self.FK__Rooms__BuildingI__6A30C649">
       <End Role="Buildings" EntitySet="Buildings" />
       <End Role="Rooms" EntitySet="Rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK__Rooms__MaLoaiPho__1C873BEC" Association="Self.FK__Rooms__MaLoaiPho__1C873BEC">
+    <AssociationSet Name="FK__Rooms__MaLoaiPho__6B24EA82" Association="Self.FK__Rooms__MaLoaiPho__6B24EA82">
       <End Role="LoaiPhong" EntitySet="LoaiPhong" />
       <End Role="Rooms" EntitySet="Rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK__StudentAc__Build__2334397B" Association="Self.FK__StudentAc__Build__2334397B">
+    <AssociationSet Name="FK__StudentAc__Build__0E6E26BF" Association="Self.FK__StudentAc__Build__0E6E26BF">
       <End Role="Buildings" EntitySet="Buildings" />
       <End Role="StudentAccounts" EntitySet="StudentAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__StudentAc__RoomI__22401542" Association="Self.FK__StudentAc__RoomI__22401542">
+    <AssociationSet Name="FK__StudentAc__RoomI__0D7A0286" Association="Self.FK__StudentAc__RoomI__0D7A0286">
       <End Role="Rooms" EntitySet="Rooms" />
       <End Role="StudentAccounts" EntitySet="StudentAccounts" />
     </AssociationSet>

@@ -9,10 +9,15 @@
 
     <script src="~/Areas/Admin/Fonts/js/script2.js"></script>
 }
-
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["error"]
+    </div>
+}
 <div class="container-fluid">
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Quản Lý Loại Phòng</h1>
+    <h1 class="h3 mb-2 text-gray-800">Quản Lý Sinh Viên</h1>
     <a class="btn btn-primary" href="https://localhost:44342/Admin/Student/AddStudent">Thêm Sinh Viên</a>
 
 
@@ -53,7 +58,7 @@
                         @foreach (var type in Model)
                         {
                             <tr>
-                                <td><img style="width:50px; height:50px; border-radius:50%" src="@type.ImagePath"  /></td>
+                                <td><img style="width:50px; height:50px; border-radius:50%" src="@type.ImagePath" /></td>
                                 <td>@type.StudentID</td>
                                 <td>@type.UserName</td>
                                 <td>@type.FullName</td>
@@ -63,12 +68,20 @@
                                 <td>@type.RoomID</td>
                                 <td>@type.BuildingID</td>
                                 <td class="text-center">
+
                                     <a class="btn btn-primary btn-sm" href="@Url.Action("UpdateStudent", "Student", new { id = @type.StudentID })">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <button type="button" class="btn btn-danger btn-sm" name="@type.UserName" data-id="@type.StudentID" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fas fa-trash-alt"></i> Delete
                                     </button>
+                                    @if (type.IsLocked == 1)
+                                    {
+                                        <button class="btn btn-success btn-sm" onclick="location.href='@Url.Action("UnlockAccount", "Student", new { id = type.StudentID })'">
+                                            <i class="fas fa-lock-open"></i> Unlock
+                                        </button>
+                                    }
+
                                 </td>
 
                             </tr>
