@@ -80,24 +80,15 @@
                     </div>
                     <div class="form-group">
                         <label for="Gender">Giới tính:</label>
-                        @Html.TextBoxFor(m => m.Gender, new
-                        {
-                            @class = "form-control",
-                            @id = "Gender",
-                            @required = "required"
-                        })
+                        @Html.DropDownListFor(m => m.Gender, (IEnumerable<SelectListItem>)ViewBag.Genders, "-- Chọn giới tính --", new { @class = "form-control", @id = "Gender", @required = "required" })
+
                     </div>
                     <div class="form-group">
                         <label for="ImagePath">Ảnh đại diện:</label>
-                        @Html.TextBoxFor(m => m.ImagePath, htmlAttributes: new
-                       {
-                           @class = "form-control-file",
-
-                        })
                         <div class="col-md-10">
-                            <input type="file" name="ImageFile" />
+                            <input type="file" id="ImageFile" onchange="displayImage(this)" accept="image/*" name="ImageFile" />
                         </div>
-                        <img class="mt-3" id="previewImage" src="#" alt="Ảnh đại diện" style="display: none; max-width: 100%; height: auto;" />
+                        <img class="mt-3" id="previewImage" src="@Model.ImagePath" alt="Ảnh đại diện" style="display: block; max-width: 100%; height: auto;" />
 
                     </div>
                     <div class="form-group">

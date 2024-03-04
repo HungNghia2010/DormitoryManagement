@@ -50,6 +50,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		[RequireLogin]
 		public ActionResult AddStudent()
 		{
+			var genders = new List<SelectListItem>
+			{
+				new SelectListItem { Value = "Male", Text = "Male" },
+				new SelectListItem { Value = "Female", Text = "Female" }
+			};
+			ViewBag.Genders = genders;
+
 			return View();
 		}
 
@@ -60,7 +67,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				
+				var genders = new List<SelectListItem>
+				{
+					new SelectListItem { Value = "Male", Text = "Male" },
+					new SelectListItem { Value = "Female", Text = "Female" }
+				};
+				ViewBag.Genders = genders;
+
 				var data = _db.StudentAccounts.Where(s => s.UserName.Equals(student.UserName)).ToList();
 				var data2 = _db.StudentAccounts.Where(s => s.Email.Equals(student.Email)).ToList();
 				if (data.Count > 0)
@@ -154,6 +167,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		[RequireLogin]
 		public ActionResult UpdateStudent(int id)
 		{
+			var genders = new List<SelectListItem>
+			{
+				new SelectListItem { Value = "Male", Text = "Male" },
+				new SelectListItem { Value = "Female", Text = "Female" }
+			};
+			ViewBag.Genders = genders;
+
 			var student = _db.StudentAccounts.Find(id);
 			if (student == null)
 			{
@@ -189,6 +209,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				var genders = new List<SelectListItem>
+				{
+					new SelectListItem { Value = "Male", Text = "Male" },
+					new SelectListItem { Value = "Female", Text = "Female" }
+				};
+				ViewBag.Genders = genders;
 
 				var usernameExists = _db.StudentAccounts.Any(s => s.UserName == updatedStudent.UserName && s.StudentID != updatedStudent.StudentID);
 				if (usernameExists)
