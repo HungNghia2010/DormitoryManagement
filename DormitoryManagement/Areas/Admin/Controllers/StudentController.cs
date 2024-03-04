@@ -164,6 +164,20 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 				TempData["error"] = "Cannot update a locked account.";
 				return RedirectToAction("Index");
 			}
+			if(student.RoomID != null)
+            {
+				var data = _db.Rooms.Find(student.RoomID);
+				var building = _db.Buildings.Find(data.BuildingID);
+
+				ViewBag.room = data.Name;
+				ViewBag.building = building.Name;
+			}else
+            {
+				ViewBag.room = "Chưa có phòng";
+				ViewBag.building = "Chưa có tòa";
+			}
+			
+
 			return View(student);
 		}
 
@@ -199,8 +213,6 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 					existingStudent.Address = updatedStudent.Address;
 					existingStudent.PhoneNumber = updatedStudent.PhoneNumber;
 					existingStudent.Gender = updatedStudent.Gender;
-					existingStudent.RoomID = updatedStudent.RoomID;
-					existingStudent.BuildingID = updatedStudent.BuildingID;
 
 					// Check if a new image file was uploaded
 					if (imageFile != null && imageFile.ContentLength > 0)
@@ -229,14 +241,26 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
 					// Save the changes to the database
 					_db.SaveChanges();
+					if (existingStudent.RoomID != null)
+					{
+						var data = _db.Rooms.Find(existingStudent.RoomID);
+						var building = _db.Buildings.Find(data.BuildingID);
 
+						ViewBag.room = data.Name;
+						ViewBag.building = building.Name;
+					}
+					else
+					{
+						ViewBag.room = "Chưa có phòng";
+						ViewBag.building = "Chưa có tòa";
+					}
 					ViewData["success"] = "Cập nhật sinh viên thành công";
-					return View(existingStudent);
+					return View();
 				}
 				
 			}
 
-			return View(updatedStudent);
+			return View();
 		}
 
 		[RequireLogin]

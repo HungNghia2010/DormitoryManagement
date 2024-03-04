@@ -102,21 +102,11 @@
                     </div>
                     <div class="form-group">
                         <label for="RoomID">Số phòng:</label>
-                        @Html.TextBoxFor(m => m.RoomID, new
-                        {
-                            @class = "form-control",
-                            @id = "RoomID",
-                            @required = "required"
-                        })
+                        <input class="form-control" id="Room" value="@ViewBag.room" disabled/>
                     </div>
                     <div class="form-group">
                         <label for="BuildingID,">Số tòa:</label>
-                        @Html.TextBoxFor(m => m.BuildingID, new
-                        {
-                            @class = "form-control",
-                            @id = "BuildingID,",
-                            @required = "required"
-                        })
+                        <input class="form-control" id="Building" value="@ViewBag.building" disabled/>
                     </div>
 
 
@@ -137,7 +127,7 @@
                         </div>
                     }
 
-                    <div class="text-center">
+                    <div class="text-center mb-3">
                         <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
                     </div>
                 }
