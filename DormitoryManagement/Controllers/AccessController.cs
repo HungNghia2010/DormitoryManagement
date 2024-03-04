@@ -14,7 +14,7 @@ namespace DormitoryManagement.Controllers
     {
 		private DormitoryManagementEntities _db = new DormitoryManagementEntities();
 
-		// GET: Admin/Public/Logout
+		// GET: Access/Logout
 		public ActionResult Logout()
 		{
 			Session.Clear();//remove session
@@ -27,7 +27,7 @@ namespace DormitoryManagement.Controllers
             return View();
         }
 
-		// POST: Admin/Public
+		// POST: Access
 		[HttpPost]
 		[RequireLogout]
 		[ValidateAntiForgeryToken]

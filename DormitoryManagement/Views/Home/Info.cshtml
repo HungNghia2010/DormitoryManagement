@@ -3,7 +3,7 @@
     ViewBag.Title = "Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model DormitoryManagement.Models.StudentAccount
 <div class="back_re">
     <div class="container">
         <div class="row">
@@ -18,57 +18,125 @@
 <!--  contact -->
 <div class="contact">
     <div class="col-md-12 avatar">
-        <img src="images/avatar.png" alt="Avatar" class="avatar">
+        <img src="@Model.ImagePath" alt="Avatar" class="avatar">
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <form id="request" class="main_form">
+            <div class="col-md-12">
+                @using (Html.BeginForm("UpdateInfo", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "main_form", @id = "request" }))
+                {
+                    @Html.AntiForgeryToken()
+
                     <div class="row">
-                        <div class="col-md-12">
-                            First Name
-                            <input class="contactus" placeholder="First Name" type="type" name="Name">
+                        <div class="col-md-6">
+
+                            Full Name
+                            @Html.TextBoxFor(m => m.FullName, new
+                            {
+                                @class = "contactus",
+                                @id = "FullName",
+                                @required = "required",
+                                @type = "type"
+                            })
                         </div>
-                        <div class="col-md-12">
-                            Last Name
-                            <input class="contactus" placeholder="Last Name" type="type" name="LastName">
+                        <div class="col-md-6">
+
+                            User Name
+                            @Html.TextBoxFor(m => m.UserName, new
+                           {
+                               @class = "contactus",
+                               @id = "UserName",
+                               @required = "required",
+                               @type = "type"
+                           })
                         </div>
-                        <div class="col-md-12">
-                            Phone Number
-                            <input class="contactus" placeholder="Phone Number" type="type" name="PhoneNumber">
+                        <div class="col-md-6">
+
+                            Password
+                            @Html.TextBoxFor(m => m.Password, new
+                            {
+                                @class = "contactus",
+                                @id = "Password",
+                                @required = "required"
+                            })
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+
                             Email
-                            <input class="contactus" placeholder="Email" type="type" name="Email">
+                            @Html.TextBoxFor(m => m.Email, new
+                            {
+                                @class = "contactus",
+                                @id = "Email",
+                                @required = "required"
+                            })
                         </div>
-                        <div class="col-md-12">
-                            Room Number
-                            <input class="contactus" placeholder="Room Number" type="type" name="RoomNumber">
-                        </div>
+                        <div class="col-md-6">
 
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <form id="request" class="main_form">
-                    <div class="row">
-                        <div class="col-md-12">
-                            Gender
-                            <input class="contactus" placeholder="Gender" type="type" name="Gender">
+                            Phone Number
+                            @Html.TextBoxFor(m => m.PhoneNumber, new
+                            {
+                                @class = "contactus",
+                                @id = "PhoneNumber",
+                                @required = "required"
+                            })
                         </div>
-                        <div class="col-md-12">
-                            Majors
-                            <input class="contactus" placeholder="Majors" type="type" name="Majors">
-                        </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+
                             Address
-                            <textarea class="textarea" placeholder="Address" type="type" Message="Address">Address</textarea>
+                            @Html.TextBoxFor(m => m.Address, new
+                            {
+                                @class = "contactus",
+                                @id = "Address",
+                                @required = "required"
+                            })
                         </div>
+                        <div class="col-md-6">
 
+                            Gender
+                            @Html.TextBoxFor(m => m.Gender, new
+                            {
+                                @class = "contactus",
+                                @id = "Gender",
+                                @required = "required"
+                            })
+                        </div>
+                        <div class="col-md-6">
+
+                            Room
+                            @Html.TextBoxFor(m => m.RoomID, new
+                           {
+                               @class = "contactus",
+                               @id = "RoomID",
+                               @required = "required",
+                               @disabled = "disabled"
+                           })
+                        </div>
+                        <div class="col-md-6">
+
+                            Building
+                            @Html.TextBoxFor(m => m.BuildingID, new
+                           {
+                               @class = "contactus",
+                               @id = "BuildingID",
+                               @required = "required",
+                               @disabled = "disabled"
+                           })
+                        </div>
                     </div>
-                </form>
+                    <div class="col-md-12">
+                        <button type="submit" class="send_btn">Update</button>
+                    </div>
+
+
+
+
+
+
+
+
+                }
+
             </div>
-        </div>
+        </div>  
     </div>
-</div>
-<!-- end contact -->
+    <!-- end contact -->

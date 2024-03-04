@@ -175,6 +175,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 					existingStudent.UserName = updatedStudent.UserName;
 					existingStudent.FullName = updatedStudent.FullName;
 					existingStudent.Email = updatedStudent.Email;
+					existingStudent.Address = updatedStudent.Address;
 					existingStudent.PhoneNumber = updatedStudent.PhoneNumber;
 					existingStudent.Gender = updatedStudent.Gender;
 					existingStudent.RoomID = updatedStudent.RoomID;

@@ -321,6 +321,7 @@
     <Compile Include="Areas\Admin\Controllers\PublicController.cs" />
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RequireLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2563,6 +2564,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Views\RequireLoginAttribute\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
   <ItemGroup>
