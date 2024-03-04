@@ -3,18 +3,52 @@
 }
 @model DormitoryManagement.Models.LoaiPhong
 
+@section scripts{
 
+    <script>
+        function formatCurrency(number) {
+            // Kiểm tra xem giá trị có phải là một số không
+            if (isNaN(number)) {
+                return "0";
+            }
+
+            // Chuyển số thành chuỗi và chia thành phần nguyên và phần thập phân
+            var parts = number.toFixed(0).toString().split(".");
+            var integerPart = parts[0];
+            var decimalPart = parts.length > 1 ? "." + parts[1] : "";
+
+            // Đảo ngược chuỗi phần nguyên và thêm dấu phân cách hàng nghìn
+            var formattedInteger = integerPart.split("").reverse().join("").replace(/(\d{3}(?!$))/g, "$1,").split("").reverse().join("");
+
+            // Kết hợp phần nguyên và phần thập phân vào chuỗi định dạng tiền tệ
+            var formattedCurrency = formattedInteger + decimalPart ;
+
+            return formattedCurrency;
+        }
+
+        function handleChange(input) {
+            // Lấy giá trị từ input và chỉ giữ lại các ký tự số và dấu chấm
+            var value = input.value.replace(/[^\d.]/g, '');
+            // Chuyển đổi giá trị thành số
+            var number = parseFloat(value);
+            // Định dạng lại giá trị và hiển thị trong input
+            input.value = formatCurrency(number);
+        }
+    </script>
+}
 
 <div id="content-wrapper">
     <div class="container-fluid justify-content-center">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-                <h2 class="text-center text-gray-800">Thêm Loại Phòng</h2>
+                <h2 class="text-center text-gray-800">Cập Nhật Loại Phòng</h2>
 
                 <!-- Form thay đổi mật khẩu -->
-                @using (Html.BeginForm("AddRoomType", "Room", FormMethod.Post))
+                @using (Html.BeginForm("EditRoomType", "Room", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(m => m.MaLoaiPhong)
 
                     <div class="form-group">
                         <label for="RoomTypeName">Tên loại phòng:</label>
@@ -32,8 +66,8 @@
                    {
                        @class = "form-control",
                        @id = "Price",
-                       @step = "1.000",
-                       @required = "required"
+                       @required = "required",
+                       @oninput = "handleChange(this)"
                    })
                     </div>
 
@@ -54,7 +88,7 @@
                     }
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit" class="btn btn-success">Cập nhật</button>
                     </div>
                 }
             </div>

@@ -31,8 +31,8 @@ namespace DormitoryManagement.Models
         public string Descript { get; set; }
     
         public virtual Building Building { get; set; }
-        public virtual LoaiPhong LoaiPhong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentAccount> StudentAccounts { get; set; }
+        public virtual LoaiPhong LoaiPhong { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace DormitoryManagement.Models
         public string Address { get; set; }
         public string Gender { get; set; }
         public string ImagePath { get; set; }
-
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
         public Nullable<int> RoomID { get; set; }

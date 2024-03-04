@@ -16,7 +16,6 @@
   <EntityContainer Name="DormitoryManagementEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccount" />
     <EntitySet Name="Buildings" EntityType="DormitoryManagementModel.Building" />
-    <EntitySet Name="LoaiPhongs" EntityType="DormitoryManagementModel.LoaiPhong" />
     <EntitySet Name="StudentAccounts" EntityType="DormitoryManagementModel.StudentAccount" />
     <AssociationSet Name="FK__StudentAc__Build__4AB81AF0" Association="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0">
       <End Role="Building" EntitySet="Buildings" />
@@ -27,15 +26,15 @@
       <End Role="Building" EntitySet="Buildings" />
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK__Rooms__MaLoaiPho__1C873BEC" Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC">
-      <End Role="LoaiPhong" EntitySet="LoaiPhongs" />
-      <End Role="Room" EntitySet="Rooms" />
-    </AssociationSet>
     <AssociationSet Name="FK__StudentAc__RoomI__22401542" Association="DormitoryManagementModel.FK__StudentAc__RoomI__22401542">
       <End Role="Room" EntitySet="Rooms" />
       <End Role="StudentAccount" EntitySet="StudentAccounts" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="DormitoryManagementModel.sysdiagram" />
+    <EntitySet Name="LoaiPhongs" EntityType="DormitoryManagementModel.LoaiPhong" />
+    <AssociationSet Name="FK__Rooms__MaLoaiPho__318258D2" Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2">
+      <End Role="LoaiPhong" EntitySet="LoaiPhongs" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -46,15 +45,6 @@
     <Property Name="Descrip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="Building" ToRole="StudentAccount" />
     <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" FromRole="Building" ToRole="Room" />
-  </EntityType>
-  <EntityType Name="LoaiPhong">
-    <Key>
-      <PropertyRef Name="MaLoaiPhong" />
-    </Key>
-    <Property Name="MaLoaiPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenLoaiPhong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="GiaTien" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" FromRole="LoaiPhong" ToRole="Room" />
   </EntityType>
   <EntityType Name="StudentAccount">
     <Key>
@@ -103,8 +93,8 @@
     <Property Name="Gender" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Descript" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" FromRole="Room" ToRole="Building" />
-    <NavigationProperty Name="LoaiPhong" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" FromRole="Room" ToRole="LoaiPhong" />
     <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="Room" ToRole="StudentAccount" />
+    <NavigationProperty Name="LoaiPhong" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" FromRole="Room" ToRole="LoaiPhong" />
   </EntityType>
   <Association Name="FK__Rooms__BuildingI__1B9317B3">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -115,18 +105,6 @@
       </Principal>
       <Dependent Role="Room">
         <PropertyRef Name="BuildingID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Rooms__MaLoaiPho__1C873BEC">
-    <End Type="DormitoryManagementModel.LoaiPhong" Role="LoaiPhong" Multiplicity="0..1" />
-    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="LoaiPhong">
-        <PropertyRef Name="MaLoaiPhong" />
-      </Principal>
-      <Dependent Role="Room">
-        <PropertyRef Name="MaLoaiPhong" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -142,14 +120,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="LoaiPhong">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="MaLoaiPhong" />
     </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MaLoaiPhong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiPhong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTien" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rooms" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" FromRole="LoaiPhong" ToRole="Room" />
   </EntityType>
+  <Association Name="FK__Rooms__MaLoaiPho__318258D2">
+    <End Type="DormitoryManagementModel.LoaiPhong" Role="LoaiPhong" Multiplicity="0..1" />
+    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiPhong">
+        <PropertyRef Name="MaLoaiPhong" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="MaLoaiPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

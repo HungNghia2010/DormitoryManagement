@@ -41,22 +41,23 @@ CREATE TABLE Rooms (
 
 INSERT INTO Rooms (BuildingID, Name, MaxCapacity, MaLoaiPhong, Status,Occupancy,Gender)
 VALUES
-    (1, '101', 2, '1',N'Còn trống' ,0,N'Nam'), -- Phòng 101 trong tòa nhà có ID là 1, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
-    (1, '102', 3, '2', N'Còn trống' ,1,N'Nữ'),   -- Phòng 102 trong tòa nhà có ID là 1, có sức chứa 3 người, loại phòng Deluxe, hiện có 1 người ở
-    (2, '201', 2, '1',N'Còn trống' ,0,N'Nam'), -- Phòng 201 trong tòa nhà có ID là 2, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
-    (2, '202', 4, '2', N'Còn trống',2,N'Nữ');  
+    (1, '101', 2, '1',N'Còn trống' ,0,N'Male'), -- Phòng 101 trong tòa nhà có ID là 1, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
+    (1, '102', 3, '2', N'Còn trống' ,1,N'Male'),   -- Phòng 102 trong tòa nhà có ID là 1, có sức chứa 3 người, loại phòng Deluxe, hiện có 1 người ở
+    (2, '201', 2, '1',N'Còn trống' ,0,N'Male'), -- Phòng 201 trong tòa nhà có ID là 2, có sức chứa 2 người, loại phòng Standard, hiện chưa có người ở
+    (2, '202', 4, '2', N'Còn trống',2,N'Male');  
 
 CREATE TABLE LoaiPhong (
     MaLoaiPhong INT PRIMARY KEY IDENTITY,
     TenLoaiPhong NVARCHAR(100) NOT NULL,
-    GiaTien DECIMAL(18, 2) NOT NULL
+    GiaTien NVARCHAR(100) NOT NULL
 );
+
 
 INSERT INTO LoaiPhong (TenLoaiPhong, GiaTien)
 VALUES 
-    (N'Phòng Máy Lạnh', 100.00),
-    (N'Phòng Thường', 150.00),
-    (N'Phòng Vip', 200.00);
+    (N'Phòng Máy Lạnh', '100,000'),
+    (N'Phòng Thường', '150,000'),
+    (N'Phòng Vip', '200,000');
 
 
 CREATE TABLE StudentAccounts (

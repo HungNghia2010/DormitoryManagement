@@ -7,14 +7,13 @@
       <Diagram DiagramId="459906060c56418d841bfae0399f2fd7" Name="Diagram1">
         <EntityTypeShape EntityType="DormitoryManagementModel.AdminAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DormitoryManagementModel.Building" Width="1.5" PointX="3.375" PointY="1.25" />
-        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="0.875" PointY="3.375" />
         <EntityTypeShape EntityType="DormitoryManagementModel.StudentAccount" Width="1.5" PointX="7.875" PointY="0.75" />
         <AssociationConnector Association="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" />
         <EntityTypeShape EntityType="DormitoryManagementModel.Room" Width="1.5" PointX="5.625" PointY="1.5" />
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" />
-        <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__1C873BEC" />
         <AssociationConnector Association="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" />
-        <EntityTypeShape EntityType="DormitoryManagementModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="1.25" PointY="3.5" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

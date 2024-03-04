@@ -50,8 +50,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 {
                     _db.LoaiPhongs.Add(loaiPhong);
                     _db.SaveChanges();
-                    ViewData["success"] = "Thêm loại phòng thành công";
-                    return View();
+                    TempData["success"] = "Thêm loại phòng thành công";
+                    return RedirectToAction("Index", "Room", new { area = "Admin" });
                 }
             }
             return View();
@@ -93,6 +93,33 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         {
             var data = _db.LoaiPhongs.Find(id);
             return View(data);
+        }
+
+        // POST: Admin/Room/Add
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRoomType(LoaiPhong loaiphong)
+        {
+            if (ModelState.IsValid)
+            {
+                var datacheck = _db.LoaiPhongs.Where(s => s.TenLoaiPhong.Equals(loaiphong.TenLoaiPhong) && s.MaLoaiPhong != loaiphong.MaLoaiPhong).ToList();
+                if(datacheck.Count() > 0)
+                {
+                    ViewData["error"] = "Tên loại phòng bị trùng khớp";
+                    return View();
+                }
+                else
+                {
+                    var data = _db.LoaiPhongs.Find(loaiphong.MaLoaiPhong);
+                    data.TenLoaiPhong = loaiphong.TenLoaiPhong;
+                    data.GiaTien = loaiphong.GiaTien;
+                    _db.SaveChanges();
+                    ViewData["success"] = "Cập nhật loại phòng thành công";
+                    return View();
+                }
+            
+            }
+            return View();
         }
 
     }
