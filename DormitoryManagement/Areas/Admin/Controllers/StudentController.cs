@@ -207,14 +207,10 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult UpdateStudent(StudentAccount updatedStudent, HttpPostedFileBase imageFile)
 		{
+			
+
 			if (ModelState.IsValid)
 			{
-				var genders = new List<SelectListItem>
-				{
-					new SelectListItem { Value = "Male", Text = "Male" },
-					new SelectListItem { Value = "Female", Text = "Female" }
-				};
-				ViewBag.Genders = genders;
 
 				var usernameExists = _db.StudentAccounts.Any(s => s.UserName == updatedStudent.UserName && s.StudentID != updatedStudent.StudentID);
 				if (usernameExists)
@@ -263,6 +259,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
 						// Update the student's image path
 						existingStudent.ImagePath = imagePath;
+						ViewBag.image = imagePath;
 					}
 
 					// Save the changes to the database
@@ -280,6 +277,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 						ViewBag.room = "Chưa có phòng";
 						ViewBag.building = "Chưa có tòa";
 					}
+					var genders = new List<SelectListItem>
+					{
+						new SelectListItem { Value = "Male", Text = "Male" },
+						new SelectListItem { Value = "Female", Text = "Female" }
+					};
+					ViewBag.Genders = genders;
+
 					ViewData["success"] = "Cập nhật sinh viên thành công";
 					return View();
 				}
