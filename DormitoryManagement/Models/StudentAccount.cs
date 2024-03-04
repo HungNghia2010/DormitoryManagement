@@ -11,7 +11,9 @@ namespace DormitoryManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StudentAccount
     {
         public int StudentID { get; set; }
@@ -23,6 +25,9 @@ namespace DormitoryManagement.Models
         public string Address { get; set; }
         public string Gender { get; set; }
         public string ImagePath { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
         public Nullable<int> RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }

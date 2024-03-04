@@ -23,6 +23,8 @@ namespace DormitoryManagement.Models
         public int MaLoaiPhong { get; set; }
         public string TenLoaiPhong { get; set; }
         public decimal GiaTien { get; set; }
+
+        public string test { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }

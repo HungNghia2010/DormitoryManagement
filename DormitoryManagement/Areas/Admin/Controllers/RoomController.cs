@@ -15,9 +15,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var Mydata = TempData["error"];
-            if (Mydata != null)
+            var mydata = TempData["success"];
+            if (Mydata != null || mydata !=null)
             {
-                ViewBag.success = Mydata;
+                ViewBag.error = Mydata;
+                ViewBag.success = mydata;
             }
 
             var data = _db.LoaiPhongs.ToList();
@@ -74,8 +76,10 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 }
                 else
                 {
+                    var name = data.TenLoaiPhong;
                     _db.LoaiPhongs.Remove(data);
                     _db.SaveChanges();
+                    TempData["success"] = "Xóa loại phòng " + name + " thành công";
                     return RedirectToAction("Index", "Room", new { area = "Admin" });
                 }
                 
