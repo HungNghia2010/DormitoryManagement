@@ -21,7 +21,28 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		[RequireLogin]
 		public ActionResult Index()
 		{
+			var room = _db.Rooms.ToList();
 			var data = _db.StudentAccounts.ToList();
+
+			Dictionary<int,string> buildingRoomDict = new Dictionary<int, string>();
+			foreach (var m in room)
+			{
+
+				if (!buildingRoomDict.ContainsKey(m.RoomID))
+				{
+					// Nếu chưa, thêm một cặp khóa/giá trị mới vào từ điển
+					buildingRoomDict[m.RoomID] = m.Building.Name;
+				}
+				else
+				{
+					buildingRoomDict[m.RoomID] += ", " + m.Building.Name;
+				}
+			}
+
+			ViewBag.myDict = buildingRoomDict;
+			ViewBag.room = room;
+
+
 			return View(data);
 		}
 

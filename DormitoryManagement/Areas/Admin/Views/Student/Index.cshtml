@@ -1,6 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Student";
+    Dictionary<int, string> SoPhong = new Dictionary<int, string>();
+    foreach (var sophong in ViewBag.room)
+    {
+        SoPhong.Add(sophong.RoomID, sophong.Name);
+    }
 
 }
 @model List<DormitoryManagement.Models.StudentAccount>
@@ -57,6 +62,14 @@
                     <tbody>
                         @foreach (var type in Model)
                         {
+                            string SoPhongText = SoPhong.ContainsKey(type.RoomID.GetValueOrDefault()) ? SoPhong[type.RoomID.GetValueOrDefault()] : "Chưa có phòng";
+                            string soToaText = "Chưa có tòa";
+                            if (ViewBag.myDict != null && type.RoomID.HasValue)
+                            {
+                                int roomIDToSearch = type.RoomID.Value;
+                                soToaText = ViewBag.myDict.ContainsKey(roomIDToSearch) ? ViewBag.myDict[roomIDToSearch] : "Chưa có tòa";
+                            }
+                            
                             <tr>
                                 <td><img style="width:50px; height:50px; border-radius:50%" src="@type.ImagePath" /></td>
                                 <td>@type.StudentID</td>
@@ -65,8 +78,8 @@
                                 <td>@type.Email</td>
                                 <td>@type.PhoneNumber</td>
                                 <td>@type.Gender</td>
-                                <td>@type.RoomID</td>
-                                <td>@type.BuildingID</td>
+                                <td>@SoPhongText</td>
+                                <td>@soToaText</td>
                                 <td class="text-center">
 
                                     <a class="btn btn-primary btn-sm" href="@Url.Action("UpdateStudent", "Student", new { id = @type.StudentID })">
