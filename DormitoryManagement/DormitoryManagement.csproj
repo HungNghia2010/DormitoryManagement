@@ -314,6 +314,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TuitionFeeController.cs" />
     <Compile Include="Areas\Admin\Data\Changepass.cs" />
     <Compile Include="Areas\Admin\RequireLogoutAttribute.cs" />
     <Compile Include="Areas\Admin\RequireLoginAttribute.cs" />
@@ -2530,6 +2531,7 @@
     <Content Include="Resources\Assets\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\Room\EditRoomType.cshtml" />
     <Content Include="Areas\Admin\Views\Student\UpdateStudent.cshtml" />
+    <Content Include="Areas\Admin\Views\TuitionFee\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
