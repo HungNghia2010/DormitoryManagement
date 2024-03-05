@@ -72,7 +72,6 @@ namespace DormitoryManagement.Controllers
 					// Update the student's information with the new values
 					student.FullName = studentModel.FullName;
 					student.UserName = studentModel.UserName;
-					student.Password = studentModel.Password;
 					student.Email = studentModel.Email;
 					student.PhoneNumber = studentModel.PhoneNumber;
 					student.Address = studentModel.Address;
@@ -92,6 +91,12 @@ namespace DormitoryManagement.Controllers
 			return View(studentModel);
 		}
 
+		// GET: Home
+		[RequireLogin]
+		public ActionResult ChangePass()
+		{
+			return View();
+		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -101,7 +106,7 @@ namespace DormitoryManagement.Controllers
 			{
 				var f_password = GetMD5(password);
 				var username = Session["username"];
-				var data = _db.AdminAccounts.Where(s => s.Username == username && s.Password.Equals(f_password)).ToList();
+				var data = _db.StudentAccounts.Where(s => s.UserName == username && s.Password.Equals(f_password)).ToList();
 				if (data.Count > 0)
 				{
 					if (password.Equals(newpassword))

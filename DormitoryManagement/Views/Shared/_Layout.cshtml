@@ -75,7 +75,7 @@
                                         <a class="nav-link" href="blog.html">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Home/Info">My Info</a>
+                                        <a class="nav-link" href="~/Home/Info">My Info</a>
                                     </li>
                                 </ul>
                             </div>
@@ -91,17 +91,17 @@
                                             <img src="~/Resources/Assets/icons/user.png" /><a href="#">My profile</a>
                                         </li>
                                         <li>
-                                            <img src="~/Resources/Assets/icons/edit.png" /><a href="#">Edit profile</a>
+                                            <img src="~/Resources/Assets/icons/edit.png" /><a href="~/Home/Info">Edit profile</a>
                                         </li>
                                         <li>
-                                            <img src="~/Resources/Assets/icons/envelope.png" /><a href="#">Inbox</a>
+                                            <img src="~/Resources/Assets/icons/envelope.png" /><a href="~/Home/ChangePass">Chang Pass</a>
                                         </li>
                                         <li>
                                             <img src="~/Resources/Assets/icons/settings.png" /><a href="#">Setting</a>
                                         </li>
                                         <li><img src="~/Resources/Assets/icons/question.png" /><a href="#">Help</a></li>
                                         <li>
-                                            <img src="~/Resources/Assets/icons/log-out.png" /><a href="Access/Logout">Logout</a>
+                                            <img src="~/Resources/Assets/icons/log-out.png" /><a href="~/Access/Logout">Logout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -175,5 +175,6 @@
             toggleMenu.classList.toggle("active");
         }
     </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
