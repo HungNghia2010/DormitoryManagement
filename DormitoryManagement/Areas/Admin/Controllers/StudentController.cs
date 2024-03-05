@@ -285,7 +285,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 					ViewBag.Genders = genders;
 
 					ViewData["success"] = "Cập nhật sinh viên thành công";
-					return View();
+					return View(existingStudent);
 				}
 				
 			}
