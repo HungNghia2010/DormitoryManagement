@@ -21,6 +21,16 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="FeePayments">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" Nullable="false" />
+    <Property Name="Semester" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="text" />
+    <Property Name="DueDate" Type="date" />
+    <Property Name="ExpiryDate" Type="date" />
+  </EntityType>
   <EntityType Name="LoaiPhong">
     <Key>
       <PropertyRef Name="MaLoaiPhong" />
@@ -113,6 +123,7 @@
   <EntityContainer Name="DormitoryManagementModelStoreContainer">
     <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeePayments" EntityType="Self.FeePayments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />

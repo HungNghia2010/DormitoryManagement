@@ -26,6 +26,16 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Descrip" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="FeePayments">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" Nullable="false" />
+          <Property Name="Semester" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="text" />
+          <Property Name="DueDate" Type="date" />
+          <Property Name="ExpiryDate" Type="date" />
+        </EntityType>
         <EntityType Name="LoaiPhong">
           <Key>
             <PropertyRef Name="MaLoaiPhong" />
@@ -118,6 +128,7 @@
         <EntityContainer Name="DormitoryManagementModelStoreContainer">
           <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeePayments" EntityType="Self.FeePayments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
@@ -177,6 +188,7 @@
             <End Role="LoaiPhong" EntitySet="LoaiPhongs" />
             <End Role="Room" EntitySet="Rooms" />
           </AssociationSet>
+          <EntitySet Name="FeePayments" EntityType="DormitoryManagementModel.FeePayment" />
           </EntityContainer>
         <EntityType Name="Building">
           <Key>
@@ -283,6 +295,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FeePayment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" />
+          <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -353,6 +375,17 @@
                 <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
                 <ScalarProperty Name="TenLoaiPhong" ColumnName="TenLoaiPhong" />
                 <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeePayments">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.FeePayment">
+              <MappingFragment StoreEntitySet="FeePayments">
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

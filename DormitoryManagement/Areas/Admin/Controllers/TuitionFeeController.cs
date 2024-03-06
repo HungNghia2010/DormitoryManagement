@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DormitoryManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
     {
         // GET: Admin/TuitionFee
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(FeePayment feePayment)
         {
             return View();
         }

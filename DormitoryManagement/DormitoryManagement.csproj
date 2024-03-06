@@ -332,6 +332,9 @@
     <Compile Include="Models\Building.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FeePayment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoaiPhong.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

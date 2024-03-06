@@ -89,3 +89,11 @@ VALUES
 ('user8', 'User Eight', 'password8', 'user8@example.com', '4567891230', 'Female'),
 ('user9', 'User Nine', 'password9', 'user9@example.com', '3219876540', 'Male'),
 ('user10', 'User Ten', 'password10', 'user10@example.com', '7893216540', 'Female');
+
+CREATE TABLE FeePayments (
+    PaymentID INT PRIMARY KEY,
+    Semester VARCHAR(50),
+    Description TEXT,
+    DueDate DATE,
+    ExpiryDate DATE
+);
