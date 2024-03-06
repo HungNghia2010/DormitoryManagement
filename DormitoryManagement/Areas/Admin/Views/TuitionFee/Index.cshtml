@@ -13,6 +13,8 @@
         <div class="card-body">
             @using (Html.BeginForm("Index", "TuitionFee", FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
+
                 <div class="form-group">
                     <label for="semester">Học kỳ:</label>
                     @Html.TextBoxFor(m => m.Semester, new { @class = "form-control", @type = "text", @name = "semester", @id = "semester", @required = "required" })
@@ -23,18 +25,18 @@
                 </div>
                 <div class="form-group">
                     <label for="dueDate">Ngày đóng:</label>
-                    @Html.TextBoxFor(m=>m.DueDate, new { @class = "form-control",@type = "date" ,@name = "dueDate", @id = "dueDate", @required = "required" })
+                    @Html.TextBoxFor(m => m.DueDate, new { @class = "form-control", @type = "date", @name = "dueDate", @id = "dueDate", @required = "required" })
                 </div>
                 <div class="form-group">
                     <label for="expiryDate">Ngày hết hạn:</label>
-                    @Html.TextBoxFor(m => m.DueDate, new { @class = "form-control", @type = "date", @name = "expiryDate", @id = "expiryDate", @required = "required" })
+                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control", @type = "date", @name = "expiryDate", @id = "expiryDate", @required = "required" })
 
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Tạo học phí</button>
                 </div>
             }
-            
+
         </div>
     </div>
 </div>
