@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Sửa học phí ký túc xá";
+}
+@model DormitoryManagement.Models.FeePayment
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $("#expiryDate").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+
+        $("#dueDate").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+
+        $("#monthYear").datepicker({
+            dateFormat: "mm/yy"
+        });
+
+        $("form").submit(function (event) {
+            // Lấy ngày đóng và ngày hết hạn từ các input
+            var dueDate = $("#dueDate").datepicker("getDate");
+            var expiryDate = $("#expiryDate").datepicker("getDate");
+            // Kiểm tra nếu ngày hết hạn nhỏ hơn ngày đóng
+            if (expiryDate < dueDate) {
+                // Hiển thị thông báo
+                $("#expiryDateError").show();
+                // Ngăn chặn việc submit form
+                event.preventDefault();
+            } else {
+                $("#expiryDateError").hide();
+            }
+        });
+
+    </script>
+}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="text-center">Tạo học phí ký túc xá</h2>
+        </div>
+
+        <div class="card-body">
+            @using (Html.BeginForm("EditTuition", "TuitionFee", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.PaymentID)
+
+                <div class="form-group">
+                    <label for="dueDate">Tháng ghi:</label>
+                    @Html.TextBoxFor(m => m.MonthYear, new { @class = "form-control", @type = "text", @name = "monthYear", @id = "monthYear", @required = "required", @placeholder = "Nhập tháng ghi", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="content">Nội dung:</label>
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @row = "3", @id = "description", @placeholder = "Nhập nội dung", @required = "required" })
+                </div>
+
+                <div class="form-group">
+                    <label for="dueDate">Ngày đóng:</label>
+                    @Html.TextBoxFor(m => m.DueDate, new { @class = "form-control", @type = "text", @name = "dueDate", @id = "dueDate", @required = "required", @placeholder = "Nhập ngày đóng", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Ngày hết hạn:</label>
+                    @Html.TextBoxFor(m => m.ExpiryDate, new { @class = "form-control", @type = "text", @name = "expiryDate", @id = "expiryDate", @required = "required", @placeholder = "Nhập ngày hết hạn", @readonly = "readonly" })
+                </div>
+
+                <div id="expiryDateError" class="form-group text-center" style="display: none;">
+                    <span class="alert alert-danger" id="errorAlert">
+                        Ngày hết hạn phải lớn hơn hoặc bằng ngày đóng.
+                    </span>
+                </div>
+
+                if (@ViewBag.Error != null)
+                {
+                    <div class="form-group text-center">
+                        <span class="alert alert-danger" id="errorAlert">
+                            @ViewBag.Error
+                        </span>
+                    </div>
+                }
+
+                if (@ViewBag.Success != null)
+                {
+                    <div class="form-group text-center">
+                        <span class="alert alert-success">@ViewBag.Success</span>
+                    </div>
+                }
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Cập nhật phiếu thu học phí</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

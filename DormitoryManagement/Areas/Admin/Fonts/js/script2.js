@@ -135,7 +135,6 @@
     var maxCapacity = parseInt($("#NumberOfBeds").val());
     var length = $('.student-input').length;
     var s = maxCapacity - length;
-    console.log(s)
             $.ajax({
                 url: '/Admin/Homes/GetStudents', // Địa chỉ URL của phương thức GetStudents
                 method: 'GET', // Phương thức GET để gửi yêu cầu

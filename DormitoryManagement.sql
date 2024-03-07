@@ -1,5 +1,8 @@
 ﻿CREATE DATABASE DormitoryManagement
 use DormitoryManagement
+
+ALTER DATABASE DormitoryManagement COLLATE Vietnamese_CI_AS;
+
 CREATE TABLE AdminAccounts (
     AdminID INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(50) UNIQUE NOT NULL,
@@ -90,10 +93,19 @@ VALUES
 ('user9', 'User Nine', 'password9', 'user9@example.com', '3219876540', 'Male'),
 ('user10', 'User Ten', 'password10', 'user10@example.com', '7893216540', 'Female');
 
+
 CREATE TABLE FeePayments (
-    PaymentID INT PRIMARY KEY,
-    Semester VARCHAR(50),
-    Description TEXT,
-    DueDate DATE,
-    ExpiryDate DATE
+    PaymentID INT PRIMARY KEY IDENTITY,
+    Description NVARCHAR(100),
+	MonthYear NVARCHAR(50) NOT NULL,
+    DueDate NVARCHAR(50) NOT NULL,
+    ExpiryDate NVARCHAR(50) NOT NULL
 );
+
+INSERT INTO FeePayments (Description, MonthYear, DueDate, ExpiryDate) 
+VALUES 
+(N'Học phí học kỳ 1', '2/2024', '15/02/2024', '28/02/2024'), 
+(N'Học phí học kỳ 1', '3/2024', '15/03/2024', '31/03/2024'), 
+(N'Học phí học kỳ 2', '6/2024', '15/06/2024', '30/06/2024');
+
+Drop table FeePayments

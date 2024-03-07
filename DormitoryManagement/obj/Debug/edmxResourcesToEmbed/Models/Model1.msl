@@ -73,8 +73,8 @@
         <MappingFragment StoreEntitySet="FeePayments">
           <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
           <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="MonthYear" ColumnName="MonthYear" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Semester" ColumnName="Semester" />
           <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
         </MappingFragment>
       </EntityTypeMapping>

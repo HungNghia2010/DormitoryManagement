@@ -118,6 +118,9 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             var Mydata = TempData["success"];
             ViewBag.success = Mydata;
 
+            var Mydataerror = TempData["error"];
+            ViewBag.error = Mydataerror;
+
             var builingId = Request.QueryString["buildingId"];
             var ID = Convert.ToInt32(builingId);
             var data = _db.Rooms.Where(s => s.BuildingID == ID).ToList();
@@ -278,8 +281,15 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             }
             else
             {
+                var check = _db.StudentAccounts.Where(a => a.RoomID == id).ToList();
                 var s = data.BuildingID;
                 var m = data.Name;
+                if (check.Count > 0)
+                {
+                    TempData["error"] = "Xóa phòng " + m + " không thành công vì còn sinh viên trong phòng";
+                    return RedirectToAction("Floor", "Homes", new { area = "Admin", buildingId = s });
+                }
+
                 _db.Rooms.Remove(data);
                 _db.SaveChanges();
                 TempData["success"] = "Xóa phòng " + m + " thành công";
@@ -288,6 +298,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         }
 
+        [RequireLogin]
         public ActionResult EditRoom(int id)
         {
             var roomtype = _db.LoaiPhongs.Select(x => new SelectListItem { Value = x.MaLoaiPhong.ToString(), Text = x.TenLoaiPhong });

@@ -17,7 +17,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session.Clear();//remove session
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Public", new { area = "Admin" });
         }
 
         // GET: Admin/Public

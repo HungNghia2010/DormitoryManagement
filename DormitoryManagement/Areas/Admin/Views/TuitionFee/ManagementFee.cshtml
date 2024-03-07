@@ -1,0 +1,283 @@
+﻿@{
+    ViewBag.Title = "Quản lý hóa đơn ký túc xá";
+}
+@section scripts{
+    <script src="~/Areas/Admin/Fonts/js/script3.js"></script>
+}
+<div class="container">
+    <h4>Bộ lọc</h4>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="fromMonth">Từ tháng:</label>
+                <select class="form-control" id="fromMonth" name="fromMonth">
+                    <option>--Chọn tháng --</option>
+                    <option value="1">Tháng 1</option>
+                    <option value="2">Tháng 2</option>
+                    <option value="3">Tháng 3</option>
+                    <option value="4">Tháng 4</option>
+                    <option value="5">Tháng 5</option>
+                    <option value="6">Tháng 6</option>
+                    <option value="7">Tháng 7</option>
+                    <option value="8">Tháng 8</option>
+                    <option value="9">Tháng 9</option>
+                    <option value="10">Tháng 10</option>
+                    <option value="11">Tháng 11</option>
+                    <option value="12">Tháng 12</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="fromMonth">Tới tháng:</label>
+                <select class="form-control" id="toMonth" name="toMonth">
+                    <option>--Chọn tháng --</option>
+                    <option value="1">Tháng 1</option>
+                    <option value="2">Tháng 2</option>
+                    <option value="3">Tháng 3</option>
+                    <option value="4">Tháng 4</option>
+                    <option value="5">Tháng 5</option>
+                    <option value="6">Tháng 6</option>
+                    <option value="7">Tháng 7</option>
+                    <option value="8">Tháng 8</option>
+                    <option value="9">Tháng 9</option>
+                    <option value="10">Tháng 10</option>
+                    <option value="11">Tháng 11</option>
+                    <option value="12">Tháng 12</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="fromYear">Từ năm:</label>
+                <input type="text" class="form-control" id="fromYear" name="fromYear">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="toYear">Đến năm:</label>
+                <input type="text" class="form-control" id="toYear" name="toYear">
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary">Tra cứu</button>
+            <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
+        </div>
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Sinh viên</th>
+                            <th>Tháng</th>
+                            <th>Phòng</th>
+                            <th>Tòa</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Sinh viên</th>
+                            <th>Tháng</th>
+                            <th>Phòng</th>
+                            <th>Tòa</th>
+                            <th>Tổng tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Phạm Hùng Nghĩa</strong> <br /> Mssv: 51900145</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>102</strong></td>
+                            <td><strong>Tòa A</strong></td>
+                            <td>500,000 đ</td>
+                            <td><span class="badge badge-pill badge-success">Đã thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Nguyễn Thị Anh</strong> <br /> Mssv: 51900146</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>105</strong></td>
+                            <td><strong>Tòa B</strong></td>
+                            <td>600,000 đ</td>
+                            <td><span class="badge badge-pill badge-warning">Chưa thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Lê Văn Bình</strong> <br /> Mssv: 51900147</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>107</strong></td>
+                            <td><strong>Tòa C</strong></td>
+                            <td>550,000 đ</td>
+                            <td><span class="badge badge-pill badge-success">Đã thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Nguyễn Thị Anh</strong> <br /> Mssv: 51900146</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>105</strong></td>
+                            <td><strong>Tòa B</strong></td>
+                            <td>600,000 đ</td>
+                            <td><span class="badge badge-pill badge-warning">Chưa thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Lê Văn Bình</strong> <br /> Mssv: 51900147</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>107</strong></td>
+                            <td><strong>Tòa C</strong></td>
+                            <td>550,000 đ</td>
+                            <td><span class="badge badge-pill badge-success">Đã thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Nguyễn Thị Anh</strong> <br /> Mssv: 51900146</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>105</strong></td>
+                            <td><strong>Tòa B</strong></td>
+                            <td>600,000 đ</td>
+                            <td><span class="badge badge-pill badge-warning">Chưa thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Lê Văn Bình</strong> <br /> Mssv: 51900147</td>
+                            <td><strong>4/2023</strong></td>
+                            <td><strong>107</strong></td>
+                            <td><strong>Tòa C</strong></td>
+                            <td>550,000 đ</td>
+                            <td><span class="badge badge-pill badge-success">Đã thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Nguyễn Thị Anh</strong> <br /> Mssv: 51900146</td>
+                            <td><strong>5/2023</strong></td>
+                            <td><strong>105</strong></td>
+                            <td><strong>Tòa B</strong></td>
+                            <td>600,000 đ</td>
+                            <td><span class="badge badge-pill badge-warning">Chưa thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Lê Văn Bình</strong> <br /> Mssv: 51900147</td>
+                            <td><strong>5/2023</strong></td>
+                            <td><strong>107</strong></td>
+                            <td><strong>Tòa C</strong></td>
+                            <td>550,000 đ</td>
+                            <td><span class="badge badge-pill badge-success">Đã thanh toán</span></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" onclick="">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <a type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

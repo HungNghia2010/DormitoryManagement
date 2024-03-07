@@ -29,6 +29,15 @@
             </button>
         </div>
     }
+    @if (@ViewBag.Error != null)
+    {
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>@ViewBag.Error</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -61,33 +70,33 @@
                             string loaiPhongText = loaiPhongMap.ContainsKey(room.MaLoaiPhong.GetValueOrDefault()) ? loaiPhongMap[room.MaLoaiPhong.GetValueOrDefault()] : "Unknown";
 
 
-                        <tr>
-                            <td>@room.Name</td>
-                            <td>@loaiPhongText</td>
-                            <td>@room.Occupancy/@room.MaxCapacity</td>
-                            <td>@room.Gender</td>
-                            @if (room.Occupancy.Equals(room.MaxCapacity))
-                            {
-                                <td>Hết phòng</td>
-                            }
-                            else
-                            {
-                                <td>Còn trống</td>
-                            }
+                            <tr>
+                                <td>@room.Name</td>
+                                <td>@loaiPhongText</td>
+                                <td>@room.Occupancy/@room.MaxCapacity</td>
+                                <td>@room.Gender</td>
+                                @if (room.Occupancy.Equals(room.MaxCapacity))
+                                {
+                                    <td>Hết phòng</td>
+                                }
+                                else
+                                {
+                                    <td>Còn trống</td>
+                                }
 
-                            <td>
-                                <button type="button" class="btn btn-success btn-sm" onclick="">
-                                    <i class="fas fa-eye"></i> View
-                                </button>
-                                <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditRoom","Homes", new { id = room.RoomID})">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="@room.Name" data-id="@room.RoomID" data-toggle="modal" data-target="#deleteModal">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
-                            </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="">
+                                        <i class="fas fa-eye"></i> View
+                                    </button>
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditRoom","Homes", new { id = room.RoomID})">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-sm btnFloor" name="@room.Name" data-id="@room.RoomID" data-toggle="modal" data-target="#deleteModal">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
 
-                        </tr>
+                            </tr>
                         }
 
                     </tbody>

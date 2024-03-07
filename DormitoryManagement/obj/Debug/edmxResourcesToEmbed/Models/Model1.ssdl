@@ -25,11 +25,11 @@
     <Key>
       <PropertyRef Name="PaymentID" />
     </Key>
-    <Property Name="PaymentID" Type="int" Nullable="false" />
-    <Property Name="Semester" Type="varchar" MaxLength="50" />
-    <Property Name="Description" Type="text" />
-    <Property Name="DueDate" Type="date" />
-    <Property Name="ExpiryDate" Type="date" />
+    <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="MonthYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DueDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExpiryDate" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="LoaiPhong">
     <Key>
@@ -96,7 +96,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StudentAc__Build__382F5661">
+  <Association Name="FK__StudentAc__Build__7908F585">
     <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
     <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -108,7 +108,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__StudentAc__RoomI__373B3228">
+  <Association Name="FK__StudentAc__RoomI__7814D14C">
     <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
     <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -135,11 +135,11 @@
       <End Role="LoaiPhong" EntitySet="LoaiPhong" />
       <End Role="Rooms" EntitySet="Rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK__StudentAc__Build__382F5661" Association="Self.FK__StudentAc__Build__382F5661">
+    <AssociationSet Name="FK__StudentAc__Build__7908F585" Association="Self.FK__StudentAc__Build__7908F585">
       <End Role="Buildings" EntitySet="Buildings" />
       <End Role="StudentAccounts" EntitySet="StudentAccounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__StudentAc__RoomI__373B3228" Association="Self.FK__StudentAc__RoomI__373B3228">
+    <AssociationSet Name="FK__StudentAc__RoomI__7814D14C" Association="Self.FK__StudentAc__RoomI__7814D14C">
       <End Role="Rooms" EntitySet="Rooms" />
       <End Role="StudentAccounts" EntitySet="StudentAccounts" />
     </AssociationSet>

@@ -20,9 +20,10 @@
     <link href="~/Areas/Admin/Fonts/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/Areas/Admin/Fonts/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+
     <link href="~/Areas/Admin/Fonts/css/style.css" rel="stylesheet">
-
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 
@@ -59,10 +60,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -71,10 +68,11 @@
                     <i class="fa fa-building"></i>
                     <span>Quản lý tòa nhà</span>
                 </a>
+
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="~/Admin/Room">Quản lý loại phòng</a>
-                    </div>              
+                    </div>
                 </div>
             </li>
 
@@ -89,9 +87,6 @@
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="~/Admin/Student">Quản lý sinh viên</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -104,31 +99,19 @@
                 Học phí
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                <a class="nav-link" href="~/Admin/TuitionFee">
+                    <i class="fas fa-fw fa-solid fa-receipt"></i>
+                    <span>Quản lý phiếu thu</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
+                    <i class="fas fa-money-bill"></i>
+                    <span>Quản lý tiền phòng</span>
                 </a>
             </li>
 
@@ -220,7 +203,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="Public/Logout">Logout</a>
+                    <a class="btn btn-primary" href="~/Public/Logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -233,13 +216,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
-
     <!-- Core plugin JavaScript-->
     <script src="~/Areas/Admin/Fonts/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="~/Areas/Admin/Fonts/js/sb-admin-2.min.js"></script>
-
+    
     <!-- Page level custom scripts -->
     <!-- Page level plugins -->
     <script src="~/Areas/Admin/Fonts/vendor/datatables/jquery.dataTables.min.js"></script>

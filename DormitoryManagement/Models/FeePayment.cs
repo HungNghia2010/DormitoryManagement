@@ -15,9 +15,9 @@ namespace DormitoryManagement.Models
     public partial class FeePayment
     {
         public int PaymentID { get; set; }
-        public string Semester { get; set; }
         public string Description { get; set; }
-        public Nullable<System.DateTime> DueDate { get; set; }
-        public Nullable<System.DateTime> ExpiryDate { get; set; }
+        public string MonthYear { get; set; }
+        public string DueDate { get; set; }
+        public string ExpiryDate { get; set; }
     }
 }

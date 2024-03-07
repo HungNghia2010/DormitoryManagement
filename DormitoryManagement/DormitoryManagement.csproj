@@ -2535,6 +2535,9 @@
     <Content Include="Areas\Admin\Views\Room\EditRoomType.cshtml" />
     <Content Include="Areas\Admin\Views\Student\UpdateStudent.cshtml" />
     <Content Include="Areas\Admin\Views\TuitionFee\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TuitionFee\AddTuition.cshtml" />
+    <Content Include="Areas\Admin\Views\TuitionFee\EditTuition.cshtml" />
+    <Content Include="Areas\Admin\Views\TuitionFee\ManagementFee.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
