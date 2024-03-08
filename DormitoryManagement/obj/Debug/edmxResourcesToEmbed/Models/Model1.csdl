@@ -81,6 +81,7 @@
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="StudentAccount" ToRole="Building" />
     <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="StudentAccount" ToRole="Room" />
     <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" FromRole="StudentAccount" ToRole="StudentFee" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__StudentAc__Build__4AB81AF0">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />

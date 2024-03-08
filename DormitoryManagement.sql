@@ -62,7 +62,7 @@ VALUES
     (N'Phòng Thường', '150,000'),
     (N'Phòng Vip', '200,000');
 
-
+	drop table StudentAccounts
 CREATE TABLE StudentAccounts (
     StudentID INT IDENTITY(1,1) PRIMARY KEY,
     UserName VARCHAR(50) UNIQUE NOT NULL,
@@ -75,10 +75,12 @@ CREATE TABLE StudentAccounts (
 	ImagePath VARCHAR(100),
 	RoomID INT FOREIGN KEY REFERENCES Rooms(RoomId),
 	BuildingID INT FOREIGN KEY REFERENCES Buildings(BuildingID),
+	ResetPasswordCode VARCHAR(50),
     CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
 	LoginAttempts INT DEFAULT 0,
     IsLocked INT DEFAULT 0
 );
+
 
 INSERT INTO StudentAccounts (UserName, FullName, Password, Email, PhoneNumber, Gender)
 VALUES 
@@ -107,6 +109,7 @@ VALUES
 (N'Học phí học kỳ 1', '2/2024', '15/02/2024', '28/02/2024'), 
 (N'Học phí học kỳ 1', '3/2024', '15/03/2024', '31/03/2024'), 
 (N'Học phí học kỳ 2', '6/2024', '15/06/2024', '30/06/2024');
+
 
 CREATE TABLE StudentFee (
     Id INT PRIMARY KEY IDENTITY,

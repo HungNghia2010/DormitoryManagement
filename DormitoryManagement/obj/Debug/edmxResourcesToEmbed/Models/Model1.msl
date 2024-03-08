@@ -27,6 +27,7 @@
     <EntitySetMapping Name="StudentAccounts">
       <EntityTypeMapping TypeName="DormitoryManagementModel.StudentAccount">
         <MappingFragment StoreEntitySet="StudentAccounts">
+          <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
           <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
           <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />

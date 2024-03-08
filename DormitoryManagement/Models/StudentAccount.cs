@@ -11,11 +11,17 @@ namespace DormitoryManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Web;
 
-    public partial class StudentAccount
-    {
+	public partial class StudentAccount
+	{
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public StudentAccount()
+        {
+            this.StudentFees = new HashSet<StudentFee>();
+        }
+    
         public int StudentID { get; set; }
         public string UserName { get; set; }
         public string FullName { get; set; }
@@ -25,17 +31,18 @@ namespace DormitoryManagement.Models
         public string Address { get; set; }
         public string Gender { get; set; }
         public string ImagePath { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase ImageFile { get; set; }
-        public Nullable<int> RoomID { get; set; }
+		[NotMapped]
+		public HttpPostedFileBase ImageFile { get; set; }
+		public Nullable<int> RoomID { get; set; }
         public Nullable<int> BuildingID { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<int> LoginAttempts { get; set; }
         public Nullable<int> IsLocked { get; set; }
+        public string ResetPasswordCode { get; set; }
     
         public virtual Building Building { get; set; }
         public virtual Room Room { get; set; }
-        public ICollection<StudentFee> StudentFees { get; set; }
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentFee> StudentFees { get; set; }
     }
 }

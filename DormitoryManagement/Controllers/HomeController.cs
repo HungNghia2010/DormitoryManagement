@@ -7,6 +7,12 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
+using System.Net;
+using System.Configuration;
+using WebMatrix.WebData;
+using System.Web.Helpers;
+using DormitoryManagement.Areas.Admin.Data;
 
 namespace DormitoryManagement.Controllers
 {
@@ -177,6 +183,139 @@ namespace DormitoryManagement.Controllers
 			return byte2String;
 		}
 
+
+		public ActionResult ForgotPassword()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult ForgotPassword(string email)
+		{
+			//Verify Email ID
+			//Generate Reset password link 
+			//Send Email 
+			string message = "";
+			bool status = false;
+
+			
+			var account = _db.StudentAccounts.Where(a => a.Email == email).FirstOrDefault();
+			if (account != null)
+			{
+				//Send email for reset password
+				string resetCode = Guid.NewGuid().ToString();
+				SendVerificationLinkEmail(account.Email, resetCode, "ResetPassword");
+				account.ResetPasswordCode = resetCode;
+				//This line I have added here to avoid confirm password not match issue , as we had added a confirm password property 
+				//in our model class in part 1
+				_db.Configuration.ValidateOnSaveEnabled = false;
+				_db.SaveChanges();
+				message = "Reset password link has been sent to your email id.";
+			}
+			else
+			{
+				message = "Account not found";
+			}
+			
+			ViewBag.Message = message;
+			return View();
+		}
+		public void SendVerificationLinkEmail(string emailID, string activationCode, string emailFor = "VerifyAccount")
+		{
+			var verifyUrl = "/Home/" + emailFor + "/" + activationCode;
+			var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
+
+			var fromEmail = new MailAddress("acnast9@gmail.com", "Dotnet Awesome");
+			var toEmail = new MailAddress(emailID);
+			var fromEmailPassword = "hqbbmcynpkwhcfnq"; // Replace with actual password
+
+			string subject = "";
+			string body = "";
+			if (emailFor == "VerifyAccount")
+			{
+				subject = "Your account is successfully created!";
+				body = "<br/><br/>We are excited to tell you that your Dotnet Awesome account is" +
+					" successfully created. Please click on the below link to verify your account" +
+					" <br/><br/><a href='" + link + "'>" + link + "</a> ";
+
+			}
+			else if (emailFor == "ResetPassword")
+			{
+				subject = "Reset Password";
+				body = "Hi,<br/>br/>We got request for reset your account password. Please click on the below link to reset your password" +
+					"<br/><br/><a href=" + link + ">Reset Password link</a>";
+			}
+
+
+			var smtp = new SmtpClient
+			{
+				Host = "smtp.gmail.com",
+				Port = 587,
+				EnableSsl = true,
+				DeliveryMethod = SmtpDeliveryMethod.Network,
+				UseDefaultCredentials = false,
+				Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+			};
+
+			using (var message = new MailMessage(fromEmail, toEmail)
+			{
+				Subject = subject,
+				Body = body,
+				IsBodyHtml = true
+			})
+				smtp.Send(message);
+		}
+
+		public ActionResult ResetPassword(string id)
+		{
+			//Verify the reset password link
+			//Find account associated with this link
+			//redirect to reset password page
+			if (string.IsNullOrWhiteSpace(id))
+			{
+				return HttpNotFound();
+			}
+
+			var user = _db.StudentAccounts.Where(a => a.ResetPasswordCode == id).FirstOrDefault();
+			if (user != null)
+			{
+				ResetPassword model = new ResetPassword();
+				model.ResetCode = id;
+				return View(model);
+			}
+			else
+			{
+				return HttpNotFound();
+			}
+		
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult ResetPassword(ResetPassword model)
+		{
+			var message = "";
+			if (ModelState.IsValid)
+			{
+				
+				var user = _db.StudentAccounts.Where(a => a.ResetPasswordCode == model.ResetCode).FirstOrDefault();
+				if (user != null)
+				{
+					user.Password = GetMD5(model.NewPassword);
+					user.ResetPasswordCode = "";
+					_db.Configuration.ValidateOnSaveEnabled = false;
+					_db.SaveChanges();
+					message = "New password updated successfully";
+				}
+				
+			}
+			else
+			{
+				message = "Something invalid";
+			}
+			ViewBag.Message = message;
+			return View(model);
+		}
 		public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

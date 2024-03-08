@@ -558,3 +558,8 @@ C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagemen
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Memory.Data.xml
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Net.Http.WinHttpHandler.xml
 C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\System.Text.Json.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.Data.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.dll
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.Data.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.xml
+D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Web.Helpers.dll

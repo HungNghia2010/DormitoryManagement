@@ -8,13 +8,11 @@
 
 .action {
     position: fixed;
-  
+    z-index:1;
     top: 20px;
     right: 30px;
 }
-.menu{
-    z-index;
-}
+
 
     .action .profile {
         position: relative;

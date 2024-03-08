@@ -73,6 +73,7 @@
           <Property Name="ImagePath" Type="varchar" MaxLength="100" />
           <Property Name="RoomID" Type="int" />
           <Property Name="BuildingID" Type="int" />
+          <Property Name="ResetPasswordCode" Type="varchar" MaxLength="50" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="LoginAttempts" Type="int" />
           <Property Name="IsLocked" Type="int" />
@@ -88,7 +89,7 @@
           <Property Name="TotalAmount" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PaymentStatus" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Rooms__BuildingI__308E3499">
+        <Association Name="FK__Rooms__BuildingI__22AA2996">
           <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -100,7 +101,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rooms__MaLoaiPho__318258D2">
+        <Association Name="FK__Rooms__MaLoaiPho__239E4DCF">
           <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="0..1" />
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,7 +113,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__Build__7908F585">
+        <Association Name="FK__StudentAc__Build__6E01572D">
           <End Role="Buildings" Type="Self.Buildings" Multiplicity="0..1" />
           <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentAc__RoomI__7814D14C">
+        <Association Name="FK__StudentAc__RoomI__6D0D32F4">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="0..1" />
           <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +137,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentFe__Payme__3AD6B8E2">
+        <Association Name="FK__StudentFe__Payme__74AE54BC">
           <End Role="FeePayments" Type="Self.FeePayments" Multiplicity="1" />
           <End Role="StudentFee" Type="Self.StudentFee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentFe__RoomI__3BCADD1B">
+        <Association Name="FK__StudentFe__RoomI__75A278F5">
           <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
           <End Role="StudentFee" Type="Self.StudentFee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -160,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentFe__Stude__39E294A9">
+        <Association Name="FK__StudentFe__Stude__73BA3083">
           <End Role="StudentAccounts" Type="Self.StudentAccounts" Multiplicity="1" />
           <End Role="StudentFee" Type="Self.StudentFee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -180,31 +181,31 @@
           <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentFee" EntityType="Self.StudentFee" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Rooms__BuildingI__308E3499" Association="Self.FK__Rooms__BuildingI__308E3499">
+          <AssociationSet Name="FK__Rooms__BuildingI__22AA2996" Association="Self.FK__Rooms__BuildingI__22AA2996">
             <End Role="Buildings" EntitySet="Buildings" />
             <End Role="Rooms" EntitySet="Rooms" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rooms__MaLoaiPho__318258D2" Association="Self.FK__Rooms__MaLoaiPho__318258D2">
+          <AssociationSet Name="FK__Rooms__MaLoaiPho__239E4DCF" Association="Self.FK__Rooms__MaLoaiPho__239E4DCF">
             <End Role="LoaiPhong" EntitySet="LoaiPhong" />
             <End Role="Rooms" EntitySet="Rooms" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__Build__7908F585" Association="Self.FK__StudentAc__Build__7908F585">
+          <AssociationSet Name="FK__StudentAc__Build__6E01572D" Association="Self.FK__StudentAc__Build__6E01572D">
             <End Role="Buildings" EntitySet="Buildings" />
             <End Role="StudentAccounts" EntitySet="StudentAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentAc__RoomI__7814D14C" Association="Self.FK__StudentAc__RoomI__7814D14C">
+          <AssociationSet Name="FK__StudentAc__RoomI__6D0D32F4" Association="Self.FK__StudentAc__RoomI__6D0D32F4">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="StudentAccounts" EntitySet="StudentAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentFe__Payme__3AD6B8E2" Association="Self.FK__StudentFe__Payme__3AD6B8E2">
+          <AssociationSet Name="FK__StudentFe__Payme__74AE54BC" Association="Self.FK__StudentFe__Payme__74AE54BC">
             <End Role="FeePayments" EntitySet="FeePayments" />
             <End Role="StudentFee" EntitySet="StudentFee" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentFe__RoomI__3BCADD1B" Association="Self.FK__StudentFe__RoomI__3BCADD1B">
+          <AssociationSet Name="FK__StudentFe__RoomI__75A278F5" Association="Self.FK__StudentFe__RoomI__75A278F5">
             <End Role="Rooms" EntitySet="Rooms" />
             <End Role="StudentFee" EntitySet="StudentFee" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentFe__Stude__39E294A9" Association="Self.FK__StudentFe__Stude__39E294A9">
+          <AssociationSet Name="FK__StudentFe__Stude__73BA3083" Association="Self.FK__StudentFe__Stude__73BA3083">
             <End Role="StudentAccounts" EntitySet="StudentAccounts" />
             <End Role="StudentFee" EntitySet="StudentFee" />
           </AssociationSet>
@@ -294,6 +295,7 @@
           <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="StudentAccount" ToRole="Building" />
           <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="StudentAccount" ToRole="Room" />
           <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" FromRole="StudentAccount" ToRole="StudentFee" />
+          <Property Name="ResetPasswordCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__StudentAc__Build__4AB81AF0">
           <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -463,6 +465,7 @@
           <EntitySetMapping Name="StudentAccounts">
             <EntityTypeMapping TypeName="DormitoryManagementModel.StudentAccount">
               <MappingFragment StoreEntitySet="StudentAccounts">
+                <ScalarProperty Name="ResetPasswordCode" ColumnName="ResetPasswordCode" />
                 <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
                 <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
