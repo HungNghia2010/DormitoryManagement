@@ -108,4 +108,21 @@ VALUES
 (N'Học phí học kỳ 1', '3/2024', '15/03/2024', '31/03/2024'), 
 (N'Học phí học kỳ 2', '6/2024', '15/06/2024', '30/06/2024');
 
-Drop table FeePayments
+CREATE TABLE StudentFee (
+    Id INT PRIMARY KEY IDENTITY,
+    StudentId INT NOT NULL,
+    PaymentId INT NOT NULL,
+    RoomId INT NOT NULL,
+    TotalAmount NVARCHAR(255) NOT NULL, -- Thay đổi kiểu dữ liệu thành VARCHAR
+    PaymentStatus NVARCHAR(20) NOT NULL,
+    FOREIGN KEY (StudentId) REFERENCES StudentAccounts(StudentID),
+    FOREIGN KEY (PaymentId) REFERENCES FeePayments(PaymentID),
+    FOREIGN KEY (RoomId) REFERENCES Rooms(RoomID)
+);
+
+SELECT r.Name,b.Name as BuildingName, sf.PaymentStatus,sf.PaymentId,sf.TotalAmount, sa.FullName,sa.StudentID,fp.MonthYear,sf.Id
+FROM StudentFee sf
+JOIN Rooms r ON sf.RoomId = r.RoomId
+JOIN Buildings b ON r.BuildingId = b.BuildingId
+JOIN StudentAccounts sa ON sf.StudentId = sa.StudentId
+JOIN FeePayments fp ON fp.PaymentID = sf.PaymentId

@@ -36,6 +36,19 @@
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
     <EntitySet Name="FeePayments" EntityType="DormitoryManagementModel.FeePayment" />
+    <EntitySet Name="StudentFees" EntityType="DormitoryManagementModel.StudentFee" />
+    <AssociationSet Name="FK__StudentFe__Payme__351DDF8C" Association="DormitoryManagementModel.FK__StudentFe__Payme__351DDF8C">
+      <End Role="FeePayment" EntitySet="FeePayments" />
+      <End Role="StudentFee" EntitySet="StudentFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentFe__RoomI__361203C5" Association="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="StudentFee" EntitySet="StudentFees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentFe__Stude__3429BB53" Association="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53">
+      <End Role="StudentAccount" EntitySet="StudentAccounts" />
+      <End Role="StudentFee" EntitySet="StudentFees" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -67,6 +80,7 @@
     <Property Name="IsLocked" Type="Int32" />
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__StudentAc__Build__4AB81AF0" FromRole="StudentAccount" ToRole="Building" />
     <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="StudentAccount" ToRole="Room" />
+    <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" FromRole="StudentAccount" ToRole="StudentFee" />
   </EntityType>
   <Association Name="FK__StudentAc__Build__4AB81AF0">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -96,6 +110,7 @@
     <NavigationProperty Name="Building" Relationship="DormitoryManagementModel.FK__Rooms__BuildingI__1B9317B3" FromRole="Room" ToRole="Building" />
     <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="Room" ToRole="StudentAccount" />
     <NavigationProperty Name="LoaiPhong" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" FromRole="Room" ToRole="LoaiPhong" />
+    <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5" FromRole="Room" ToRole="StudentFee" />
   </EntityType>
   <Association Name="FK__Rooms__BuildingI__1B9317B3">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -151,5 +166,56 @@
     <Property Name="MonthYear" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DueDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ExpiryDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__Payme__351DDF8C" FromRole="FeePayment" ToRole="StudentFee" />
   </EntityType>
+  <EntityType Name="StudentFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentId" Type="Int32" Nullable="false" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="TotalAmount" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FeePayment" Relationship="DormitoryManagementModel.FK__StudentFe__Payme__351DDF8C" FromRole="StudentFee" ToRole="FeePayment" />
+    <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5" FromRole="StudentFee" ToRole="Room" />
+    <NavigationProperty Name="StudentAccount" Relationship="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" FromRole="StudentFee" ToRole="StudentAccount" />
+  </EntityType>
+  <Association Name="FK__StudentFe__Payme__351DDF8C">
+    <End Type="DormitoryManagementModel.FeePayment" Role="FeePayment" Multiplicity="1" />
+    <End Type="DormitoryManagementModel.StudentFee" Role="StudentFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FeePayment">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="StudentFee">
+        <PropertyRef Name="PaymentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentFe__RoomI__361203C5">
+    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="DormitoryManagementModel.StudentFee" Role="StudentFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="StudentFee">
+        <PropertyRef Name="RoomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentFe__Stude__3429BB53">
+    <End Type="DormitoryManagementModel.StudentAccount" Role="StudentAccount" Multiplicity="1" />
+    <End Type="DormitoryManagementModel.StudentFee" Role="StudentFee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentAccount">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="StudentFee">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

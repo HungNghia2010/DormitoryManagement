@@ -316,6 +316,7 @@
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuitionFeeController.cs" />
     <Compile Include="Areas\Admin\Data\Changepass.cs" />
+    <Compile Include="Areas\Admin\Data\FeeData.cs" />
     <Compile Include="Areas\Admin\RequireLogoutAttribute.cs" />
     <Compile Include="Areas\Admin\RequireLoginAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
@@ -359,6 +360,9 @@
     <Compile Include="Models\StudentAccount.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StudentFee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -379,10 +383,7 @@
     <Content Include="Areas\Admin\Fonts\js\sb-admin-2.min.js" />
     <Content Include="Areas\Admin\Fonts\js\script.js" />
     <Content Include="Areas\Admin\Fonts\js\script2.js" />
-    <Content Include="Areas\Admin\Fonts\modal\modaladdApartment.html" />
-    <Content Include="Areas\Admin\Fonts\modal\modaladdFloor.html" />
-    <Content Include="Areas\Admin\Fonts\modal\modaladdRoom.html" />
-    <Content Include="Areas\Admin\Fonts\modal\test.html" />
+    <Content Include="Areas\Admin\Fonts\js\script3.js" />
     <Content Include="Areas\Admin\Fonts\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Areas\Admin\Fonts\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\Admin\Fonts\vendor\bootstrap\js\bootstrap.js" />

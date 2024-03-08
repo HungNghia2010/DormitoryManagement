@@ -15,6 +15,10 @@
         <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="1.25" PointY="3.5" />
         <AssociationConnector Association="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" />
         <EntityTypeShape EntityType="DormitoryManagementModel.FeePayment" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.StudentFee" Width="1.5" PointX="10.125" PointY="3" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__StudentFe__Payme__351DDF8C" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

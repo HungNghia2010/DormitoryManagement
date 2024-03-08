@@ -35,5 +35,7 @@ namespace DormitoryManagement.Models
     
         public virtual Building Building { get; set; }
         public virtual Room Room { get; set; }
+        public ICollection<StudentFee> StudentFees { get; set; }
+
     }
 }

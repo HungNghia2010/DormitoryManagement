@@ -1,4 +1,5 @@
-﻿using DormitoryManagement.Models;
+﻿using DormitoryManagement.Areas.Admin.Data;
+using DormitoryManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,26 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 }
                 _db.FeePayments.Add(feePayment);
                 _db.SaveChanges();
+
+                var students = _db.StudentAccounts.Where(s=>s.RoomID != null).ToList();
+
+                foreach(var student in students)
+                {
+                    var s = _db.Rooms.Find(student.RoomID);
+                    var IDtype = _db.LoaiPhongs.Find(s.MaLoaiPhong);
+
+                    var studentFee = new StudentFee
+                    {
+                        StudentId = student.StudentID,
+                        PaymentId = feePayment.PaymentID,
+                        RoomId = student.RoomID ?? 0,
+                        PaymentStatus = "Chưa thanh toán",
+                        TotalAmount = IDtype.GiaTien
+                    };
+                    _db.StudentFees.Add(studentFee);
+                    _db.SaveChanges();
+                }
+                
                 ViewData["success"] = "Thêm thành công";
                 return View();
             }
@@ -86,7 +107,25 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         
         public ActionResult ManagementFee()
         {
-            return View();
+            var data = (from sf in _db.StudentFees
+                        join r in _db.Rooms on sf.RoomId equals r.RoomID
+                        join b in _db.Buildings on r.BuildingID equals b.BuildingID
+                        join sa in _db.StudentAccounts on sf.StudentId equals sa.StudentID
+                        join fp in _db.FeePayments on sf.PaymentId equals fp.PaymentID
+                        select new FeeData
+                        {
+                            RoomName = r.Name,
+                            BuildingName = b.Name,
+                            PaymentStatus = sf.PaymentStatus,
+                            PaymentId = sf.PaymentId,
+                            TotalAmount = sf.TotalAmount,
+                            FullName = sa.FullName,
+                            StudentID = sa.StudentID,
+                            MonthYear = fp.MonthYear,
+                            ID = sf.Id
+                        }).ToList();
+ 
+            return View(data);
         }
 
     }

@@ -14,10 +14,19 @@ namespace DormitoryManagement.Models
     
     public partial class FeePayment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FeePayment()
+        {
+            this.StudentFees = new HashSet<StudentFee>();
+        }
+    
         public int PaymentID { get; set; }
         public string Description { get; set; }
         public string MonthYear { get; set; }
         public string DueDate { get; set; }
         public string ExpiryDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentFee> StudentFees { get; set; }
     }
 }
