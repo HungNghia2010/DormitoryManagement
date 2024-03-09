@@ -563,3 +563,8 @@ D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.dll
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.Data.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.xml
 D:\git desktop\DormitoryManagement\DormitoryManagement\bin\Microsoft.Web.Helpers.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\Microsoft.Web.Helpers.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\WebMatrix.Data.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.dll
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\WebMatrix.Data.xml
+C:\Users\ASUS\Desktop\DormitoryManagement\DormitoryManagement\DormitoryManagement\bin\WebMatrix.WebData.xml

@@ -104,7 +104,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         }
 
         // GET: Admin/TuitionFee/EditTuition
-        
+        [RequireLogin]
         public ActionResult ManagementFee()
         {
             var data = (from sf in _db.StudentFees

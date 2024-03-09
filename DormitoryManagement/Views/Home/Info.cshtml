@@ -18,7 +18,15 @@
 <!--  contact -->
 <div class="contact">
     <div class="col-md-12 avatar">
-        <img src="@Model.ImagePath" alt="Avatar" class="avatar">
+        @if (Model.ImagePath == null)
+        {
+            <img src="@Model.ImagePath" alt="Avatar" class="avatar">
+        }
+        else
+        {
+            <img src="~/Resources/Assets/images/avatar.png" alt="Avatar" class="avatar">
+        }
+
     </div>
     <div class="container">
         <div class="row">

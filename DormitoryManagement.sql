@@ -110,13 +110,12 @@ VALUES
 (N'Học phí học kỳ 1', '3/2024', '15/03/2024', '31/03/2024'), 
 (N'Học phí học kỳ 2', '6/2024', '15/06/2024', '30/06/2024');
 
-
 CREATE TABLE StudentFee (
     Id INT PRIMARY KEY IDENTITY,
     StudentId INT NOT NULL,
     PaymentId INT NOT NULL,
     RoomId INT NOT NULL,
-    TotalAmount NVARCHAR(255) NOT NULL, -- Thay đổi kiểu dữ liệu thành VARCHAR
+    TotalAmount NVARCHAR(255) NOT NULL,
     PaymentStatus NVARCHAR(20) NOT NULL,
     FOREIGN KEY (StudentId) REFERENCES StudentAccounts(StudentID),
     FOREIGN KEY (PaymentId) REFERENCES FeePayments(PaymentID),
