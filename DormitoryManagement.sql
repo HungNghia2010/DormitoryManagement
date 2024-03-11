@@ -122,9 +122,10 @@ CREATE TABLE StudentFee (
     FOREIGN KEY (RoomId) REFERENCES Rooms(RoomID)
 );
 
-SELECT r.Name,b.Name as BuildingName, sf.PaymentStatus,sf.PaymentId,sf.TotalAmount, sa.FullName,sa.StudentID,fp.MonthYear,sf.Id
+SELECT r.Name,b.Name as BuildingName, sf.PaymentStatus,sf.PaymentId,sf.TotalAmount, sa.FullName,sa.StudentID,fp.MonthYear,sf.Id,fp.Description
 FROM StudentFee sf
 JOIN Rooms r ON sf.RoomId = r.RoomId
 JOIN Buildings b ON r.BuildingId = b.BuildingId
 JOIN StudentAccounts sa ON sf.StudentId = sa.StudentId
 JOIN FeePayments fp ON fp.PaymentID = sf.PaymentId
+Where sa.StudentID = 1

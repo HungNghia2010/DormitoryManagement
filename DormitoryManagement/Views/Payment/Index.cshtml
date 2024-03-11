@@ -1,28 +1,42 @@
 ﻿@{
     ViewBag.Title = "Học phí kí túc xá";
 }
+@model List<DormitoryManagement.Areas.Admin.Data.FeeData>
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-8 offset-md-1">
+        <div class="col-md-10 offset-md-1">
             <h3 class="text-left mb-4">Hóa đơn tiền phòng</h3>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col" class="text-left">Nội dung hóa đơn</th>
-                        <th scope="col" class="text-left">Số lượng</th>
-                        <th scope="col" class="text-left">Số tiền</th>
-                        <th scope="col" class="text-left">Thời gian</th>
-                        <th scope="col" class="text-left">Trạng thái</th>
-                        <th scope="col" class="text-left">Xem hóa đơn</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Thêm các hàng dữ liệu vào đây -->
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-left">Nội dung hóa đơn</th>
+                            <th scope="col" class="text-left">Tháng</th>
+                            <th scope="col" class="text-left">Số tiền</th>
+                            <th scope="col" class="text-left">Thời gian</th>
+                            <th scope="col" class="text-left">Trạng thái</th>
+                            <th scope="col" class="text-left">Xem hóa đơn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Descript</td>
+                                <td>@item.MonthYear</td>
+                                <td>@item.TotalAmount</td>
+                                <td>@item.DueDate - @item.ExpiryDate</td>
+                                <td>@item.PaymentStatus</td>
+                                <td>Xem</td>
+                            </tr>
+                        }
+                        
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
-

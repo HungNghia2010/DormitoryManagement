@@ -9,6 +9,7 @@ namespace DormitoryManagement.Areas.Admin.Data
     {
         public string RoomName { get; set; }
         public string BuildingName { get; set; }
+        public string Descript { get; set; }
         public string PaymentStatus { get; set; }
         public int PaymentId { get; set; }
         public string TotalAmount { get; set; }
@@ -16,5 +17,7 @@ namespace DormitoryManagement.Areas.Admin.Data
         public int StudentID { get; set; }
         public string MonthYear { get; set; }
         public int ID { get; set; }
+        public string DueDate { get; set; }
+        public string ExpiryDate { get; set; }
     }
 }

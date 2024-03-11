@@ -23,7 +23,11 @@ namespace DormitoryManagement.Controllers
 		[RequireLogin]
 		public ActionResult Index()
         {
-            return View();
+			var username = (string)Session["username"];
+
+			// Lấy thông tin sinh viên có tên đăng nhập tương ứng từ cơ sở dữ liệu
+			var student = _db.StudentAccounts.FirstOrDefault(s => s.UserName == username);
+			return View(student);
         }
 
 		[RequireLogin]
@@ -34,7 +38,10 @@ namespace DormitoryManagement.Controllers
 
 			// Lấy thông tin sinh viên có tên đăng nhập tương ứng từ cơ sở dữ liệu
 			var student = _db.StudentAccounts.FirstOrDefault(s => s.UserName == username);
-
+			var roomName = _db.Rooms.Find(student.RoomID);
+			var building = _db.Buildings.Find(roomName.BuildingID);
+			ViewBag.room = roomName.Name;
+			ViewBag.building = building.Name;
 			if (student != null)
 			{
 				// Truyền ID sinh viên vào view
@@ -55,6 +62,9 @@ namespace DormitoryManagement.Controllers
 					BuildingID = student.BuildingID,
 					// Các thuộc tính khác của studentModel
 				};
+
+
+
 				return View(studentModel);
 			}
 
@@ -82,9 +92,6 @@ namespace DormitoryManagement.Controllers
 					student.PhoneNumber = studentModel.PhoneNumber;
 					student.Address = studentModel.Address;
 					student.Gender = studentModel.Gender;
-					student.RoomID = studentModel.RoomID;
-					student.BuildingID = studentModel.BuildingID;
-
 					// Save the changes to the database
 					_db.SaveChanges();
 

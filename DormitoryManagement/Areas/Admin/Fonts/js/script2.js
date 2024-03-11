@@ -192,6 +192,19 @@
         $('.modal-body').text("Select Logout below if you are ready to end your current session.");
     });
 
+    $('.btn.btn-danger.btn-sm.btntuitionfee').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa phiếu thu " + name + " này không ?");
+        $('#confirmDeleteTuitionfee').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+
+    $('#confirmDeleteTuitionfee').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/TuitionFee/DeleteTuitionFee/' + id;
+    });
+
 });
 
 

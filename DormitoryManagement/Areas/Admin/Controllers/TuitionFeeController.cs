@@ -17,6 +17,13 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var data = _db.FeePayments.ToList();
+
+            var Mydata = TempData["success"];
+            ViewBag.success = Mydata;
+
+            var Mydataerror = TempData["error"];
+            ViewBag.error = Mydataerror;
+
             return View(data);
         }
 
@@ -77,6 +84,34 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
+        [RequireLogin]
+        public ActionResult DeleteTuitionFee(int id)
+        {
+            // Lấy dữ liệu cần xóa từ cơ sở dữ liệu
+            var data = _db.FeePayments.Find(id);
+            var m = data.Description;
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var check = _db.StudentFees.Where(a => a.PaymentId == id).ToList();
+                
+                if (check.Count > 0)
+                {
+                    TempData["error"] = "Không thể xóa phiếu thu này";
+                    return RedirectToAction("Index", "TuitionFee", new { area = "Admin"});
+                }
+                
+                _db.FeePayments.Remove(data);
+                _db.SaveChanges();
+                TempData["success"] = "Xóa phiếu thu " + m + " thành công";
+                return RedirectToAction("Index", "TuitionFee", new { area = "Admin" });
+            }
+
+        }
+
 
         // Post: Admin/TuitionFee/EditTuition
         [HttpPost]
@@ -107,6 +142,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         [RequireLogin]
         public ActionResult ManagementFee()
         {
+            var Mydata = TempData["success"];
+            ViewBag.success = Mydata;
+
+            var Mydataerror = TempData["error"];
+            ViewBag.error = Mydataerror;
+
             var data = (from sf in _db.StudentFees
                         join r in _db.Rooms on sf.RoomId equals r.RoomID
                         join b in _db.Buildings on r.BuildingID equals b.BuildingID
@@ -117,6 +158,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                             RoomName = r.Name,
                             BuildingName = b.Name,
                             PaymentStatus = sf.PaymentStatus,
+                            Descript = fp.Description,
                             PaymentId = sf.PaymentId,
                             TotalAmount = sf.TotalAmount,
                             FullName = sa.FullName,
@@ -128,5 +170,32 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
+        [RequireLogin]
+        public ActionResult DeleteStudentFee(int id)
+        {
+            // Lấy dữ liệu cần xóa từ cơ sở dữ liệu
+            var data = _db.StudentFees.Find(id);
+            var m = data.Id;
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var check = _db.StudentFees.Where(a => a.Id == id && a.PaymentStatus.Equals("Chưa thanh toán")).ToList();
+
+                if (check.Count > 0)
+                {
+                    TempData["error"] = "Không thể xóa hóa đơn này";
+                    return RedirectToAction("ManagementFee", "TuitionFee", new { area = "Admin" });
+                }
+
+                _db.StudentFees.Remove(data);
+                _db.SaveChanges();
+                TempData["success"] = "Xóa phiếu thu " + m + " thành công";
+                return RedirectToAction("ManagementFee", "TuitionFee", new { area = "Admin" });
+            }
+
+        }
     }
 }

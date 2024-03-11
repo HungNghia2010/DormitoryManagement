@@ -49,6 +49,7 @@ namespace DormitoryManagement.Controllers
 						//add session
 						Session["username"] = data.FirstOrDefault().UserName;
 						Session["idUser"] = data.FirstOrDefault().StudentID;
+						Session["StudentImagePath"] = data.FirstOrDefault().ImagePath;
 						data.FirstOrDefault().LoginAttempts = 0;
 						_db.SaveChanges();
 

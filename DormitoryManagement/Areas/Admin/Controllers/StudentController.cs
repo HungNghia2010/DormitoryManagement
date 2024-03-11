@@ -21,6 +21,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 		[RequireLogin]
 		public ActionResult Index()
 		{
+			var Mydata = TempData["success"];
+			ViewBag.success = Mydata;
+
+			var Mydataerror = TempData["error"];
+			ViewBag.error = Mydataerror;
+
 			var room = _db.Rooms.ToList();
 			var data = _db.StudentAccounts.ToList();
 
@@ -137,13 +143,19 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 			}
 			else
 			{
+				var check = _db.StudentFees.Where(fee => fee.StudentId == id).ToList();
+				if(check.Count > 0)
+                {
+					TempData["error"] = "Không thể xóa sinh viên";
+					return RedirectToAction("Index", "Student", new { area = "Admin" });
+				}
 				var s = data.StudentID;
 				var m = data.UserName;
 				data.IsLocked = 0;
 				_db.StudentAccounts.Remove(data);
 				_db.SaveChanges();
 				TempData["success"] = "Xóa sinh viên " + m + " thành công";
-				return RedirectToAction("Index", "Student", new { area = "Admin", studentID = s });
+				return RedirectToAction("Index", "Student", new { area = "Admin"});
 			}
 
 		}

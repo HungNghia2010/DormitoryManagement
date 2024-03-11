@@ -51,4 +51,18 @@
         $('#toMonth').val('--Chọn tháng--');
         $("table#dataTable tbody tr").show(); // Hiển thị lại tất cả các hàng
     });
+
+    $('.btn.btn-danger.btn-sm.btnstudentfee').click(function () {
+        var id = $(this).data('id');
+        var name = $(this).attr('name');
+        $('.modal-body').text("Bạn có chắc chắn muốn xóa hóa đơn số " + name + " này không ?");
+        $('#confirmDeleteFeeStudent').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+
+    $('#confirmDeleteFeeStudent').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/TuitionFee/DeleteStudentFee/' + id;
+    });
+
 });

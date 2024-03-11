@@ -289,6 +289,12 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     TempData["error"] = "Xóa phòng " + m + " không thành công vì còn sinh viên trong phòng";
                     return RedirectToAction("Floor", "Homes", new { area = "Admin", buildingId = s });
                 }
+                var check2 = _db.StudentFees.Where(fee => fee.RoomId == data.RoomID).ToList();
+                if(check2.Count > 0)
+                {
+                    TempData["error"] = "Không thể xóa";
+                    return RedirectToAction("Floor", "Homes", new { area = "Admin", buildingId = s });
+                }
 
                 _db.Rooms.Remove(data);
                 _db.SaveChanges();

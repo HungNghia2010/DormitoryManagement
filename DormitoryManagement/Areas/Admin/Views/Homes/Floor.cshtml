@@ -22,7 +22,7 @@
 
     @if (@ViewBag.Success != null)
     {
-        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
             <strong>@ViewBag.Success</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -31,7 +31,7 @@
     }
     @if (@ViewBag.Error != null)
     {
-        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
             <strong>@ViewBag.Error</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

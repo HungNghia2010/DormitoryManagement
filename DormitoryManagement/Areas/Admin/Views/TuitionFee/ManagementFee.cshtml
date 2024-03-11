@@ -67,6 +67,26 @@
             <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
         </div>
     </div>
+
+    @if (@ViewBag.Success != null)
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Success</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Error</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -99,37 +119,54 @@
                     <tbody>
                         @foreach (var fee in Model)
                         {
-                        <tr>
-                            <td>@fee.ID</td>
-                            <td><strong>@fee.FullName</strong> <br /> @fee.StudentID</td>
-                            <td><strong>@fee.MonthYear</strong></td>
-                            <td><strong>@fee.RoomName</strong></td>
-                            <td><strong>@fee.BuildingName</strong></td>
-                            <td>@fee.TotalAmount</td>
-                            @if (fee.PaymentStatus.Equals("Chưa thanh toán"))
-                            {
-                                <td><span class="badge badge-pill badge-warning">@fee.PaymentStatus</span></td>
-                            }
-                            else
-                            {
-                                <td><span class="badge badge-pill badge-success">@fee.PaymentStatus</span></td>
-                            }
-                            <td>
-                                <button type="button" class="btn btn-success btn-sm" onclick="">
-                                    <i class="fas fa-eye"></i> View
-                                </button>
-                                <a type="button" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@fee.ID</td>
+                                <td><strong>@fee.FullName</strong> <br /> @fee.StudentID</td>
+                                <td><strong>@fee.MonthYear</strong></td>
+                                <td><strong>@fee.RoomName</strong></td>
+                                <td><strong>@fee.BuildingName</strong></td>
+                                <td>@fee.TotalAmount</td>
+                                @if (fee.PaymentStatus.Equals("Chưa thanh toán"))
+                                {
+                                    <td><span class="badge badge-pill badge-warning">@fee.PaymentStatus</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="badge badge-pill badge-success">@fee.PaymentStatus</span></td>
+                                }
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="@fee.ID" data-id="@fee.ID" data-toggle="modal" data-target="#deleteModal">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
+                            </tr>
                         }
-                        
+
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa tiền phòng này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteFeeStudent">Xóa</button>
+                </div>
             </div>
         </div>
     </div>

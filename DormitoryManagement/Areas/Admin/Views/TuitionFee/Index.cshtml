@@ -17,8 +17,17 @@
 
     @if (@ViewBag.Success != null)
     {
-        <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
             <strong>@ViewBag.Success</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Error</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -48,24 +57,24 @@
                     <tbody>
                         @foreach (var m in Model)
                         {
-                        <tr>
-                            <td>@m.Description</td>
-                            <td>@m.MonthYear</td>
-                            <td>@m.DueDate - @m.ExpiryDate</td>
-                            <td>
-                                
-                                <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditTuition","TuitionFee", new { id = m.PaymentID})">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <button type="button" class="btn btn-danger btn-sm btnFloor" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>@m.Description</td>
+                                <td>@m.MonthYear</td>
+                                <td>@m.DueDate - @m.ExpiryDate</td>
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditTuition","TuitionFee", new { id = m.PaymentID})">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-sm btntuitionfee" name="@m.Description" data-id="@m.PaymentID" data-toggle="modal" data-target="#deleteModal">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
+                            </tr>
                         }
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -83,7 +92,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteRoom">Xóa</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteTuitionfee">Xóa</button>
                 </div>
             </div>
         </div>

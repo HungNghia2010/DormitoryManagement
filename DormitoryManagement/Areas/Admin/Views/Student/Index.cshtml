@@ -14,17 +14,29 @@
 
     <script src="~/Areas/Admin/Fonts/js/script2.js"></script>
 }
-@if (TempData["error"] != null)
-{
-    <div class="alert alert-danger">
-        @TempData["error"]
-    </div>
-}
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Quản Lý Sinh Viên</h1>
     <a class="btn btn-primary" href="https://localhost:44342/Admin/Student/AddStudent">Thêm Sinh Viên</a>
-
+    @if (@ViewBag.Success != null)
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Success</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Error</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -69,7 +81,7 @@
                                 int roomIDToSearch = type.RoomID.Value;
                                 soToaText = ViewBag.myDict.ContainsKey(roomIDToSearch) ? ViewBag.myDict[roomIDToSearch] : "Chưa có tòa";
                             }
-                            
+
                             <tr>
                                 <td><img style="width:50px; height:50px; border-radius:50%" src="@type.ImagePath" /></td>
                                 <td>@type.StudentID</td>
