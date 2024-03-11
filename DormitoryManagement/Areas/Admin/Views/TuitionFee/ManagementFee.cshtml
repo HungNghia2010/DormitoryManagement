@@ -136,7 +136,7 @@
                                 }
                                 <td>
 
-                                    <a type="button" class="btn btn-primary btn-sm">
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditStudentFee","TuitionFee", new { id = @fee.ID})">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="@fee.ID" data-id="@fee.ID" data-toggle="modal" data-target="#deleteModal">

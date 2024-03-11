@@ -148,26 +148,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             var Mydataerror = TempData["error"];
             ViewBag.error = Mydataerror;
 
-            var data = (from sf in _db.StudentFees
-                        join r in _db.Rooms on sf.RoomId equals r.RoomID
-                        join b in _db.Buildings on r.BuildingID equals b.BuildingID
-                        join sa in _db.StudentAccounts on sf.StudentId equals sa.StudentID
-                        join fp in _db.FeePayments on sf.PaymentId equals fp.PaymentID
-                        select new FeeData
-                        {
-                            RoomName = r.Name,
-                            BuildingName = b.Name,
-                            PaymentStatus = sf.PaymentStatus,
-                            Descript = fp.Description,
-                            PaymentId = sf.PaymentId,
-                            TotalAmount = sf.TotalAmount,
-                            FullName = sa.FullName,
-                            StudentID = sa.StudentID,
-                            MonthYear = fp.MonthYear,
-                            ID = sf.Id
-                        }).ToList();
- 
-            return View(data);
+            return View(GetFeeData());
         }
 
         [RequireLogin]
@@ -196,6 +177,80 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                 return RedirectToAction("ManagementFee", "TuitionFee", new { area = "Admin" });
             }
 
+        }
+
+        // GET: Admin/TuitionFee/EditTuition
+        [RequireLogin]
+        public ActionResult EditStudentFee(int id)
+        {
+            var data = GetFeeDataById(id);
+            if (id != null) {
+                return View(data);
+            }
+            return View();
+        }
+
+        // Post: Admin/TuitionFee/editstudentfee
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditStudentFee(FeeData feeData)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = _db.StudentFees.Find(feeData.ID);
+                data.TotalAmount = feeData.TotalAmount;
+                ViewData["success"] = "Cập nhật thành công";
+                _db.SaveChanges();
+                return View();
+            }
+            return View();
+        }
+
+        public List<FeeData> GetFeeData()
+        {
+            return (from sf in _db.StudentFees
+                    join r in _db.Rooms on sf.RoomId equals r.RoomID
+                    join b in _db.Buildings on r.BuildingID equals b.BuildingID
+                    join sa in _db.StudentAccounts on sf.StudentId equals sa.StudentID
+                    join fp in _db.FeePayments on sf.PaymentId equals fp.PaymentID
+                    select new FeeData
+                    {
+                        RoomName = r.Name,
+                        BuildingName = b.Name,
+                        PaymentStatus = sf.PaymentStatus,
+                        Descript = fp.Description,
+                        PaymentId = sf.PaymentId,
+                        TotalAmount = sf.TotalAmount,
+                        FullName = sa.FullName,
+                        StudentID = sa.StudentID,
+                        MonthYear = fp.MonthYear,
+                        ID = sf.Id
+                    }).ToList();
+        }
+
+        public FeeData GetFeeDataById(int id)
+        {
+            var data = (from sf in _db.StudentFees
+                        join r in _db.Rooms on sf.RoomId equals r.RoomID
+                        join b in _db.Buildings on r.BuildingID equals b.BuildingID
+                        join sa in _db.StudentAccounts on sf.StudentId equals sa.StudentID
+                        join fp in _db.FeePayments on sf.PaymentId equals fp.PaymentID
+                        where sf.Id == id
+                        select new FeeData
+                        {
+                            RoomName = r.Name,
+                            BuildingName = b.Name,
+                            PaymentStatus = sf.PaymentStatus,
+                            Descript = fp.Description,
+                            PaymentId = sf.PaymentId,
+                            TotalAmount = sf.TotalAmount,
+                            FullName = sa.FullName,
+                            StudentID = sa.StudentID,
+                            MonthYear = fp.MonthYear,
+                            ID = sf.Id
+                        }).ToList();
+
+            return data.FirstOrDefault();
         }
     }
 }

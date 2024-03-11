@@ -16,20 +16,34 @@
                             <th scope="col" class="text-left">Số tiền</th>
                             <th scope="col" class="text-left">Thời gian</th>
                             <th scope="col" class="text-left">Trạng thái</th>
-                            <th scope="col" class="text-left">Xem hóa đơn</th>
+                            <th scope="col" class="text-left">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.Descript</td>
-                                <td>@item.MonthYear</td>
-                                <td>@item.TotalAmount</td>
-                                <td>@item.DueDate - @item.ExpiryDate</td>
-                                <td>@item.PaymentStatus</td>
-                                <td>Xem</td>
-                            </tr>
+                        <tr>
+                            <td>@item.Descript</td>
+                            <td>@item.MonthYear</td>
+                            <td>@item.TotalAmount</td>
+                            <td>@item.DueDate - @item.ExpiryDate</td>
+                            @if (item.PaymentStatus.Equals("Chưa thanh toán"))
+                            {
+                                <td><span class="badge badge-pill badge-warning">@item.PaymentStatus</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge badge-pill badge-success">@item.PaymentStatus</span></td>
+                            }
+                        <td>
+                            <a type="button" class="btn btn-success btn-sm" style="color: #fff;">
+                                <i class=""></i> Xem
+                            </a>
+                            <button type="button" class="btn btn-info btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                <i class="fas fa-trash-alt"></i> Thanh toán
+                            </button>
+                        </td>
+                        </tr>
                         }
                         
 

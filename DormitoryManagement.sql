@@ -117,15 +117,19 @@ CREATE TABLE StudentFee (
     RoomId INT NOT NULL,
     TotalAmount NVARCHAR(255) NOT NULL,
     PaymentStatus NVARCHAR(20) NOT NULL,
+	Description NVARCHAR(255),
     FOREIGN KEY (StudentId) REFERENCES StudentAccounts(StudentID),
     FOREIGN KEY (PaymentId) REFERENCES FeePayments(PaymentID),
     FOREIGN KEY (RoomId) REFERENCES Rooms(RoomID)
 );
 
-SELECT r.Name,b.Name as BuildingName, sf.PaymentStatus,sf.PaymentId,sf.TotalAmount, sa.FullName,sa.StudentID,fp.MonthYear,sf.Id,fp.Description
+drop table StudentFee
+
+SELECT r.Name,b.Name as BuildingName, sf.PaymentStatus,sf.PaymentId,sf.TotalAmount, sa.FullName,sa.StudentID,fp.MonthYear,sf.Id,fp.Description,sf.Description as Des
 FROM StudentFee sf
 JOIN Rooms r ON sf.RoomId = r.RoomId
 JOIN Buildings b ON r.BuildingId = b.BuildingId
 JOIN StudentAccounts sa ON sf.StudentId = sa.StudentId
 JOIN FeePayments fp ON fp.PaymentID = sf.PaymentId
-Where sa.StudentID = 1
+Where sa.StudentId = 1
+Order by sf.PaymentId desc

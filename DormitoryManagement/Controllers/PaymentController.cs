@@ -26,6 +26,7 @@ namespace DormitoryManagement.Controllers
                         join sa in _db.StudentAccounts on sf.StudentId equals sa.StudentID
                         join fp in _db.FeePayments on sf.PaymentId equals fp.PaymentID
                         where sa.StudentID == idUser
+                        orderby sf.PaymentId descending
                         select new FeeData
                         {
                             RoomName = r.Name,
