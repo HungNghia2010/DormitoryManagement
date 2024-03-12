@@ -199,6 +199,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             {
                 var data = _db.StudentFees.Find(feeData.ID);
                 data.TotalAmount = feeData.TotalAmount;
+                data.Description = feeData.Note;
+                data.PaymentStatus = feeData.PaymentStatus;
                 ViewData["success"] = "Cập nhật thành công";
                 _db.SaveChanges();
                 return View();
@@ -224,7 +226,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                         FullName = sa.FullName,
                         StudentID = sa.StudentID,
                         MonthYear = fp.MonthYear,
-                        ID = sf.Id
+                        ID = sf.Id,
+                        Note = sf.Description
                     }).ToList();
         }
 
@@ -247,7 +250,8 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                             FullName = sa.FullName,
                             StudentID = sa.StudentID,
                             MonthYear = fp.MonthYear,
-                            ID = sf.Id
+                            ID = sf.Id,
+                            Note = sf.Description
                         }).ToList();
 
             return data.FirstOrDefault();

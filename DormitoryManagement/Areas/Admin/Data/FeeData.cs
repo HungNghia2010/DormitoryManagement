@@ -19,5 +19,6 @@ namespace DormitoryManagement.Areas.Admin.Data
         public int ID { get; set; }
         public string DueDate { get; set; }
         public string ExpiryDate { get; set; }
+        public string Note { get;  set; }
     }
 }

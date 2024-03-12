@@ -20,6 +20,7 @@ namespace DormitoryManagement.Models
         public int RoomId { get; set; }
         public string TotalAmount { get; set; }
         public string PaymentStatus { get; set; }
+        public string Description { get; set; }
     
         public virtual FeePayment FeePayment { get; set; }
         public virtual Room Room { get; set; }

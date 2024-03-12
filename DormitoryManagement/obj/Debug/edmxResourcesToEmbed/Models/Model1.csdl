@@ -182,6 +182,7 @@
     <NavigationProperty Name="FeePayment" Relationship="DormitoryManagementModel.FK__StudentFe__Payme__351DDF8C" FromRole="StudentFee" ToRole="FeePayment" />
     <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5" FromRole="StudentFee" ToRole="Room" />
     <NavigationProperty Name="StudentAccount" Relationship="DormitoryManagementModel.FK__StudentFe__Stude__3429BB53" FromRole="StudentFee" ToRole="StudentAccount" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__StudentFe__Payme__351DDF8C">
     <End Type="DormitoryManagementModel.FeePayment" Role="FeePayment" Multiplicity="1" />

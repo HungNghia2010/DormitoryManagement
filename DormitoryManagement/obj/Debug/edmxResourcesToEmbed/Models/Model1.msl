@@ -83,6 +83,7 @@
     <EntitySetMapping Name="StudentFees">
       <EntityTypeMapping TypeName="DormitoryManagementModel.StudentFee">
         <MappingFragment StoreEntitySet="StudentFee">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
           <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
           <ScalarProperty Name="RoomId" ColumnName="RoomId" />

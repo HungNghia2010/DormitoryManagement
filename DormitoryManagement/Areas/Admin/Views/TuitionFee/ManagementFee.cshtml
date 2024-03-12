@@ -119,31 +119,31 @@
                     <tbody>
                         @foreach (var fee in Model)
                         {
-                            <tr>
-                                <td>@fee.ID</td>
-                                <td><strong>@fee.FullName</strong> <br /> @fee.StudentID</td>
-                                <td><strong>@fee.MonthYear</strong></td>
-                                <td><strong>@fee.RoomName</strong></td>
-                                <td><strong>@fee.BuildingName</strong></td>
-                                <td>@fee.TotalAmount</td>
-                                @if (fee.PaymentStatus.Equals("Chưa thanh toán"))
-                                {
-                                    <td><span class="badge badge-pill badge-warning">@fee.PaymentStatus</span></td>
-                                }
-                                else
-                                {
-                                    <td><span class="badge badge-pill badge-success">@fee.PaymentStatus</span></td>
-                                }
-                                <td>
+                        <tr>
+                            <td>@fee.ID</td>
+                            <td><strong>@fee.FullName</strong> <br /> @fee.StudentID</td>
+                            <td><strong>@fee.MonthYear</strong></td>
+                            <td><strong>@fee.RoomName</strong></td>
+                            <td><strong>@fee.BuildingName</strong></td>
+                            <td>@fee.TotalAmount</td>
+                            @if (fee.PaymentStatus.Equals("Chưa thanh toán"))
+                            {
+                                <td><span class="badge badge-pill badge-warning">@fee.PaymentStatus</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge badge-pill badge-success">@fee.PaymentStatus</span></td>
+                            }
+                            <td>
 
-                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditStudentFee","TuitionFee", new { id = @fee.ID})">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="@fee.ID" data-id="@fee.ID" data-toggle="modal" data-target="#deleteModal">
-                                        <i class="fas fa-trash-alt"></i> Delete
-                                    </button>
-                                </td>
-                            </tr>
+                                <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditStudentFee","TuitionFee", new { id = @fee.ID})">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="@fee.ID" data-id="@fee.ID" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+                            </td>
+                        </tr>
                         }
 
                     </tbody>

@@ -96,13 +96,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="PaymentStatus">Trạng thái:</label>
-                        @Html.TextBoxFor(m => m.PaymentStatus, new { @class = "form-control", @id = "PaymentStatus", })
+                        <label for="PaymentStatus">Trạng thái:<span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.PaymentStatus, new SelectList(
+                        new List<object>
+                        {
+                            new { Value = "Chưa thanh toán", Text = "Chưa thanh toán" },
+                            new { Value = "Đã thanh toán", Text = "Đã thanh toán" }
+                        }, "Value", "Text")
+                   , "-- Chọn trạng thái --",new { @class = "form-control", @id = "PaymentStatus" })
                     </div>
 
                     <div class="form-group">
-                        <label for="PaymentStatus">Ghi chú:</label>
-                        @Html.TextBoxFor(m => m.StudentID, new { @class = "form-control", @id = "PaymentStatus", })
+                        <label for="PaymentStatus">Ghi chú:<span class="text-danger">*</span></label>
+                        @Html.TextAreaFor(m => m.Note, new { @class = "form-control", @id = "PaymentStatus", @row = 3 })
                     </div>
 
                     <!-- Hiển thị thông báo lỗi nếu có -->

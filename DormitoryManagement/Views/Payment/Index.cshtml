@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md offset-md">
             <h3 class="text-left mb-4">Hóa đơn tiền phòng</h3>
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -22,34 +22,64 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@item.Descript</td>
-                            <td>@item.MonthYear</td>
-                            <td>@item.TotalAmount</td>
-                            <td>@item.DueDate - @item.ExpiryDate</td>
-                            @if (item.PaymentStatus.Equals("Chưa thanh toán"))
-                            {
-                                <td><span class="badge badge-pill badge-warning">@item.PaymentStatus</span></td>
-                            }
-                            else
-                            {
-                                <td><span class="badge badge-pill badge-success">@item.PaymentStatus</span></td>
-                            }
-                        <td>
-                            <a type="button" class="btn btn-success btn-sm" style="color: #fff;">
-                                <i class=""></i> Xem
-                            </a>
-                            <button type="button" class="btn btn-info btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
-                                <i class="fas fa-trash-alt"></i> Thanh toán
-                            </button>
-                        </td>
-                        </tr>
+                            <tr>
+                                <td>@item.Descript</td>
+                                <td>@item.MonthYear</td>
+                                <td>@item.TotalAmount</td>
+                                <td>@item.DueDate - @item.ExpiryDate</td>
+                                @if (item.PaymentStatus.Equals("Chưa thanh toán"))
+                                {
+                                    <td><span class="badge badge-pill badge-warning">@item.PaymentStatus</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="badge badge-pill badge-success">@item.PaymentStatus</span></td>
+                                }
+                                <td>
+                                    <a type="button" class="btn btn-success btn-sm" style="color: #fff;" href="@Url.Action("ViewPayment","Payment", new { id = item.ID})">
+                                        <i class=""></i> Xem
+                                    </a>
+                                    @if (item.PaymentStatus.Equals("Chưa thanh toán"))
+                                    {
+                                        <button type="button" class="btn btn-info btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#PaymentModal">
+                                            <i class=""></i> Thanh toán
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
                         }
-                        
+
 
 
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="PaymentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Phương thức thanh toán:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="text-center">Chọn phương thức thanh toán</p>               
+                    <br>
+                    <button type="button" class="btn btn-primary" id="payWithVNPay">
+                        <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-VNPAY-QR.png" alt="VNPay Logo" style="width: 30px; height: 30px;"> Thanh toán bằng VNPay
+                    </button>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-success" id="payWithMomo">
+                        <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="Momo Logo" style="width: 30px; height: 30px;"> Thanh toán bằng Momo
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
             </div>
         </div>
     </div>
