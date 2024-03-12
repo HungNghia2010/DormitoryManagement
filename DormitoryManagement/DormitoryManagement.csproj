@@ -2574,11 +2574,10 @@
     <Content Include="Views\Access\Login.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\ViewPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Payment\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Views\RequireLoginAttribute\" />
     <Folder Include="wwwroot\Images\" />
