@@ -359,8 +359,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Payment\MoMoSecurity.cs" />
     <Compile Include="Models\Payment\PayCompare.cs" />
     <Compile Include="Models\Payment\PayLib.cs" />
+    <Compile Include="Models\Payment\PaymentRequest.cs" />
+    <Compile Include="Models\Payment\Result.cs" />
     <Compile Include="Models\Payment\Util.cs" />
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -2580,6 +2583,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\ViewPayment.cshtml" />
     <Content Include="Views\Payment\PaymentConfirm.cshtml" />
+    <Content Include="Views\Payment\ConfirmPaymentClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿using DormitoryManagement.Areas.Admin.Data;
 using DormitoryManagement.Models;
 using DormitoryManagement.Models.Payment;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -174,6 +175,86 @@ namespace DormitoryManagement.Controllers
         }
 
 
+        public ActionResult PayMomo(int id)
+        {
+            var data = _db.StudentFees.Find(id);
+            string cleanedParam = data.TotalAmount.Replace(",", "");
+
+            var test = _db.FeePayments.Find(data.PaymentId);
+
+            //request params need to request to MoMo system
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMOOJOI20210710";
+            string accessKey = "iPXneGmrJH0G8FOP";
+            string serectkey = "sFcbSGRSJjwGxwhhcEktCHWYUuTuPNDB";
+            string orderInfo = "Thanh Toán Học Phí Ký túc xá tháng " + test.MonthYear;
+            string returnUrl = "https://localhost:44342/Payment/ConfirmPaymentClient";
+            string notifyurl = "https://4c8d-2001-ee0-5045-50-58c1-b2ec-3123-740d.ap.ngrok.io/Home/SavePayment"; //lưu ý: notifyurl không được sử dụng localhost, có thể sử dụng ngrok để public localhost trong quá trình test
+
+
+            string amount = cleanedParam;
+            string orderid = DateTime.Now.Ticks.ToString(); //mã đơn hàng
+            string requestId = DateTime.Now.Ticks.ToString();
+            string extraData = data.Id.ToString();
+
+            //Before sign HMAC SHA256 signature
+            string rawHash = "partnerCode=" +
+                partnerCode + "&accessKey=" +
+                accessKey + "&requestId=" +
+                requestId + "&amount=" +
+                amount + "&orderId=" +
+                orderid + "&orderInfo=" +
+                orderInfo + "&returnUrl=" +
+                returnUrl + "&notifyUrl=" +
+                notifyurl + "&extraData=" +
+                extraData;
+
+            MoMoSecurity crypto = new MoMoSecurity();
+            //sign signature SHA256
+            string signature = crypto.signSHA256(rawHash, serectkey);
+
+            //build body json request
+            JObject message = new JObject
+            {
+                { "partnerCode", partnerCode },
+                { "accessKey", accessKey },
+                { "requestId", requestId },
+                { "amount", amount },
+                { "orderId", orderid },
+                { "orderInfo", orderInfo },
+                { "returnUrl", returnUrl },
+                { "notifyUrl", notifyurl },
+                { "extraData", extraData },
+                { "requestType", "captureMoMoWallet" },
+                { "signature", signature }
+
+            };
+
+            string responseFromMomo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+
+            JObject jmessage = JObject.Parse(responseFromMomo);
+
+            return Redirect(jmessage.GetValue("payUrl").ToString());
+
+        }
+
+        public ActionResult ConfirmPaymentClient(Result result)
+        {
+            //lấy kết quả Momo trả về và hiển thị thông báo cho người dùng (có thể lấy dữ liệu ở đây cập nhật xuống db)
+            string rMessage = result.message;
+            string rOrderId = result.orderId;
+            string rRequest = result.requestId;
+            string rErrorCode = result.errorCode; // = 0: thanh toán thành công
+            string s = result.extraData;
+            var data = _db.StudentFees.Find(int.Parse(s));
+            data.PaymentStatus = "Đã thanh toán";
+            _db.SaveChanges();
+            if (rErrorCode.Equals("0"))
+            {
+                ViewBag.Message = "Thanh toán thành công hóa đơn " + rOrderId + " | Mã giao dịch: " + rRequest;
+            }
+            return View();
+        }
 
 
     }

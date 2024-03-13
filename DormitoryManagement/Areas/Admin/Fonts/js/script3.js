@@ -76,4 +76,9 @@
         window.location.href = '/Payment/PayModal/' + id;
     });
 
+    $('#payWithMomo').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Payment/PayMomo/' + id;
+    });
+
 });
