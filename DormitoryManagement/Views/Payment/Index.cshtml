@@ -3,6 +3,10 @@
 }
 @model List<DormitoryManagement.Areas.Admin.Data.FeeData>
 
+@section scripts{
+    <script src="~/Areas/Admin/Fonts/js/script3.js"></script>
+}
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md offset-md">
@@ -41,7 +45,7 @@
                                     </a>
                                     @if (item.PaymentStatus.Equals("Chưa thanh toán"))
                                     {
-                                        <button type="button" class="btn btn-info btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#PaymentModal">
+                                        <button type="button" class="btn btn-info btn-sm btnstudentfee" name="" data-id="@item.ID" data-toggle="modal" data-target="#PaymentModal">
                                             <i class=""></i> Thanh toán
                                         </button>
                                     }
@@ -66,7 +70,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <p class="text-center">Chọn phương thức thanh toán</p>               
+                    <p class="text-center">Chọn phương thức thanh toán</p>
                     <br>
                     <button type="button" class="btn btn-primary" id="payWithVNPay">
                         <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-VNPAY-QR.png" alt="VNPay Logo" style="width: 30px; height: 30px;"> Thanh toán bằng VNPay

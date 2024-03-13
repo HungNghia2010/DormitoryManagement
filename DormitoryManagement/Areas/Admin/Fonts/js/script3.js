@@ -65,4 +65,15 @@
         window.location.href = '/TuitionFee/DeleteStudentFee/' + id;
     });
 
+    $('.btnstudentfee').click(function () {
+        var id = $(this).data('id');
+        $('#payWithVNPay').data('id', id);
+        $('#payWithMomo').data('id', id);
+    });
+
+    $('#payWithVNPay').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Payment/PayModal/' + id;
+    });
+
 });

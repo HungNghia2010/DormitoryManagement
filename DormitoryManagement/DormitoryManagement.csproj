@@ -2579,6 +2579,7 @@
     <Content Include="Views\Home\ResetPassword.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\ViewPayment.cshtml" />
+    <Content Include="Views\Payment\PaymentConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
