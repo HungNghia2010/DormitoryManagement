@@ -755,11 +755,11 @@ button {
 /** footer **/
 
 .footer {
-     background: #352F44;
-     color: #000;
-     margin-top: 90px;
-     padding-top: 60px;
-     text-align: center;
+    background: #352F44;
+    color: #000;
+    margin-top: 90px;
+    padding-top: 60px;
+    text-align: center;
 }
 
 .footer h3 {

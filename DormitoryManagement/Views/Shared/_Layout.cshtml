@@ -70,17 +70,12 @@
                                         <a class="nav-link" href="~/home/about">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="room.html">Our room</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="~/payment">Payment</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="blog.html">Blog</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="~/Home/Info">My Info</a>
-                                    </li>
+                                 
                                 </ul>
                             </div>
 
@@ -97,21 +92,13 @@
                                    
                                 </div>
                                 <div class="menu">
-                                    <h3>Someone Famous<br /><span>Website Designer</span></h3>
                                     <ul>
-                                        <li>
-                                            <img src="~/Resources/Assets/icons/user.png" /><a href="#">My profile</a>
-                                        </li>
                                         <li>
                                             <img src="~/Resources/Assets/icons/edit.png" /><a href="~/Home/Info">Edit profile</a>
                                         </li>
                                         <li>
                                             <img src="~/Resources/Assets/icons/envelope.png" /><a href="~/Home/ChangePass">Chang Pass</a>
                                         </li>
-                                        <li>
-                                            <img src="~/Resources/Assets/icons/settings.png" /><a href="#">Setting</a>
-                                        </li>
-
                                         <li>
                                             <img src="~/Resources/Assets/icons/log-out.png" /><a href="~/Access/Logout">Logout</a>
                                         </li>
@@ -127,7 +114,8 @@
     <!-- end header inner -->
     <!-- end header -->
 
-    @RenderBody()
+    <div style="min-height:50vh">@RenderBody()</div>
+    
 
 
 
@@ -147,12 +135,10 @@
                     <div class="col-md-4">
                         <h3>Menu Link</h3>
                         <ul class="link_menu">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="about.html"> about</a></li>
-                            <li><a href="room.html">Our Room</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li class="active"><a href="~/home">Home</a></li>
+                            <li><a href="~/payment">Payment</a></li>
+                            <li><a href="#">Blog</a></li>
+
                         </ul>
                     </div>
                     <div class="col-md-4">

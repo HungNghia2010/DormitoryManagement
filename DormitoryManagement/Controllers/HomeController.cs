@@ -13,6 +13,7 @@ using System.Configuration;
 using WebMatrix.WebData;
 using System.Web.Helpers;
 using DormitoryManagement.Areas.Admin.Data;
+using Microsoft.Kiota.Abstractions;
 
 namespace DormitoryManagement.Controllers
 {
@@ -249,7 +250,7 @@ namespace DormitoryManagement.Controllers
 			else if (emailFor == "ResetPassword")
 			{
 				subject = "Reset Password";
-				body = "Hi,<br/>br/>We got request for reset your account password. Please click on the below link to reset your password" +
+				body = "Hi,<br/>We got request for reset your account password. Please click on the below link to reset your password" +
 					"<br/><br/><a href=" + link + ">Reset Password link</a>";
 			}
 
