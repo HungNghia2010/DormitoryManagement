@@ -49,6 +49,11 @@
       <End Role="StudentAccount" EntitySet="StudentAccounts" />
       <End Role="StudentFee" EntitySet="StudentFees" />
     </AssociationSet>
+    <EntitySet Name="DeviceReports" EntityType="DormitoryManagementModel.DeviceReport" />
+    <AssociationSet Name="FK__DeviceRep__RoomI__6D6238AF" Association="DormitoryManagementModel.FK__DeviceRep__RoomI__6D6238AF">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="DeviceReport" EntitySet="DeviceReports" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -112,6 +117,7 @@
     <NavigationProperty Name="StudentAccounts" Relationship="DormitoryManagementModel.FK__StudentAc__RoomI__22401542" FromRole="Room" ToRole="StudentAccount" />
     <NavigationProperty Name="LoaiPhong" Relationship="DormitoryManagementModel.FK__Rooms__MaLoaiPho__318258D2" FromRole="Room" ToRole="LoaiPhong" />
     <NavigationProperty Name="StudentFees" Relationship="DormitoryManagementModel.FK__StudentFe__RoomI__361203C5" FromRole="Room" ToRole="StudentFee" />
+    <NavigationProperty Name="DeviceReports" Relationship="DormitoryManagementModel.FK__DeviceRep__RoomI__6D6238AF" FromRole="Room" ToRole="DeviceReport" />
   </EntityType>
   <Association Name="FK__Rooms__BuildingI__1B9317B3">
     <End Type="DormitoryManagementModel.Building" Role="Building" Multiplicity="0..1" />
@@ -217,6 +223,31 @@
       </Principal>
       <Dependent Role="StudentFee">
         <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DeviceReport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Device" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AmountDevice" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoomId" Type="Int32" Nullable="false" />
+    <Property Name="ReportStatus" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Room" Relationship="DormitoryManagementModel.FK__DeviceRep__RoomI__6D6238AF" FromRole="DeviceReport" ToRole="Room" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__DeviceRep__RoomI__6D6238AF">
+    <End Type="DormitoryManagementModel.Room" Role="Room" Multiplicity="1" />
+    <End Type="DormitoryManagementModel.DeviceReport" Role="DeviceReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="DeviceReport">
+        <PropertyRef Name="RoomId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

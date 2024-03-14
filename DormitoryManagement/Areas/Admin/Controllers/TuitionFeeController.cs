@@ -198,6 +198,11 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var data = _db.StudentFees.Find(feeData.ID);
+                if(feeData.PaymentStatus == null)
+                {
+                    ViewData["error"] = "Hãy chọn trạng thái";
+                    return View();
+                }
                 data.TotalAmount = feeData.TotalAmount;
                 data.Description = feeData.Note;
                 data.PaymentStatus = feeData.PaymentStatus;

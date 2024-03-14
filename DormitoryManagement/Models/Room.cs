@@ -19,6 +19,7 @@ namespace DormitoryManagement.Models
         {
             this.StudentAccounts = new HashSet<StudentAccount>();
             this.StudentFees = new HashSet<StudentFee>();
+            this.DeviceReports = new HashSet<DeviceReport>();
         }
     
         public int RoomID { get; set; }
@@ -37,5 +38,7 @@ namespace DormitoryManagement.Models
         public virtual LoaiPhong LoaiPhong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentFee> StudentFees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeviceReport> DeviceReports { get; set; }
     }
 }

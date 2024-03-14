@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Device Report";
 }
-
+@model List<DormitoryManagement.Models.DeviceReport>
 
 <div class="back_re">
     <div class="container">
@@ -18,27 +18,55 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md offset-md">
+            @if (ViewBag.Success != null)
+            {
+                <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert" style="height: 48px">
+                    <strong>@ViewBag.Success</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
             <a href="@Url.Action("CreateReport", "Home")" class="btn btn-primary">Create Report</a>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-left">Phòng</th>
-                            <th scope="col" class="text-left">Tòa</th>
                             <th scope="col" class="text-left">Tên thiết bị</th>
+                            <th scope="col" class="text-left">Chi tiết</th>
                             <th scope="col" class="text-left">Số lượng hỏng</th>
                             <th scope="col" class="text-left">Ngày báo cáo</th>
                             <th scope="col" class="text-left">Trạng thái</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach(var data in Model)
+                        {
+                        <tr>
+                            <td>@data.Device</td>
+                            <td>@data.Description</td>
+                            <td>@data.AmountDevice</td>
+                            <td>@data.CreateDate</td>
+                            @if (data.ReportStatus.Equals("Chờ tiếp nhận"))
+                            {
+                                <td><span class="badge badge-pill badge-primary">@data.ReportStatus</span></td>
+                            }
+                            else if (data.ReportStatus.Equals("Đang xử lý"))
+                            {
+                                <td><span class="badge badge-pill badge-warning">@data.ReportStatus</span></td>
+                            }
+                            else
+                            {
+                                <td><span class="badge badge-pill badge-success">@data.ReportStatus</span></td>
+                            }
+                        </tr>
+                        }
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th scope="col" class="text-left">Phòng</th>
-                            <th scope="col" class="text-left">Tòa</th>
                             <th scope="col" class="text-left">Tên thiết bị</th>
+                            <th scope="col" class="text-left">Chi tiết</th>
                             <th scope="col" class="text-left">Số lượng hỏng</th>
                             <th scope="col" class="text-left">Ngày báo cáo</th>
                             <th scope="col" class="text-left">Trạng thái</th>
@@ -48,5 +76,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>

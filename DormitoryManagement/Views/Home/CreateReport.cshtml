@@ -2,7 +2,26 @@
 @{
     ViewBag.Title = "Create Report";
 }
-@model DormitoryManagement.Areas.Admin.Data.FeeData
+@model DormitoryManagement.Models.DeviceReport
+
+@section scripts{
+
+    <script>
+        function allowOnlyOneDigit(event) {
+            // Lấy phím được nhấn từ sự kiện
+            var key = event.keyCode || event.which;
+            // Chuyển đổi mã phím thành ký tự
+            var char = String.fromCharCode(key);
+            // Kiểm tra xem ký tự có phải là số từ 1 đến 9 không
+            if (/^[1-9]$/.test(char)) {
+                return true; // Cho phép nhập liệu
+            } else {
+                event.preventDefault(); // Ngăn không cho nhập liệu
+                return false;
+            }
+        }
+    </script>
+}
 
 <div class="back_re">
     <div class="container">
@@ -15,31 +34,40 @@
         </div>
     </div>
 </div>
+
 <div id="content-wrapper">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <h2 class="text-center text-gray-800 mb-5"></h2>
-
-                <!-- Form chỉnh sửa phòng -->
-                @Html.AntiForgeryToken()
-
-
-                @using (Html.BeginForm("Payment", "Payment", FormMethod.Post))
+                @if (ViewBag.error != null)
                 {
-                    
+                    <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert" style="height: 48px;">
+                        <strong>@ViewBag.error</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
 
+                @using (Html.BeginForm("CreateReport", "Home", FormMethod.Post,new { @class = "mt-5" }))
+                {
+
+                    @Html.AntiForgeryToken()
                     <div class="form-group">
                         <label for="fee">Name Device: </label>
-                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @id = "Price", @name = "fee"})
+                        @Html.TextBoxFor(m => m.Device, new { @class = "form-control", @id = "Device", @name = "Deive" })
                     </div>
 
                     <div class="form-group">
                         <label for="fee">Amount: </label>
-                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @id = "Price", @name = "fee", @type="number"})
+                        @Html.TextBoxFor(m => m.AmountDevice, new { @class = "form-control", @id = "Amount", @name = "Amount", @type = "number", @min = 1, @max = 9, @onkeypress = "return allowOnlyOneDigit(event)" })
                     </div>
 
-                    
+                    <div class="form-group">
+                        <label for="fee">Description: </label>
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @id = "Description", @name = "Description", @type = "text"})
+                    </div>
+
 
                     <div class="text-center mb-3">
                         <a>
@@ -50,6 +78,6 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 

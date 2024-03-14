@@ -326,15 +326,67 @@ namespace DormitoryManagement.Controllers
 			ViewBag.Message = message;
 			return View(model);
 		}
-		
+
+		[RequireLogin]
 		public ActionResult DeviceReport()
         {
-			return View();
+			var mydata = TempData["success"];
+			if (mydata != null)
+			{
+				ViewBag.Success = mydata;
+			}
+
+			var idUser = Convert.ToInt32(Session["idUser"]);
+			var student = _db.StudentAccounts.Find(idUser);
+
+			var data = _db.DeviceReports.Where(s => s.RoomId == student.RoomID).ToList();
+			if(data.Count() > 0)
+            {
+				return View(data);
+            }
+			return View(data);
         }
 
+		[RequireLogin]
 		public ActionResult CreateReport()
         {
 			return View();
         }
-    }
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult CreateReport(DeviceReport deviceReport)
+		{
+            if (ModelState.IsValid)
+            {
+				var idUser = Convert.ToInt32(Session["idUser"]);
+
+				DateTime utcNow = DateTime.UtcNow;
+				TimeZoneInfo vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+				DateTime vietnamNow = TimeZoneInfo.ConvertTimeFromUtc(utcNow, vietnamTimeZone);
+				DateTime vietnamToday = vietnamNow.Date;
+
+				var createtime = vietnamToday.ToString("dd/MM/yyyy");
+
+				var data = _db.StudentAccounts.Find(idUser);
+				if(data.RoomID == null)
+                {
+					ViewBag.error = "Chưa có phòng nên không thể tạo đơn";
+					return View();
+                }
+                else
+                {
+					deviceReport.CreateDate = createtime;
+					deviceReport.RoomId = data.RoomID ?? 0;
+					deviceReport.ReportStatus = "Chờ tiếp nhận";
+					_db.DeviceReports.Add(deviceReport);
+					_db.SaveChanges();
+					TempData["success"] = "Tạo đơn thành công";
+					return RedirectToAction("DeviceReport", "Home");
+				}
+				
+			}
+			return View();
+		}
+	}
 }

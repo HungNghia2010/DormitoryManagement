@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật báo hỏng thiết bị";
+}
+@model DormitoryManagement.Models.DeviceReport
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="text-center text-gray-800">Chỉnh Sửa Báo Hỏng Thiết Bị</h2>
+
+                <!-- Form chỉnh sửa phòng -->
+                @using (Html.BeginForm("EditStudentFee", "TuitionFee", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(m => m.ID)
+
+                    <div class="form-group row mt-5">
+                        <div class="col-md-6">
+                            <label for="Room">Số phòng:</label>
+                            <input class="form-control" id="Room" value="@ViewBag.room" disabled />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="building">Số tòa:</label>
+                            <input class="form-control" id="building" value="@ViewBag.building" disabled />
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="Descript">Tên thiết bị hỏng:</label>
+                            @Html.TextBoxFor(m => m.Device, new { @class = "form-control", @id = "Descript", @required = "required", @readonly = "readonly" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="MonthYear">Số lượng:</label>
+                            @Html.TextBoxFor(m => m.AmountDevice, new { @class = "form-control", @id = "MonthYear", @required = "required", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fee">Ghi chú:</label>
+                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @id = "roomname", @required = "required", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fee">Ngày báo cáo:</label>
+                        @Html.TextBoxFor(m => m.CreateDate, new { @class = "form-control", @id = "roomname", @required = "required", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaymentStatus">Trạng thái:<span class="text-danger">*</span></label>
+                        @Html.DropDownListFor(m => m.ReportStatus, new SelectList(
+                        new List<object>
+                        {
+                            new { Value = "Chờ tiếp nhận", Text = "Chờ tiếp nhận" },
+                            new { Value = "Đang xử lý", Text = "Đang xử lý" },
+                            new { Value = "Đã hoàn thành", Text = "Đã hoàn thành" }
+                        }, "Value", "Text")
+                   , "-- Chọn trạng thái --", new { @class = "form-control", @id = "PaymentStatus" })
+                    </div>
+
+                    <!-- Hiển thị thông báo lỗi nếu có -->
+                    if (@ViewBag.Error != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-danger" id="errorAlert">
+                                @ViewBag.Error
+                            </span>
+                        </div>
+                    }
+
+                    <!-- Hiển thị thông báo thành công nếu có -->
+                    if (@ViewBag.Success != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-success">@ViewBag.Success</span>
+                        </div>
+                    }
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

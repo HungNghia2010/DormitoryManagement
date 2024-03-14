@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý báo hỏng thiết bị";
+    Dictionary<int, string> SoPhong = new Dictionary<int, string>();
+    foreach (var sophong in ViewBag.room)
+    {
+        SoPhong.Add(sophong.RoomID, sophong.Name);
+    }
+}
+@model List<DormitoryManagement.Models.DeviceReport>
+
+@section scripts{
+
+    <script>
+
+        var fromDaySelect = document.getElementById("fromDay");
+        var toDaySelect = document.getElementById("toDay");
+        for (var day = 1; day <= 31; day++) {
+            // Create a new option element
+            var option = document.createElement("option");
+            option.value = day;
+            option.text = day;
+            // Append the option element to the select element
+            fromDaySelect.appendChild(option);
+
+            var option2 = document.createElement("option");
+            option2.value = day;
+            option2.text = day;
+            toDaySelect.appendChild(option2);
+        }
+    </script>
+}
+
+<div class="container">
+    <h4>Bộ lọc</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="fromDay">Từ ngày:</label>
+                <select class="form-control" id="fromDay" name="fromDay">
+                    <option>--Chọn ngày --</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="toDay">Tới ngày:</label>
+                <select class="form-control" id="toDay" name="toDay">
+                    <option>--Chọn ngày --</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="fromMonth">Tới tháng:</label>
+                <select class="form-control" id="toMonth" name="toMonth">
+                    <option>--Chọn trạng thái --</option>
+                    <option value="Chờ tiếp nhận">Chờ tiếp nhận</option>
+                    <option value="Đang xử lý">Đang xử lý</option>
+                    <option value="Đã hoàn thành">Đã hoàn thành</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary">Tra cứu</button>
+            <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
+        </div>
+    </div>
+
+    @if (@ViewBag.Success != null)
+    {
+        <div id="success-alert" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Success</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <div id="danger-alert" class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            <strong>@ViewBag.Error</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Phòng</th>
+                            <th>Tòa</th>
+                            <th>Tên thiết bị hỏng</th>
+                            <th>Số lượng hỏng</th>
+                            <th>Ngày báo cáo</th>
+                            <th>Trạng thái</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Phòng</th>
+                            <th>Tòa</th>
+                            <th>Tên thiết bị hỏng</th>
+                            <th>Số lượng hỏng</th>
+                            <th>Ngày báo cáo</th>
+                            <th>Trạng thái</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            string SoPhongText = SoPhong.ContainsKey(data.RoomId) ? SoPhong[data.RoomId] : "Chưa có phòng"; string soToaText = "Chưa có tòa";
+                            if (ViewBag.myDict != null && data.RoomId != null)
+                            {
+                                int roomIDToSearch = data.RoomId;
+                                soToaText = ViewBag.myDict.ContainsKey(roomIDToSearch) ? ViewBag.myDict[roomIDToSearch] : "Chưa có tòa";
+                            }
+
+                            <tr>
+                                <td>@SoPhongText</td>
+                                <td>@soToaText</td>
+                                <td>@data.Device</td>
+                                <td>@data.AmountDevice</td>
+                                <td>@data.CreateDate</td>
+                                @if (data.ReportStatus.Equals("Chờ tiếp nhận"))
+                                {
+                                    <td><span class="badge badge-pill badge-primary">@data.ReportStatus</span></td>
+                                }
+                                else if (data.ReportStatus.Equals("Đang xử lý"))
+                                {
+                                    <td><span class="badge badge-pill badge-warning">@data.ReportStatus</span></td>
+                                }
+                                else
+                                {
+                                    <td><span class="badge badge-pill badge-success">@data.ReportStatus</span></td>
+                                }
+
+                                <td>
+
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("UpdateDeviceReport","DeviceReport",new { id = data.ID})">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa tiền phòng này không?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteFeeStudent">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

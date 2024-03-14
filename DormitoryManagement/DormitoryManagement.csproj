@@ -315,6 +315,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DeviceReportController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuitionFeeController.cs" />
@@ -336,6 +337,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Building.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeviceReport.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FeePayment.cs">
@@ -2551,6 +2555,8 @@
     <Content Include="Areas\Admin\Views\TuitionFee\EditTuition.cshtml" />
     <Content Include="Areas\Admin\Views\TuitionFee\ManagementFee.cshtml" />
     <Content Include="Areas\Admin\Views\TuitionFee\EditStudentFee.cshtml" />
+    <Content Include="Areas\Admin\Views\DeviceReport\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DeviceReport\UpdateDeviceReport.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

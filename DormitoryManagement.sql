@@ -136,10 +136,11 @@ Order by sf.PaymentId desc
 
 CREATE TABLE DeviceReport (
     ID INT PRIMARY KEY IDENTITY,
-    Device NVARCHAR(50) NOT NULL,
+    Device NVARCHAR(255) NOT NULL,
 	AmountDevice INT NOT NULL,
     CreateDate NVARCHAR(50) NOT NULL,
 	RoomId INT NOT NULL,
+	Description NVARCHAR(255),
 	ReportStatus NVARCHAR(255) NOT NULL,
 	FOREIGN KEY (RoomId) REFERENCES Rooms(RoomID)
 );
