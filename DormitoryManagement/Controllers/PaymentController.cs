@@ -14,7 +14,7 @@ namespace DormitoryManagement.Controllers
     public class PaymentController : Controller
     {
         private DormitoryManagementEntities _db = new DormitoryManagementEntities();
-
+        [RequireLogin]
         // GET: Payment
         public ActionResult Index()
         {
@@ -51,11 +51,19 @@ namespace DormitoryManagement.Controllers
         }
 
         // GET: ViewPayment
+        [RequireLogin]
         public ActionResult ViewPayment(int id)
         {
+            var idUser = Convert.ToInt32(Session["idUser"]);
+            var data = _db.StudentFees.Find(id);
+            if(data.StudentId != idUser)
+            {
+                return Redirect("https://localhost:44342/Payment");
+            }
             return View(GetFeeDataById(id));
         }
 
+        [RequireLogin]
         public FeeData GetFeeDataById(int id)
         {
             var data = (from sf in _db.StudentFees
@@ -82,6 +90,7 @@ namespace DormitoryManagement.Controllers
             return data.FirstOrDefault();
         }
 
+        [RequireLogin]
         public ActionResult Payment(FeeData feeData)
         {
             return Redirect(Pay(feeData.ID));
@@ -120,10 +129,13 @@ namespace DormitoryManagement.Controllers
             return paymentUrl;
         }
 
+        [RequireLogin]
         public ActionResult PayModal(int id)
         {
             return Redirect(Pay(id));
         }
+
+        [RequireLogin]
         public ActionResult PaymentConfirm()
         {
             if (Request.QueryString.Count > 0)
@@ -174,7 +186,7 @@ namespace DormitoryManagement.Controllers
             return View();
         }
 
-
+        [RequireLogin]
         public ActionResult PayMomo(int id)
         {
             var data = _db.StudentFees.Find(id);
@@ -238,6 +250,7 @@ namespace DormitoryManagement.Controllers
 
         }
 
+        [RequireLogin]
         public ActionResult ConfirmPaymentClient(Result result)
         {
             //lấy kết quả Momo trả về và hiển thị thông báo cho người dùng (có thể lấy dữ liệu ở đây cập nhật xuống db)

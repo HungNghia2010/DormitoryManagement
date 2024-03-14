@@ -21,6 +21,7 @@ namespace DormitoryManagement.Controllers
 			return RedirectToAction("Login");
 		}
 
+		[RequireLogout]
 		// GET: Access
 		public ActionResult Login()
         {

@@ -14,6 +14,7 @@ using WebMatrix.WebData;
 using System.Web.Helpers;
 using DormitoryManagement.Areas.Admin.Data;
 using Microsoft.Kiota.Abstractions;
+using DormitoryManagement.Areas.Admin;
 
 namespace DormitoryManagement.Controllers
 {
@@ -191,7 +192,7 @@ namespace DormitoryManagement.Controllers
 			return byte2String;
 		}
 
-
+		[RequireLogout]
 		public ActionResult ForgotPassword()
 		{
 			return View();
@@ -274,6 +275,7 @@ namespace DormitoryManagement.Controllers
 				smtp.Send(message);
 		}
 
+		[RequireLogout]
 		public ActionResult ResetPassword(string id)
 		{
 			//Verify the reset password link
@@ -324,18 +326,15 @@ namespace DormitoryManagement.Controllers
 			ViewBag.Message = message;
 			return View(model);
 		}
-		public ActionResult About()
+		
+		public ActionResult DeviceReport()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+			return View();
         }
 
-        public ActionResult Contact()
+		public ActionResult CreateReport()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+			return View();
         }
     }
 }

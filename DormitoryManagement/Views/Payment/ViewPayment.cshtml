@@ -3,6 +3,11 @@
     ViewBag.Title = "Xem học phí";
 }
 @model DormitoryManagement.Areas.Admin.Data.FeeData
+
+@section scripts{
+    <script src="~/Areas/Admin/Fonts/js/script3.js"></script>
+}
+
 <div class="back_re">
     <div class="container">
         <div class="row">
@@ -73,12 +78,39 @@
                     if (Model.PaymentStatus.Equals("Chưa thanh toán"))
                     {
                         <div class="text-center mb-3">
-                            <a>
+                            <a class="btnstudentfee" data-id="@Model.ID" data-toggle="modal" data-target="#PaymentModal">
                                 <button type="submit" class="btn btn-success">Thanh Toán</button>
                             </a>
                         </div>
                     }
                 }
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="PaymentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Phương thức thanh toán:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="text-center">Chọn phương thức thanh toán</p>
+                    <br>
+                    <button type="button" class="btn btn-primary" id="payWithVNPay">
+                        <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-VNPAY-QR.png" alt="VNPay Logo" style="width: 30px; height: 30px;"> Thanh toán bằng VNPay
+                    </button>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-success" id="payWithMomo">
+                        <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="Momo Logo" style="width: 30px; height: 30px;"> Thanh toán bằng Momo
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                </div>
             </div>
         </div>
     </div>

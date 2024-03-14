@@ -133,3 +133,13 @@ JOIN StudentAccounts sa ON sf.StudentId = sa.StudentId
 JOIN FeePayments fp ON fp.PaymentID = sf.PaymentId
 Where sa.StudentId = 1
 Order by sf.PaymentId desc
+
+CREATE TABLE DeviceReport (
+    ID INT PRIMARY KEY IDENTITY,
+    Device NVARCHAR(50) NOT NULL,
+	AmountDevice INT NOT NULL,
+    CreateDate NVARCHAR(50) NOT NULL,
+	RoomId INT NOT NULL,
+	ReportStatus NVARCHAR(255) NOT NULL,
+	FOREIGN KEY (RoomId) REFERENCES Rooms(RoomID)
+);
