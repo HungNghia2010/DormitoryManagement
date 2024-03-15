@@ -11,63 +11,11 @@
 
 @section scripts{
 
-    <script>
-
-        var fromDaySelect = document.getElementById("fromDay");
-        var toDaySelect = document.getElementById("toDay");
-        for (var day = 1; day <= 31; day++) {
-            // Create a new option element
-            var option = document.createElement("option");
-            option.value = day;
-            option.text = day;
-            // Append the option element to the select element
-            fromDaySelect.appendChild(option);
-
-            var option2 = document.createElement("option");
-            option2.value = day;
-            option2.text = day;
-            toDaySelect.appendChild(option2);
-        }
-    </script>
+    <script src="~/Areas/Admin/Fonts/js/script3.js"></script>
 }
 
 <div class="container">
-    <h4>Bộ lọc</h4>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="fromDay">Từ ngày:</label>
-                <select class="form-control" id="fromDay" name="fromDay">
-                    <option>--Chọn ngày --</option>
-
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="toDay">Tới ngày:</label>
-                <select class="form-control" id="toDay" name="toDay">
-                    <option>--Chọn ngày --</option>
-
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="fromMonth">Tới tháng:</label>
-                <select class="form-control" id="toMonth" name="toMonth">
-                    <option>--Chọn trạng thái --</option>
-                    <option value="Chờ tiếp nhận">Chờ tiếp nhận</option>
-                    <option value="Đang xử lý">Đang xử lý</option>
-                    <option value="Đã hoàn thành">Đã hoàn thành</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary">Tra cứu</button>
-            <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
-        </div>
-    </div>
+    
 
     @if (@ViewBag.Success != null)
     {
@@ -149,7 +97,7 @@
                                     <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("UpdateDeviceReport","DeviceReport",new { id = data.ID})">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <button type="button" class="btn btn-danger btn-sm btnstudentfee" name="" data-id="" data-toggle="modal" data-target="#deleteModal">
+                                    <button type="button" class="btn btn-danger btn-sm btndevice" name="" data-id="@data.ID" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fas fa-trash-alt"></i> Delete
                                     </button>
                                 </td>
@@ -172,11 +120,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bạn có chắc chắn muốn xóa tiền phòng này không?
+                    Bạn có chắc chắn muốn xóa không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteFeeStudent">Xóa</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteDevice">Xóa</button>
                 </div>
             </div>
         </div>
