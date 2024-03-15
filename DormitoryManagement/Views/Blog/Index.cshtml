@@ -1,0 +1,279 @@
+﻿
+@{
+    ViewBag.Title = "Blog";
+}
+
+@section scripts{
+    <script>
+        function getPageList(totalPages, page, maxLength) {
+            function range(start, end) {
+                return Array.from(Array(end - start + 1), (_, i) => i + start);
+            }
+
+            var sideWidth = maxLength < 9 ? 1 : 2;
+            var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+            var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+
+            if (totalPages <= maxLength) {
+                return range(1, totalPages);
+            }
+
+            if (page <= maxLength - sideWidth - 1 - rightWidth) {
+                return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+            }
+
+            if (page >= totalPages - sideWidth - 1 - rightWidth) {
+                return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages));
+            }
+
+            return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+        }
+
+        $(function () {
+            var numberOfItems = $(".table-responsive .card").length;
+            var limitPerPage = 1;
+            var totalPages = Math.ceil(numberOfItems / limitPerPage);
+            var paginationSize = 7;
+            var currentPage;        
+
+            function showPage(whichPage) {
+                if (whichPage < 1 || whichPage > totalPages) return false;
+                currentPage = whichPage;
+
+                $(".table-responsive .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+                $(".pagination li").slice(1, -1).remove();
+
+                getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                    $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                        .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+                            .attr({ href: "javascript:void(0)" }).text(item || "...")).insertBefore(".next-page");
+                });
+
+                $(".previous-page").toggleClass("disabled", currentPage === 1);
+                $(".next-page").toggleClass("disabled", currentPage === totalPages);
+
+                return true;
+            }
+
+            $(".pagination").append(
+                $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({ href: "javascript:void(0)" }).text("Previous")),
+                $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({ href: "javascript:void(0)" }).text("Next"))
+
+            );
+
+            $(".table-responsive").show();
+            showPage(1);
+
+            $(document).on("click", ".pagination li.current-page:not(.active)", function () {
+                return showPage(+$(this).text());
+            });
+
+            $(".next-page").on("click", function () {
+                return showPage(currentPage + 1);
+            });
+
+            $(".previous-page").on("click", function () {
+                return showPage(currentPage - 1);
+            });
+        });
+    </script>
+}
+
+<div class="back_re">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>Blog</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md offset-md">
+            <div class="table-responsive" style="display: none">
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">1</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">2</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">3</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">4</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">5</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">6</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">7</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">8</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">9</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">10</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+                <div class="card border-primary mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">11</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p class="card-date">Ngày đăng: 20/02/2024</p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-2">Xem thêm</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item previous-page disable"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+</div>

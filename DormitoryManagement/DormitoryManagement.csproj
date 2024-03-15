@@ -327,6 +327,7 @@
     <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\PublicController.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\RequireLoginAttribute.cs" />
@@ -2591,6 +2592,7 @@
     <Content Include="Views\Payment\ConfirmPaymentClient.cshtml" />
     <Content Include="Views\Home\DeviceReport.cshtml" />
     <Content Include="Views\Home\CreateReport.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
