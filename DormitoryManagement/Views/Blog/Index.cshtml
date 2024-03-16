@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Blog";
 }
+@model List<DormitoryManagement.Models.Blog>
 
 @section scripts{
     <script>
@@ -94,23 +95,28 @@
     <div class="row">
         <div class="col-md offset-md">
             <div class="table-responsive" style="display: none">
-                <a href="">
-                    <div class="card border-primary mb-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h5 class="card-title">Thông báo số 9, đóng tiền học phí kí túc xá tháng 3/2023</h5>
+
+                @foreach (var item in Model)
+                {
+                    <a href="@Url.Action("Detail","Blog", new { id = item.ID})">
+                        <div class="card border-primary mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="card-title">@item.Content</h5>
+                                    </div>
+                                    <div class="col-md-8 text-left">
+                                        <p class="card-date">Ngày đăng: @item.CreateDate</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-8 text-left">
-                                    <p class="card-date">Ngày đăng: 20/02/2024</p>
-                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                </a>
+                    </a>
+                }
 
-               
+
+
 
             </div>
         </div>

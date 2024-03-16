@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DormitoryManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +9,23 @@ namespace DormitoryManagement.Controllers
 {
     public class BlogController : Controller
     {
+        private DormitoryManagementEntities _db = new DormitoryManagementEntities();
+
         // GET: Blog
         [RequireLogin]
         public ActionResult Index()
         {
-            return View();
+            var data = _db.Blogs.ToList();
+            return View(data);
         }
 
         [RequireLogin]
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
+            var data = _db.Blogs.Find(id);
+            ViewBag.Tit = data.Title;
+            ViewBag.Content = data.Content;
+            ViewBag.CreateDate = data.CreateDate;
             return View();
         }
     }

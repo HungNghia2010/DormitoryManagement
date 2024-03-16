@@ -12,6 +12,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
         private DormitoryManagementEntities _db = new DormitoryManagementEntities();
 
         // GET: Admin/Blog
+        [RequireLogin]
         public ActionResult Index()
         {
             var Mydata = TempData["success"];
@@ -31,6 +32,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View(data);
         }
 
+        [RequireLogin]
         public ActionResult AddBlog()
         {
             return View();
@@ -59,6 +61,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View();
         }
 
+        [RequireLogin]
         public ActionResult DeleteBlog(int id)
         {
             var data = _db.Blogs.Find(id);
@@ -76,6 +79,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             }
         }
 
+        [RequireLogin]
         public ActionResult EditBlog(int id)
         {
             var data = _db.Blogs.Find(id);
