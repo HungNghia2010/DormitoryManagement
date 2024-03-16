@@ -18,6 +18,15 @@
           <Property Name="LoginAttempts" Type="int" />
           <Property Name="IsLocked" Type="int" />
         </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreateDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Buildings">
           <Key>
             <PropertyRef Name="BuildingID" />
@@ -200,6 +209,7 @@
         </Association>
         <EntityContainer Name="DormitoryManagementModelStoreContainer">
           <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeviceReport" EntityType="Self.DeviceReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FeePayments" EntityType="Self.FeePayments" Schema="dbo" store:Type="Tables" />
@@ -298,6 +308,7 @@
             <End Role="Room" EntitySet="Rooms" />
             <End Role="DeviceReport" EntitySet="DeviceReports" />
           </AssociationSet>
+          <EntitySet Name="Blogs" EntityType="DormitoryManagementModel.Blog" />
           </EntityContainer>
         <EntityType Name="Building">
           <Key>
@@ -495,6 +506,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -602,6 +622,16 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="AmountDevice" ColumnName="AmountDevice" />
                 <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

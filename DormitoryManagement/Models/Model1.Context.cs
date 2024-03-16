@@ -33,5 +33,6 @@ namespace DormitoryManagement.Models
         public virtual DbSet<FeePayment> FeePayments { get; set; }
         public virtual DbSet<StudentFee> StudentFees { get; set; }
         public virtual DbSet<DeviceReport> DeviceReports { get; set; }
+        public virtual DbSet<Blog> Blogs { get; set; }
     }
 }

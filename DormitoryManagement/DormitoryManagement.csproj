@@ -315,7 +315,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DeviceReportController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
@@ -336,6 +336,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminAccount.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Blog.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Building.cs">
@@ -2559,8 +2562,9 @@
     <Content Include="Areas\Admin\Views\TuitionFee\EditStudentFee.cshtml" />
     <Content Include="Areas\Admin\Views\DeviceReport\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DeviceReport\UpdateDeviceReport.cshtml" />
-    <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Blog\AddBlog.cshtml" />
+    <Content Include="Areas\Admin\Views\BlogAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BlogAdmin\AddBlog.cshtml" />
+    <Content Include="Areas\Admin\Views\BlogAdmin\EditBlog.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

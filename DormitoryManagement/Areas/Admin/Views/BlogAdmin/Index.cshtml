@@ -2,11 +2,17 @@
 @{
     ViewBag.Title = "Quản lý Blog";
 }
+@model List<DormitoryManagement.Models.Blog>
+
+@section scripts{
+
+    <script src="~/Areas/Admin/Fonts/js/script3.js"></script>
+}
 
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Quản lý phòng @ViewData["name"]</h1>
-    <a href="@Url.Action("AddRoom", "Homes", new { buildingId = ViewBag.id })" class="btn btn-primary">Thêm Blog</a>
+    <a href="@Url.Action("AddBlog", "BlogAdmin", new { buildingId = ViewBag.id })" class="btn btn-primary">Thêm Blog</a>
 
     @if (@ViewBag.Success != null)
     {
@@ -34,7 +40,7 @@
                     <thead>
                         <tr>
                             <th>Tiêu Đề</th>
-                            <th>Ngày Tạo</th>                         
+                            <th>Ngày Tạo</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,9 +52,21 @@
                         </tr>
                     </tfoot>
                     <tbody>
-
-                        
-
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <td>@data.Title</td>
+                                <td>@data.CreateDate</td>
+                                <td>
+                                    <a type="button" class="btn btn-primary btn-sm" href="@Url.Action("EditBlog","BlogAdmin", new {id = data.ID})">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-sm btnBlog" name="" data-id="@data.ID" data-toggle="modal" data-target="#deleteModal">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -64,11 +82,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bạn có chắc chắn muốn xóa tòa này không?
+                    Bạn có chắc chắn muốn xóa Blog này không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteRoom">Xóa</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteBlog">Xóa</button>
                 </div>
             </div>
         </div>

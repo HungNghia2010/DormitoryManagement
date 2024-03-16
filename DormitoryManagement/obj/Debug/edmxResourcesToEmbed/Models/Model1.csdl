@@ -54,6 +54,7 @@
       <End Role="Room" EntitySet="Rooms" />
       <End Role="DeviceReport" EntitySet="DeviceReports" />
     </AssociationSet>
+    <EntitySet Name="Blogs" EntityType="DormitoryManagementModel.Blog" />
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -251,4 +252,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

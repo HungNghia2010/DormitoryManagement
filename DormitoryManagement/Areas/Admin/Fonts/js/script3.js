@@ -42,4 +42,16 @@
         window.location.href = '/DeviceReport/DeleteDevice/' + id;
     });
 
+
+    $('.btn.btn-danger.btn-sm.btnBlog').click(function () {
+        var id = $(this).data('id');
+        $('#confirmDeleteBlog').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+
+    $('#confirmDeleteBlog').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/BlogAdmin/DeleteBlog/' + id;
+    });
+
 });

@@ -2,32 +2,12 @@
 @{
     ViewBag.Title = "Thêm Blog";
 }
-@model DormitoryManagement.Models.Room
+@model DormitoryManagement.Models.Blog
 
 @section scripts{
 
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-
-        const nameValue = document.getElementById('RoomName').value;
-        const descriptValue = document.getElementById('editor').value;
-        const url = '~/Admin/Blog/AddBlog';
-        const data = { Name: nameValue, Descript: descriptValue };
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: data,
-            success: function (response) {
-                // Xử lý response từ server
-            },
-            error: function (error) {
-                // Xử lý lỗi
-            }
-        });
+        
 
     </script>
 }
@@ -40,21 +20,19 @@
 
 
                 <!-- Form thêm phòng -->
-                @using (Html.BeginForm("AddBlog", "Blog", FormMethod.Post))
+                @using (Html.BeginForm("AddBlog", "BlogAdmin", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
 
-                    @Html.HiddenFor(m => m.BuildingID)
-
                     <div class="form-group">
-                        <label for="RoomName">Tiêu đề:</label>
-                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "RoomName", @required = "required" })
+                        <label for="Title">Tiêu đề:</label>
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @id = "Title", @required = "required" })
                     </div>
 
 
                     <div class="form-group">
-                        <label for="editor">Nội dung:</label>
-                        @Html.TextAreaFor(m => m.Descript, new { @class = "form-control", @id = "editor", @type = "text"})
+                        <label for="Content">Nội dung:</label>
+                        @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @id = "Content", @type = "text"})
                     </div>
 
                     <!-- Hiển thị thông báo lỗi nếu có -->
