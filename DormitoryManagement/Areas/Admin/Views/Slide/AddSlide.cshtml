@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Thêm Slide";
+}
+
+@section scripts{
+
+    <script>
+        function displayImage(input) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById('previewImage').src = e.target.result;
+                document.getElementById('previewImage').style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid justify-content-center">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <h2 class="text-center text-gray-800">Thêm Slide</h2>
+
+                <!-- Form thay đổi mật khẩu -->
+                @using (Html.BeginForm("AddSlide", "Slide", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="form-group">
+                        <label for="ImagePath">Chọn ảnh:</label>
+
+                        <div class="col-md-10">
+                            <input type="file" id="ImageFile" onchange="displayImage(this)" accept="image/*" name="ImageFile" />
+                        </div>
+
+                        <img class="mt-3" id="previewImage" src="#" alt="Ảnh đại diện" style="display: none; max-width: 100%; height: auto;" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="FullName">Chọn thứ tự:</label>
+                        @*@Html.TextBoxFor(m => m.FullName, new
+                        {
+                            @class = "form-control",
+                            @id = "FullName",
+                            @required = "required"
+                        })*@
+                    </div>
+
+                    <div class="form-group">
+                        <label for="UserName">Chọn chế độ:</label>
+                        @*@Html.TextBoxFor(m => m.UserName, new
+                        {
+                            @class = "form-control",
+                            @id = "UserName",
+                            @required = "required"
+                        })*@
+                    </div>
+
+
+
+
+
+
+                    <!-- Hiển thị thông báo lỗi nếu có -->
+                    if (@ViewBag.Error != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-danger">@ViewBag.Error</span>
+                        </div>
+                    }
+
+                    <!-- Hiển thị thông báo thành công nếu có -->
+                    if (@ViewBag.Success != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-success">@ViewBag.Success</span>
+                        </div>
+                    }
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>
