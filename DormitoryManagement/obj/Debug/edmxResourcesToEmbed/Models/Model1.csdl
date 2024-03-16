@@ -55,6 +55,7 @@
       <End Role="DeviceReport" EntitySet="DeviceReports" />
     </AssociationSet>
     <EntitySet Name="Blogs" EntityType="DormitoryManagementModel.Blog" />
+    <EntitySet Name="Slides" EntityType="DormitoryManagementModel.Slide" />
   </EntityContainer>
   <EntityType Name="Building">
     <Key>
@@ -260,5 +261,14 @@
     <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="CreateDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Hide" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

@@ -74,6 +74,15 @@
     <Property Name="Gender" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Descript" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Hide" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="StudentAccounts">
     <Key>
       <PropertyRef Name="StudentID" />
@@ -210,6 +219,7 @@
     <EntitySet Name="FeePayments" EntityType="Self.FeePayments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentAccounts" EntityType="Self.StudentAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentFee" EntityType="Self.StudentFee" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__DeviceRep__RoomI__731B1205" Association="Self.FK__DeviceRep__RoomI__731B1205">

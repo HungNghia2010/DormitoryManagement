@@ -22,6 +22,7 @@
         <EntityTypeShape EntityType="DormitoryManagementModel.DeviceReport" Width="1.5" PointX="7.875" PointY="6.125" />
         <AssociationConnector Association="DormitoryManagementModel.FK__DeviceRep__RoomI__6D6238AF" />
         <EntityTypeShape EntityType="DormitoryManagementModel.Blog" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.Slide" Width="1.5" PointX="3.375" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

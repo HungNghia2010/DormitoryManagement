@@ -378,6 +378,9 @@
     <Compile Include="Models\Room.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Slide.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StudentAccount.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2568,6 +2571,7 @@
     <Content Include="Areas\Admin\Views\BlogAdmin\EditBlog.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\AddSlide.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\EditSlide.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

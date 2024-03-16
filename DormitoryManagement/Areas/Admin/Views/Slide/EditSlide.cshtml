@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Thêm Slide";
+    ViewBag.Title = "Cập nhật Slide";
 }
 @model DormitoryManagement.Models.Slide
 
@@ -27,7 +27,7 @@
                 <h2 class="text-center text-gray-800">Thêm Slide</h2>
 
                 <!-- Form thay đổi mật khẩu -->
-                @using (Html.BeginForm("AddSlide", "Slide", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("EditSlide", "Slide", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -36,9 +36,13 @@
                         <label for="ImagePath">Chọn ảnh:</label>
 
                         <div class="col-md-10">
-                            <input type="file" id="ImageFile" onchange="displayImage(this)" accept="image/*" name="ImageFile" required/>
+                            <input type="file" id="ImageFile" onchange="displayImage(this)" accept="image/*" name="ImageFile" />
                         </div>
+                        @if (Model.ImagePath != null)
+                        {
+                            <img class="mt-3" id="previewImage" src="@Model.ImagePath" alt="Ảnh đại diện" style="display: block; max-width: 100%; height: auto;" />
 
+                        }
                         <img class="mt-3" id="previewImage" src="#" alt="Ảnh đại diện" style="display: none; max-width: 100%; height: auto;" />
 
                     </div>
@@ -94,7 +98,7 @@
                     }
 
                     <div class="text-center mb-3">
-                        <button type="submit" class="btn btn-primary">Thêm</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>
                 }
             </div>
