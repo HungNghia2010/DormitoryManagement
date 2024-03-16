@@ -9,7 +9,14 @@ namespace DormitoryManagement.Controllers
     public class BlogController : Controller
     {
         // GET: Blog
+        [RequireLogin]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [RequireLogin]
+        public ActionResult Detail()
         {
             return View();
         }

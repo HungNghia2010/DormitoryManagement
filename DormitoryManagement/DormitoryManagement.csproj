@@ -315,6 +315,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\DeviceReportController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentController.cs" />
@@ -2558,6 +2559,8 @@
     <Content Include="Areas\Admin\Views\TuitionFee\EditStudentFee.cshtml" />
     <Content Include="Areas\Admin\Views\DeviceReport\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DeviceReport\UpdateDeviceReport.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\AddBlog.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2593,6 +2596,7 @@
     <Content Include="Views\Home\DeviceReport.cshtml" />
     <Content Include="Views\Home\CreateReport.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

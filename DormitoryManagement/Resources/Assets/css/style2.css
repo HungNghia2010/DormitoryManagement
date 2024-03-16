@@ -112,3 +112,31 @@
                 color: #ff5d94;
             }
 
+.card-title {
+    color: #0061AD;
+}
+
+.card-date {
+    color: #686363;
+}
+
+.card:hover{
+    cursor: pointer;
+}
+
+.card:hover .card-title {
+    color: red;
+    font-size: 16px;
+}
+
+.article h1 {
+    color: #0061AD;
+    font-size: 30px;
+}
+
+.article h3 {
+    color: #0061AD;
+    font-size: 15px;
+    text-decoration: underline;
+    font-style: italic;
+}

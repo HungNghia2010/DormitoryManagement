@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Thêm Blog";
+}
+@model DormitoryManagement.Models.Room
+
+@section scripts{
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+
+        const nameValue = document.getElementById('RoomName').value;
+        const descriptValue = document.getElementById('editor').value;
+        const url = '~/Admin/Blog/AddBlog';
+        const data = { Name: nameValue, Descript: descriptValue };
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            success: function (response) {
+                // Xử lý response từ server
+            },
+            error: function (error) {
+                // Xử lý lỗi
+            }
+        });
+
+    </script>
+}
+
+<div id="content-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h2 class="text-center text-gray-800">Thêm Blog</h2>
+
+
+                <!-- Form thêm phòng -->
+                @using (Html.BeginForm("AddBlog", "Blog", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(m => m.BuildingID)
+
+                    <div class="form-group">
+                        <label for="RoomName">Tiêu đề:</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "RoomName", @required = "required" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="editor">Nội dung:</label>
+                        @Html.TextAreaFor(m => m.Descript, new { @class = "form-control", @id = "editor", @type = "text"})
+                    </div>
+
+                    <!-- Hiển thị thông báo lỗi nếu có -->
+                    if (@ViewBag.Error != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-danger">@ViewBag.Error</span>
+                        </div>
+                    }
+
+                    <!-- Hiển thị thông báo thành công nếu có -->
+                    if (@ViewBag.Success != null)
+                    {
+                        <div class="form-group text-center">
+                            <span class="alert alert-success">@ViewBag.Success</span>
+                        </div>
+                    }
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
