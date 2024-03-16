@@ -54,4 +54,15 @@
         window.location.href = '/BlogAdmin/DeleteBlog/' + id;
     });
 
+    $('.btn.btn-danger.btn-sm.btnSlide').click(function () {
+        var id = $(this).data('id');
+        $('#confirmDeleteSlide').data('id', id); // Lưu id của bản ghi cần xóa vào nút xác nhận xóa
+    });
+
+
+    $('#confirmDeleteSlide').click(function () {
+        var id = $(this).data('id');
+        window.location.href = '/Slide/DeleteSlide/' + id;
+    });
+
 });

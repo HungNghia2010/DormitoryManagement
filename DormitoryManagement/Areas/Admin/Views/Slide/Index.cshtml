@@ -4,6 +4,12 @@
 }
 @model List<DormitoryManagement.Models.Slide>
 
+@section scripts{
+
+    <script src="~/Areas/Admin/Fonts/js/script3.js">
+    </script>
+}
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Quản lý Slide</h1>
@@ -49,9 +55,9 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach(var type in Model)
+                        @foreach (var type in Model)
                         {
-                           
+
                             <tr>
                                 <td><img style="width:50px; height:50px; border-radius:50%" src="@type.ImagePath" /></td>
                                 <td>@type.Number</td>
@@ -59,20 +65,22 @@
                                 {
                                     <td><span class="badge badge-pill badge-danger">Ẩn</span></td>
                                 }
-                                else { 
+                                else
+                                {
                                     <td><span class="badge badge-pill badge-success">Hiện</span></td>
                                 }
                                 <td>
                                     <a class="btn btn-primary btn-sm" href="@Url.Action("EditSlide","Slide", new { id = @type.ID})">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <button type="button" class="btn btn-danger btn-sm" name="" data-id="@type.ID" data-toggle="modal" data-target="#deleteModal">
+                                    <button type="button" class="btn btn-danger btn-sm btnSlide" name="" data-id="@type.ID" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fas fa-trash-alt"></i> Delete
                                     </button>
 
                                 </td>
                             </tr>
                         }
+
                     </tbody>
                 </table>
             </div>
@@ -88,11 +96,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Bạn có chắc chắn muốn xóa Blog này không?
+                    Bạn có chắc chắn muốn xóa Slide này không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteBlog">Xóa</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteSlide">Xóa</button>
                 </div>
             </div>
         </div>

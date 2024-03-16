@@ -386,10 +386,6 @@ button {
      transition: ease-in 0.5s;
 }
 
-.carousel-control-next,
-.carousel-control-prev {
-     display: none;
-}
 
 .carousel-indicators {
      right: inherit;

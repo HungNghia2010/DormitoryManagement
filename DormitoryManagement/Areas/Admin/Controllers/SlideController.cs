@@ -12,12 +12,26 @@ namespace DormitoryManagement.Areas.Admin.Controllers
     {
         private DormitoryManagementEntities _db = new DormitoryManagementEntities();
         // GET: Admin/Slide
+        [RequireLogin]
         public ActionResult Index()
         {
+            var Mydata = TempData["success"];
+            var Mydataerror = TempData["error"];
+            
+            if(Mydata != null)
+            {
+                ViewBag.success = Mydata;
+            }
+            if(Mydataerror != null)
+            {
+                ViewBag.error = Mydataerror;
+            }
+            
             var data = _db.Slides.OrderBy(m => m.Number).ToList();
             return View(data);
         }
 
+        [RequireLogin]
         public ActionResult AddSlide()
         {
             return View();
@@ -56,6 +70,7 @@ namespace DormitoryManagement.Areas.Admin.Controllers
             return View();
         }
 
+        [RequireLogin]
         public ActionResult EditSlide(int id)
         {
             var data = _db.Slides.Find(id);
@@ -64,28 +79,29 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditSlide(Slide slide,, HttpPostedFileBase imageFile)
+        public ActionResult EditSlide(Slide slide, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
                 var data = _db.Slides.Find(slide.ID);
-                var datacheck = _db.Slides.Where(s => s.Number == slide.Number && s.Number != null).ToList();
+                var datacheck = _db.Slides.Where(s => s.Number == slide.Number && s.Number != null && s.ID != slide.ID).ToList();
+                
                 if(datacheck.Count > 0)
                 {
                     ViewBag.error = "Thứ tự ảnh bị trùng";
-                    return View();
+                    return View(data);
                 }else if (slide.Hide == 0 && slide.Number != null)
                 {
                     ViewBag.error = "Để ẩn thì thứ tự ảnh phải bằng rỗng";
-                    return View();
+                    return View(data);
                 }
                 else if (slide.ImageFile == null)
                 {
                     data.Number = slide.Number;
                     data.Hide = slide.Hide;
                     _db.SaveChanges();
-                    ViewBag.error = "Cập nhật thành công";
-                    return View();
+                    ViewBag.success = "Cập nhật thành công";
+                    return View(data);
                 }
                 else if(slide.ImageFile != null && imageFile.ContentLength > 0)
                 {
@@ -109,12 +125,26 @@ namespace DormitoryManagement.Areas.Admin.Controllers
                     data.Number = slide.Number;
                     data.Hide = slide.Hide;
                     _db.SaveChanges();
-                    ViewBag.error = "Cập nhật thành công";
-                    return View();
+                    ViewBag.success = "Cập nhật thành công";
+                    return View(data);
                 }
             }
             
             return View();
+        }
+
+        [RequireLogin]
+        public ActionResult DeleteSlide(int id)
+        {
+            var data = _db.Slides.Find(id);
+            if (data == null)
+            {
+                return HttpNotFound();
+            }
+            _db.Slides.Remove(data);
+            _db.SaveChanges();
+            TempData["success"] = "Xóa Slide thành công";
+            return RedirectToAction("Index", "Slide", new { area = "Admin" });
         }
 
     }

@@ -25,11 +25,8 @@ namespace DormitoryManagement.Controllers
 		[RequireLogin]
 		public ActionResult Index()
         {
-			var username = (string)Session["username"];
-
-			// Lấy thông tin sinh viên có tên đăng nhập tương ứng từ cơ sở dữ liệu
-			var student = _db.StudentAccounts.FirstOrDefault(s => s.UserName == username);
-			return View(student);
+			var data = _db.Slides.OrderBy(m => m.Number).ToList();
+			return View(data);
         }
 
 		[RequireLogin]
