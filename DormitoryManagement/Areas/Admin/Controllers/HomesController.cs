@@ -457,7 +457,10 @@ namespace DormitoryManagement.Areas.Admin.Controllers
 
         }
 
-
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 
 }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="459906060c56418d841bfae0399f2fd7" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="459906060c56418d841bfae0399f2fd7" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="DormitoryManagementModel.AdminAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DormitoryManagementModel.Building" Width="1.5" PointX="3.375" PointY="1.25" />
         <EntityTypeShape EntityType="DormitoryManagementModel.StudentAccount" Width="1.5" PointX="7.875" PointY="0.75" />

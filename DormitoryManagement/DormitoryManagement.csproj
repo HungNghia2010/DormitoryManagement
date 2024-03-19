@@ -2572,6 +2572,7 @@
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\AddSlide.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\EditSlide.cshtml" />
+    <Content Include="Areas\Admin\Views\Homes\Error.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

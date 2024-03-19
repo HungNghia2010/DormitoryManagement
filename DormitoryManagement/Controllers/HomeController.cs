@@ -198,9 +198,7 @@ namespace DormitoryManagement.Controllers
 		[HttpPost]
 		public ActionResult ForgotPassword(string email)
 		{
-			//Verify Email ID
-			//Generate Reset password link 
-			//Send Email 
+			
 			string message = "";
 			bool status = false;
 
@@ -208,12 +206,10 @@ namespace DormitoryManagement.Controllers
 			var account = _db.StudentAccounts.Where(a => a.Email == email).FirstOrDefault();
 			if (account != null)
 			{
-				//Send email for reset password
+				
 				string resetCode = Guid.NewGuid().ToString();
 				SendVerificationLinkEmail(account.Email, resetCode, "ResetPassword");
 				account.ResetPasswordCode = resetCode;
-				//This line I have added here to avoid confirm password not match issue , as we had added a confirm password property 
-				//in our model class in part 1
 				_db.Configuration.ValidateOnSaveEnabled = false;
 				_db.SaveChanges();
 				message = "Reset password link has been sent to your email id.";
@@ -386,4 +382,10 @@ namespace DormitoryManagement.Controllers
 			return View();
 		}
 	}
+
+	
+	//public ActionResult Error()
+	//{
+	//	return View();
+	//}
 }

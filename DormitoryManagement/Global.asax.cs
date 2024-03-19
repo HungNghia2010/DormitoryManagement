@@ -16,6 +16,17 @@ namespace DormitoryManagement
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            MvcHandler.DisableMvcResponseHeader = true;
+        }
+
+        protected void Application_PreSendRequestHeaders()
+
+        {
+
+            Response.Headers.Remove("Server");           
+
+            Response.Headers.Remove("X-AspNet-Version"); 
+
         }
     }
 }
